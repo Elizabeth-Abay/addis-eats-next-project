@@ -5,7 +5,6 @@ import CartButton from "./CartButton";
 // will need access to the cart State
 // the whole app is wrapped with the cart provider so we can use the context
 export default function Header() {
-
     return (
         // the header will have 
         <div className="header-container">
