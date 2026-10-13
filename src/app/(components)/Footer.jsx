@@ -1,7 +1,12 @@
+"use client"
 import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
 import CartButton from "./CartButton";
 import { usePathname, useRouter } from "next/navigation";
+
+
+// to usePathname == we will need to make it client component
+
 
 export default function Footer() {
   const router = useRouter()

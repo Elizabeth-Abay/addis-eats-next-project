@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import AddBtn from "./QuickAddBtn";
 
 export default function SpecialContainerBox({ container }) {
@@ -13,14 +12,15 @@ export default function SpecialContainerBox({ container }) {
     servings,
   } = container;
 
-  const router = useRouter()
+  // const router = useRouter()
 
   
 
   return (
     <div
       className="food-card"
-      onClick={() => router.push(`/item/${id}`)}
+      // onClick={() => router.push(`/item/${id}`)}
+      // this part will have the default setting
       style={{
         display: "flex",
         flexDirection: "column",
@@ -147,7 +147,7 @@ export default function SpecialContainerBox({ container }) {
               color: "#f59e0b",
             }}
           >
-            ETB {priceETB}
+            ETB {priceETB} + default order
           </div>
 
           {servings && (

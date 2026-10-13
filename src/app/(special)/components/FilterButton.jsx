@@ -1,8 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CategoryFilter({type , filterName }){
     let router = useRouter()

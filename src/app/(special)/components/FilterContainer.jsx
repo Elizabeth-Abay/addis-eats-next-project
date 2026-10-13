@@ -1,4 +1,4 @@
-import {CategoryFilter} from "./FilterButton"
+import CategoryFilter from "./FilterButton"
 
 export default function FilterContainer(){
     return (
