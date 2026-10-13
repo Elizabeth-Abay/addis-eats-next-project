@@ -2,10 +2,14 @@ import MenuBox from "./MenuBox";
 
 export default async function MenuContainer({params}){
     // this is async it is server component and it is dynamic
-    let category = params?.category || "all";
-    let name = params?.name || "all";
+    let resolvedParams = await params;
+    let category = resolvedParams?.category || "all";
+    let name = resolvedParams?.name || "";
 
-    let result = await fetch('https://addis-eats-backend.onrender.com/menu/' , { revalidate : 3600});
+    let result = await fetch('https://addis-eats-backend.onrender.com/menu/');
+
+    // console.log("result from menu");
+    // console.log(result)
 
     if (!result || !result.ok) return alert('Problem fetching the menu');
 
@@ -19,20 +23,24 @@ export default async function MenuContainer({params}){
 
     let { data } = res;
 
-    let rendered; // the source of truth for the thing to be rendered in the menu container
+    // console.log("Data from menu");
+    // console.log(data)
 
-    if (name) {
+    let rendered = data; // the source of truth for the thing to be rendered in the menu container
+
+    if (name != "") {
         const escapedInput = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const searchRegex = new RegExp(escapedInput, 'i');
+
+        // console.log("Rendering data from the name filter")
         rendered = data.filter(
             item => {
                 if(searchRegex.test(item.nameEn)) {
                     return item
             }}
         )
-        console.log("Rendering items from name")
-        console.log(rendered)
     } else {
+        // console.log("Entering else block")
         switch (category){
             case 'wet':
                     rendered = data.filter(
@@ -56,31 +64,44 @@ export default async function MenuContainer({params}){
                     (item) => item.category.toLowerCase().trim() === 'fasting & vegan / tsom'
                     )
                     break
-
-                
             case 'beverages':
                 rendered = data.filter(
                     (item) => item.category.toLowerCase().trim() === 'beverages & tej'
                     )
                     break
-
                 
             default:
                 rendered = data
         }
     }
 
+
+    // console.log("Rendered thing in the menu");
+    // console.log(rendered)
+
     return (
         <div className="menu-container">
-            {
-                rendered?.map(
-                    item => {
-                        let idNew = `${item.id}${addingId++}`
-                        return <MenuBox key={idNew} dish={item}></MenuBox>
-                    }
-                )
-            }
+            {rendered.length > 0 ? (
+                        rendered.map((item) => (
+                        <MenuBox key={item.id} dish={item} />
+                        ))
+                    ) : (
+                        <p style={{ color: "rgba(255,255,255,0.6)", gridColumn: "1 / -1" }}>
+                        No items available for this category.
+                        </p>
+                    )}
         </div>
+
+        // <div >
+        //     {
+        //         rendered?.map(
+        //             item => {
+        //                 let idNew = `${item.id}${addingId++}`
+        //                 return <MenuBox key={idNew} dish={item}></MenuBox>
+        //             }
+        //         )
+        //     }
+        // </div>
     )
 
 

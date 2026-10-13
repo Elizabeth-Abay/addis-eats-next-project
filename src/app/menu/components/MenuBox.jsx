@@ -4,6 +4,7 @@
 
 import QuickAdd from "./QuickAdd";
 import SeeDetail from "./SeeDishDetails";
+import { FaFire } from "react-icons/fa6";
 
 export default function MenuBox({dish}){
     const {
@@ -31,6 +32,8 @@ export default function MenuBox({dish}){
             ));
     };
 
+
+    console.log("rendering menuBox")
 
     return (
         <div
@@ -237,7 +240,7 @@ export default function MenuBox({dish}){
                 </div>
             </div>
 
-            <QuickAdd/>
+            <QuickAdd props={{id, nameEn,priceETB}}/>
         </div>
 
     );

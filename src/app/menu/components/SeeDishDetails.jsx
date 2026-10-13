@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function SeeDetail(){
     // here we gotta have a cutesy details part to indicate the click and see the detail

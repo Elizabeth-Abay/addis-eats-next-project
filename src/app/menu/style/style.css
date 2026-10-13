@@ -1,0 +1,128 @@
+/* Card Container */
+.experience-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Left Section: Badge + Text */
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+/* Icon Badge Wrapper */
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;          /* Compact container size */
+  height: 36px;
+  background-color: #fef3c7; /* Subtle warm background (amber) */
+  color: #d97706;            /* Icon color */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Left Icon (Dish/Cloche) */
+.badge-icon {
+  width: 18px;          /* Reduced icon size */
+  height: 18px;
+}
+
+/* Card Typography */
+.card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.3;
+}
+
+.card-description {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.825rem;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* Right Section: Action Icon Container */
+.card-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
+  color: #9ca3af;       /* Subtle muted color */
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.card-action-icon:hover {
+  color: #e11d48;       /* Highlight color (e.g. warm red for hospitality/heart) */
+  background-color: #fff1f2;
+}
+
+/* Right Icon (Hand/Heart) */
+.action-icon {
+  width: 20px;          /* Reduced action icon size */
+  height: 20px;
+}
+
+/* Container for the search bar and icon */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Adjust max-width as needed */
+}
+
+/* Make the search icon smaller and position it on the left */
+.search-icon {
+  position: absolute;
+  left: 14px;
+  width: 16px;       /* Smaller icon size */
+  height: 16px;      /* Smaller icon size */
+  color: #9ca3af;    /* Muted gray color */
+  pointer-events: none; /* Lets clicks pass through to the input */
+}
+
+/* Style the input field and leave padding on the left for the icon */
+#search-bar {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem; /* Left padding creates space for the small icon */
+  font-size: 0.95rem;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-bar::placeholder {
+  color: #9ca3af;
+}
+
+#search-bar:focus {
+  border-color: #f59e0b; /* Warm accent color */
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}

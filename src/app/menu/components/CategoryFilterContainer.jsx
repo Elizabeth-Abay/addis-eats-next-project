@@ -1,7 +1,6 @@
 import FilterButton from "./FilterButton";
 
 export default function CategoryFilterContainer(){
-    // let {  dispatch } = useContext(MenuContext);
 
     const categories = [
         { name: 'All', action: 'get_all' , type : 'all' },

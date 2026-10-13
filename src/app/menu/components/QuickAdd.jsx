@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import useCartStore from "@/app/(stores)/CartStore";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 // bc it will be interactive with the client
 
-export default function QuickAdd(){
+export default function QuickAdd({props}){
+    let {id , nameEn , priceETB } = props
     const [added , setAdded ] = useState(false)
 
     const addItem = useCartStore((state) => state.addItem);
@@ -15,7 +17,7 @@ export default function QuickAdd(){
         addItem({
             id,
             name: nameEn,
-            amount: count,
+            amount: 1,
             price: priceETB,
             customOrder: {},
         });
