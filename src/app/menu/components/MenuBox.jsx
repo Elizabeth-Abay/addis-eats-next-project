@@ -56,7 +56,7 @@ export default function MenuBox({dish}){
                 margin : "10px"
             }}
         >
-            <SeeDetail/>
+            <SeeDetail id={id}/>
             <div
                 style={{ position: "relative", height: "170px", overflow: "hidden" }}
             >

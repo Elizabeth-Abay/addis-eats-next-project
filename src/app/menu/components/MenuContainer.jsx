@@ -1,12 +1,26 @@
+import { cacheLife } from "next/cache";
 import MenuBox from "./MenuBox";
 
-export default async function MenuContainer({params}){
+export default async function MenuContainer({searchParams}){
     // this is async it is server component and it is dynamic
-    let resolvedParams = await params;
+    "use cache"
+
+    let resolvedParams = await searchParams;
     let category = resolvedParams?.category || "all";
     let name = resolvedParams?.name || "";
 
     let result = await fetch('https://addis-eats-backend.onrender.com/menu/');
+
+    // here we are not invalidating the cache so we gotta go that
+    // cacheTag("menu-page-cache")
+
+    cacheLife(
+        {
+            // expire the cache every hour and make the request again
+            expire : 3600
+        }
+    )
+    // when we click the filter buttons we can revalidate the cache
 
     // console.log("result from menu");
     // console.log(result)

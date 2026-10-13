@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Footer from "./(components)/Footer";
 import Header from "./(components)/Header";
 
@@ -7,7 +8,9 @@ export default function RootLayout({children}){
             <body>
                 <Header/>
                 <main>{children}</main>
-                <Footer/>
+                <Suspense>
+                    <Footer/>
+                </Suspense>
             </body>
         </html>
     )

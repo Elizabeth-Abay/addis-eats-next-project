@@ -26,7 +26,7 @@ export default function CategoryFilter({type , filterName }){
         // refeth
         // onClick set the parent url path , when it rerenders then make the whole thing again
 
-        router.push(`${currentPath}/?category=${filterName}`)
+        router.push(`${currentPath}?category=${filterName}`)
     }
 
 

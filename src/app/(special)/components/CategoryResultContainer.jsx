@@ -4,12 +4,12 @@ import SpecialContainerBox from "./SpecialContainerBox";
 // ! ! things that i have issues with is the caching and pre rendering parts
 // ! in here the pre rendered part what is up with that
 // it is ok to do the fetching here bc it is a server component
-export default async function CategoryResultContainer({params}) {
+export default async function CategoryResultContainer({searchParams}) {
     // "use cache"
     // since i said use cache it can use the cache in there even offline
-    let searchParams = await params;
+    let searchParamsSS = await searchParams;
 
-    let filter = searchParams?.category || "all";
+    let filter = searchParamsSS?.category || "all";
     console.log(`filter selected ${filter}`)
 
     // * issues faced

@@ -7,6 +7,8 @@ import { useState } from "react";
 export default function FilterButton({type}){
     let [activeCategory , setActiveCategory ] = useState('All');
 
+     
+
     // the thing is onClick 
     // I want to push the current category to the router to deal with it
 
@@ -24,10 +26,5 @@ export default function FilterButton({type}){
         router.push(`${pathName}?category=${type}`)
     
     };
-
-
-
-
-
 
 }
