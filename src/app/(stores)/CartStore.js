@@ -229,7 +229,9 @@ const useCartStore = create(
                     state => {
                         return {
                             ...state ,
-                            grandTotal : Number(state.grandTotal + deliveryFee),
+                            // we will have to work with the deliveryFee bc since we are changing the data
+                            // like say akaki first then gulele second then it will mean remove the akaki fee and then add the gulele fee 
+                            grandTotal : Number(state.grandTotal - state.deliveryFee  + deliveryFee),
                             deliveryFee : Number(deliveryFee)
                         }
                     }

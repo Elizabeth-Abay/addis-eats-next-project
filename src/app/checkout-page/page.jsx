@@ -6,6 +6,7 @@ import PaymentMethodBox from "./components/PaymentMethod";
 import { paymentMethods  } from "../(constants)/variable";
 import '../cart/style/style.css'
 
+
 export default function Page(){
     return (
         <div>

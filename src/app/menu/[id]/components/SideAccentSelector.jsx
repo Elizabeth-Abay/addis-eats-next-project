@@ -1,4 +1,4 @@
-import { SIDE_ACCENTS_CONFIG, sideAccentsPrice } from "../../../../constants/variables";
+import { SIDE_ACCENTS_CONFIG, sideAccentsPrice } from "../../../(constants)/variable";
 import { FaCheck } from "react-icons/fa6";
 
 export default function SideAccentsSelector({

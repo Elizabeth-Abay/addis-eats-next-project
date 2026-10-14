@@ -8,6 +8,7 @@ export default async function CategoryResultContainer({searchParams}) {
     // "use cache"
     // since i said use cache it can use the cache in there even offline
     let searchParamsSS = await searchParams;
+    // this is a dynamic page
 
     let filter = searchParamsSS?.category || "all";
     console.log(`filter selected ${filter}`)
