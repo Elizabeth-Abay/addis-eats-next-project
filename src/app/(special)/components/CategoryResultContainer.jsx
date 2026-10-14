@@ -42,21 +42,28 @@ export default async function CategoryResultContainer({searchParams}) {
 
     switch (filter.toLowerCase()){
         case 'wat':
+            console.log("Entering the wet category");
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'traditional stews & wat'
             )
             break
         case 'tibs':
+            console.log("Entering the tibs category");
+
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'tibs & grills'
             )
             break
         case 'raw':
+            console.log("Entering the raw category");
+
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'raw & cured delicacies / kitfo'
             )
             break
         case 'tsom':
+            console.log("Entering the tsom category");
+
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'fasting & vegan / tsom'
             )

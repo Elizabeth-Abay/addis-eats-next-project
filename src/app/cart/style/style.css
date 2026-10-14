@@ -1,0 +1,1440 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-cream: #FAF2EB;
+  --card-bg: #FFFFFF;
+  --primary-red: #701B0B;
+  --primary-red-hover: #571307;
+  --accent-gold: #F7B538;
+  --accent-gold-bg: #FFF4DC;
+  --text-dark: #1F1A17;
+  --text-muted: #786F68;
+  --border-light: #EFE4DA;
+}
+
+
+.gursha-package {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #fffaf5; /* Warm cream background */
+    padding: 1rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gursha-package h1 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    color: #7a1406; /* Deep reddish-brown / burgundy */
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.gursha-package h4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #936e26; /* Warm mustard / gold tint */
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.delivery-card {
+  background-color: #fff4eb; /* Warm cream / peach background */
+  border-radius: 18px;
+  padding: 16px 18px 12px 18px;
+  max-width: 440px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.delivery-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.delivery-icon-box {
+  background-color: #fdb840; /* Warm gold/yellow */
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b1f1d;
+}
+
+.delivery-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.delivery-text {
+  flex: 1;
+}
+
+.delivery-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #241a18;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.delivery-text p {
+  margin: 4px 0 0 0;
+  font-size: 0.85rem;
+  color: #6e615a;
+  line-height: 1.3;
+}
+
+.delivery-badge {
+  background-color: #2b5742; /* Forest green */
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.delivery-progress-bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+
+.delivery-progress-fill {
+  width: 100%;
+  height: 100%;
+  background-color: #fdb840;
+  border-radius: 9999px;
+}
+
+
+
+.cart-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Card Body */
+.cart-card-body {
+  display: flex;
+  gap: 14px;
+}
+
+/* Image & Badge */
+.cart-img-wrapper {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background-color: #7a1406; /* Dark reddish brown */
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Details Section */
+.cart-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cart-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #241a18;
+  line-height: 1.25;
+}
+
+.cart-remove-btn {
+  background: transparent;
+  border: none;
+  color: #6e615a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0 0 4px 8px;
+  line-height: 1;
+}
+
+.cart-remove-btn:hover {
+  color: #241a18;
+}
+
+.cart-subtext {
+  margin: 8px 0 0 0;
+  font-size: 0.88rem;
+  color: #6e615a;
+  line-height: 1.3;
+}
+
+/* Footer Section */
+.cart-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.cart-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #7a1406; /* Dark red matching design */
+}
+
+/* Rounded Quantity Control Pill */
+.cart-qty-pill {
+  display: flex;
+  align-items: center;
+  background-color: #fff3ec; /* Soft warm light peach */
+  border-radius: 10px;
+  padding: 4px 12px;
+  gap: 16px;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #241a18;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qty-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #241a18;
+  min-width: 12px;
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: #6e0e03; /* Deep burgundy / dark reddish brown */
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(110, 14, 3, 0.25);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.checkout-btn:hover {
+  background-color: #580a02;
+}
+
+.checkout-btn:active {
+  transform: scale(0.99);
+}
+
+/* Left Section */
+.checkout-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cloche-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2px;
+}
+
+.checkout-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Right Section */
+.checkout-btn-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+.scroll-container {
+  max-height: 320px; /* Limits height to trigger scrolling */
+  overflow-y: auto;  /* Enables vertical scrollbar when content exceeds max-height */
+  overflow-x: hidden;/* Prevents horizontal overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 6px; /* Space between content and scrollbar */
+  scroll-behavior: smooth;
+}
+
+/* Individual item styles */
+.scroll-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #333333;
+  transition: background-color 0.2s ease;
+}
+
+.scroll-item:hover {
+  background-color: #f1f3f5;
+}
+
+/* Custom Scrollbar Styling */
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+:root {
+  --etiquette-card-bg: #fef0e8; /* Pale peach */
+  --etiquette-marker-bg: #8c2e1b; /* Red-brown */
+  --etiquette-marker-radius: 4px;
+  --etiquette-card-radius: 12px;
+  --etiquette-note-radius: 8px;
+  --etiquette-main-text-color: #382d2c; /* Dark brown */
+  --etiquette-desc-text-color: #8f8582; /* Grey */
+  --etiquette-note-text-color: #382d2c;
+  --etiquette-divider-color: #e0dad7; /* Subtle separator */
+  /* Clean sans-serif font stack */
+  --etiquette-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.dining-etiquette-card {
+  background-color: var(--etiquette-card-bg);
+  border-radius: var(--etiquette-card-radius);
+  padding: 24px;
+  font-family: var(--etiquette-font-family);
+  max-width: 480px; /* Limit width for clean display */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); /* Subtle depth */
+  margin: 20px auto; /* Centered with top/bottom margin */
+}
+
+.etiquette-main-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.leaf-icon {
+  flex-shrink: 0;
+}
+
+.etiquette-main-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.etiquette-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.feature-marker-container {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 4px; /* Align with bold title text top */
+}
+
+.feature-marker {
+  background-color: var(--etiquette-marker-bg);
+  width: 20px;
+  height: 20px;
+  border-radius: var(--etiquette-marker-radius);
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature-content h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.feature-content p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--etiquette-desc-text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.etiquette-divider {
+  border: 0;
+  border-top: 1px solid var(--etiquette-divider-color);
+  margin: 24px 0;
+}
+
+.etiquette-kitchen-note {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pencil-icon {
+  flex-shrink: 0;
+}
+
+.note-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+}
+
+.note-text-box {
+  background-color: #ffffff;
+  border-radius: var(--etiquette-note-radius);
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); /* Very subtle depth on white on pale peach */
+}
+
+.note-text-box p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--etiquette-note-text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+.payment-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.payment-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.dish-count {
+  color: #a3721d; /* Warm gold/brown */
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Breakdown List */
+.payment-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-label {
+  font-size: 0.95rem;
+  color: #6e615a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #2b5742;
+  color: #2b5742;
+  font-size: 0.65rem;
+  font-weight: bold;
+}
+
+.icon-flame {
+  font-size: 0.85rem;
+}
+
+.row-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.free-text {
+  color: #2b5742; /* Forest green */
+  font-weight: 700;
+}
+
+/* Promo Applied Box */
+.promo-applied-box {
+  background-color: #fdeee6; /* Light peach */
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.promo-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.promo-tag-icon {
+  font-size: 1.1rem;
+}
+
+.promo-code-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #7a1406;
+}
+
+.promo-subtext {
+  font-size: 0.78rem;
+  color: #8c6e63;
+}
+
+.promo-discount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #7a1406;
+}
+
+/* Promo Input State */
+.promo-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.promo-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2d7d0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #faf7f5;
+}
+
+.promo-input:focus {
+  border-color: #7a1406;
+}
+
+.promo-error-msg {
+  margin: 2px 0 0 4px;
+  font-size: 0.8rem;
+  color: #d32f2f;
+}
+
+/* Grand Total Box */
+.grand-total-box {
+  background-color: #fff6f0; /* Soft warm background */
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.total-left h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.total-left p {
+  margin: 4px 0 0 0;
+  font-size: 0.78rem;
+  color: #8c7e77;
+}
+
+.total-right {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #7a1406; /* Deep burgundy red */
+}
+
+
+.recipient-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 440px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Section */
+.recipient-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.header-icon-badge {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background-color: #fde6dc; /* Soft peach/pink badge */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon {
+  width: 22px;
+  height: 22px;
+  color: #4a1d17; /* Dark reddish brown */
+}
+
+.header-text h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #221614;
+  letter-spacing: -0.01em;
+}
+
+.header-text p {
+  margin: 2px 0 0 0;
+  font-size: 0.88rem;
+  color: #736662;
+}
+
+/* Form Layout */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #533932;
+}
+
+/* Input Wrappers */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fdf0e9; /* Pale peach input background */
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #221614;
+  padding: 0;
+}
+
+.input-wrapper input::placeholder {
+  color: #a89a95;
+}
+
+/* Country Prefix (ET Box) */
+.country-prefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #7a635c;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #533932;
+  margin-right: 8px;
+  user-select: none;
+}
+
+/* Trailing Icons */
+.field-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #7a635c;
+  margin-left: 8px;
+}
+
+.check-icon {
+  color: #7a635c;
+}
+
+.sim-icon {
+  color: #7a635c;
+}
+
+/* Card Container */
+.cart-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  gap: 12px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Left & Middle Section Wrapper */
+.cart-card-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0; /* Prevents text overflow issues */
+}
+
+/* Image & Badge */
+.cart-img-wrapper {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #8c2e1b;
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* Text Info Section */
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+}
+
+.cart-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #241a18;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-subtext {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #8a7b75; /* Soft taupe/brown subtext */
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Section (Price) */
+.cart-card-footer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.cart-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #241a18;
+  letter-spacing: -0.01em;
+}
+
+/* Base Button Styling */
+.payment-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+  padding: 16px 24px;
+  background-color: #9c2813; /* Rust Red color matching the screenshot */
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(156, 40, 19, 0.25);
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+/* Hover and Active Micro-interactions */
+.payment-btn:hover {
+  background-color: #87210e;
+  box-shadow: 0 6px 16px rgba(156, 40, 19, 0.35);
+  transform: translateY(-1px);
+}
+
+.payment-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(156, 40, 19, 0.2);
+}
+
+/* Disabled State */
+.payment-btn:disabled {
+  background-color: #c27b6f;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Flex layout for sides */
+.payment-btn-left,
+.payment-btn-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icons */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Typography refinements */
+.btn-label {
+  letter-spacing: -0.2px;
+}
+
+.btn-amount {
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* Slight slide effect on right arrow during hover */
+.payment-btn:hover .arrow-icon {
+  transform: translateX(3px);
+  transition: transform 0.2s ease;
+}
+.arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+/* Container Box */
+.payment-box {
+  background-color: #fdf2e9;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.payment-box:hover {
+  background-color: #faebd7;
+}
+
+/* Header Section */
+.payment-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-box-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.payment-logo-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+
+.payment-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.payment-description {
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  color: #666666;
+}
+
+/* Custom Radio Button */
+.payment-radio-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.payment-radio {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.custom-radio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #a0a0a0;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.payment-box.selected .custom-radio {
+  border-color: #7a2012;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 4px #7a2012;
+}
+
+/* Expanded Input Area */
+.payment-input-section {
+  margin-top: 14px;
+  padding-top: 10px;
+}
+
+.payment-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.input-label {
+  font-weight: 600;
+  color: #333333;
+}
+
+.input-badge {
+  font-weight: 600;
+  color: #7a2012;
+}
+
+/* White Input Bar */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-prefix {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 12px;
+  border-right: 1px solid #e0e0e0;
+  margin-right: 12px;
+}
+
+.flag-icon {
+  font-size: 14px;
+}
+
+.prefix-code {
+  font-size: 14px;
+  color: #555555;
+  font-weight: 500;
+}
+
+.payment-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  color: #1a1a1a;
+  background: transparent;
+  font-weight: 500;
+}
+
+.payment-input::placeholder {
+  color: #aaaaaa;
+}
+
+.payment-submit-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px;
+  background-color: #701B0B;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.payment-submit-btn:hover {
+  background-color: #571307;
+}
+
+
+
+
+.thank-you-page {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--bg-cream);
+  padding: 24px 16px 40px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  box-sizing: border-box;
+}
+
+/* Banner Section */
+.thank-you-banner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.success-badge {
+  width: 56px;
+  height: 56px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 16px rgba(112, 27, 11, 0.25);
+}
+
+.check-mark {
+  color: #FFFFFF;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.banner-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-dark);
+}
+
+.banner-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+  max-width: 340px;
+}
+
+.eta-badge {
+  background-color: var(--accent-gold-bg);
+  color: #7A5200;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(247, 181, 56, 0.3);
+}
+
+/* Receipt Paper Design */
+.receipt-card {
+  background-color: var(--card-bg);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 24px rgba(112, 27, 11, 0.06);
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.receipt-header {
+  text-align: center;
+}
+
+.restaurant-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: var(--primary-red);
+}
+
+.receipt-type {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+}
+
+.receipt-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.receipt-divider-dashed {
+  border-top: 2px dashed var(--border-light);
+  margin: 16px 0;
+}
+
+/* Receipt Item Row */
+.receipt-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--text-dark);
+}
+
+.receipt-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.receipt-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 75%;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-qty {
+  color: var(--primary-red);
+  font-weight: 700;
+}
+
+.item-name {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.item-custom {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 26px;
+  font-style: italic;
+}
+
+.item-price {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.empty-cart-msg {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Financial Totals */
+.receipt-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grand-total-row {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.grand-total-row span:last-child {
+  color: var(--primary-red);
+  font-size: 18px;
+}
+
+/* Customer & Delivery Information Grid */
+.receipt-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--bg-cream);
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-block-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.info-block-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.info-block-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+/* Actions Button */
+.thank-you-actions {
+  margin-top: 20px;
+}
+
+.back-home-btn {
+  width: 100%;
+  background-color: var(--primary-red);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(112, 27, 11, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.back-home-btn:hover {
+  background-color: var(--primary-red-hover);
+}
