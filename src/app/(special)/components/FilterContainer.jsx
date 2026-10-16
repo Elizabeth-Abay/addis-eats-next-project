@@ -1,6 +1,7 @@
 import CategoryFilter from "./FilterButton"
 
 export default function FilterContainer(){
+    // console.log(`seach params from here ${searchParams}`)
     return (
         <div className="selection-buttons" style={{
             display: "flex",

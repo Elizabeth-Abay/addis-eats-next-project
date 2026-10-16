@@ -1,7 +1,15 @@
+import { Suspense } from "react";
 import SpecialPage from "./(special)/page";
 
-export default function HomePage(){
+export default function HomePage({searchParams}){
+    
     return (
-        <SpecialPage />
+        <Suspense fallback = {
+            <div>
+                Loading Special Data
+            </div>
+        }>
+            <SpecialPage searchParams={searchParams} />
+        </Suspense>
     )
 }

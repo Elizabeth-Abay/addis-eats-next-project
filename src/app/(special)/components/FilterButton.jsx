@@ -25,8 +25,14 @@ export default function CategoryFilter({type , filterName }){
         // fetch the data then 
         // refeth
         // onClick set the parent url path , when it rerenders then make the whole thing again
+        let params = new URLSearchParams();
+        params.set('category' , filterName);
+        
 
-        router.push(`${currentPath}?category=${filterName}`)
+
+        
+
+        router.replace(`${currentPath}?${params.toString()}`)
     }
 
 

@@ -7,11 +7,11 @@ import SpecialContainerBox from "./SpecialContainerBox";
 export default async function CategoryResultContainer({searchParams}) {
     // "use cache"
     // since i said use cache it can use the cache in there even offline
-    let searchParamsSS = await searchParams;
+    let searchParamsUpdated = await searchParams;
     // this is a dynamic page
 
-    let filter = searchParamsSS?.category || "all";
-    console.log(`filter selected ${filter}`)
+    let filter = searchParamsUpdated?.category || "all";
+    // console.log(`filter selected ${filter}`)
 
     // * issues faced
     // * --> prerendering 
@@ -21,6 +21,7 @@ export default async function CategoryResultContainer({searchParams}) {
     // in here set the fallback to be cached data / empty
     // by default fetch will have a cached data thus during a build - that can be served
     // and the whole server will serve that indefinitely
+    // when u fetch sthg then it will be stored in the cache
     let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials')
 
     if (!res.ok) {
@@ -43,28 +44,21 @@ export default async function CategoryResultContainer({searchParams}) {
 
     switch (filter.toLowerCase()){
         case 'wat':
-            console.log("Entering the wet category");
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'traditional stews & wat'
             )
             break
         case 'tibs':
-            console.log("Entering the tibs category");
-
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'tibs & grills'
             )
             break
         case 'raw':
-            console.log("Entering the raw category");
-
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'raw & cured delicacies / kitfo'
             )
             break
         case 'tsom':
-            console.log("Entering the tsom category");
-
             filteredData = data.filter(
                 (item) => item.category.toLowerCase().trim() === 'fasting & vegan / tsom'
             )
