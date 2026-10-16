@@ -12,7 +12,7 @@ export default function CategoryFilterContainer(){
     ];
     
 
-    
+    // console.log('returning category filters')
     
     return (
         <div className="category-filter-contaienr">
@@ -22,7 +22,8 @@ export default function CategoryFilterContainer(){
                     cat => (
                         <FilterButton 
                             key={cat.name}
-                            type={cat.name}
+                            name={cat.name}
+                            type={cat.type}
                         ></FilterButton>
                     )
                 )

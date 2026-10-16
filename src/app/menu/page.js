@@ -12,11 +12,12 @@ export default async  function MenuPage({searchParams}){
             <SearchBar/>
             <TraditionalGursha/>
             <CategoryFilterContainer/>
+            
             <Suspense fallback={
                 <div>Loading....</div>
             }>
                 {/* this is a dynamic part */}
-                <MenuContainer params={searchParams}/>
+                <MenuContainer searchParams={searchParams}/>
 
             </Suspense>
             <SelectedItemsContainer/>

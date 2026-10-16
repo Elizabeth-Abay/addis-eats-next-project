@@ -4,8 +4,9 @@ import { useState } from "react";
 
  // bc the client will have to click this
 
-export default function FilterButton({type}){
+export default function FilterButton({name , type}){
     let [activeCategory , setActiveCategory ] = useState('All');
+    // console.log(`type in the filter button ${type}`)
 
      
 
@@ -27,4 +28,10 @@ export default function FilterButton({type}){
     
     };
 
+
+    return (
+        <button className="category-filter-btn active" onClick={handleCategoryClick}>
+            {name}
+        </button>
+    )
 }

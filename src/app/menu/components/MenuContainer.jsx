@@ -22,8 +22,6 @@ export default async function MenuContainer({searchParams}){
     // )
     // when we click the filter buttons we can revalidate the cache
 
-    // console.log("result from menu");
-    // console.log(result)
 
     if (!result || !result.ok) return alert('Problem fetching the menu');
 
@@ -54,7 +52,6 @@ export default async function MenuContainer({searchParams}){
             }}
         )
     } else {
-        console.log("Entering else block")
         switch (category){
             case 'wet':
                     rendered = data.filter(
