@@ -10,8 +10,12 @@ export default async function MenuContainer({searchParams}){
     let category = resolvedParams?.category || "all";
     let name = resolvedParams?.name || "";
 
-    let result = await fetch('https://addis-eats-backend.onrender.com/menu/');
+
+    // I want to revalidate the caches in here every hr
+    let result = await fetch('https://addis-eats-backend.onrender.com/menu/' , { next : { revalidate : 3600 }});
     // here we are not invalidating the cache so we gotta go that
+
+    // * Cache tag and cache life are important for client invalidation of cache from the server actions
     // cacheTag("menu-page-cache")
 
     // cacheLife(

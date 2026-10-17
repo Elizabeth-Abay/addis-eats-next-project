@@ -120,3 +120,7 @@ export const SIDE_ACCENTS_CONFIG = [
         description: "Tangy tomato, jalapeno and shredded injera salad",
     },
 ];
+
+
+export const adminPhoneNumber = '0911111111'
+export const kitchenPhoneNumber = '0900000000';

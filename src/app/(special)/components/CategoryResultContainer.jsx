@@ -22,7 +22,9 @@ export default async function CategoryResultContainer({searchParams}) {
     // by default fetch will have a cached data thus during a build - that can be served
     // and the whole server will serve that indefinitely
     // when u fetch sthg then it will be stored in the cache
-    let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials')
+    // this is a shared cache stored in the server and since it is in there we gotta specify the time 
+    // to refetch that after sometime
+    let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials' , { next : { revalidate : 3600} } );
 
     if (!res.ok) {
         console.log("Erorr while fetching the data");

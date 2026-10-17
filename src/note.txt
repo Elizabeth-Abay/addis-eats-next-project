@@ -1,0 +1,31 @@
+Things to add here
+
+accounts and sessions 
+order history that belongs to the person viewing it
+image and font optimize
+meta data included - the shared data makes them want to open it
+and also on telegram when ur website is shared to have images
+The search needs to be debounced
+sessions, layers and scoped queries
+optimization of images loading measured - the user had to stop typing before starting the search
+ok so make the user after he is done typing for 3 secs
+
+accounts - when the users sign in route handler 
+save them into there and send them cookie
+accounts sign in and out , sessions flagged in the cookie
+middleware - will have to take the cookie and then check
+protection - middleware in the server side , page check and check in every action
+
+
+ownership - every query scoped to the session , never to a sent included
+performance - measured improvement
+discovery
+
+
+Readme lay add ur screenshots
+
+performance before and after
+spinner no server data seeds the client query
+title on the homepage * distinct description on every route
+share - link with image and price
+deployed preview
