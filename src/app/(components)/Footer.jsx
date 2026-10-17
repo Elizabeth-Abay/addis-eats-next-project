@@ -43,7 +43,7 @@ export default function Footer() {
 
       <button
         onClick={
-          () => router.replace('/my-acc')
+          () => router.replace('/auth')
         } 
         className={`nav-link ${pathname === '/my-acc' ? 'active' : ''}`}
       >

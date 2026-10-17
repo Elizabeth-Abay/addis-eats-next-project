@@ -42,78 +42,74 @@ let checkUserExists = async (given) => {
 
 // this are server actions used for authentication
 let signUp =  async (formData) => {
-    // if the user is there then return , else create and set up the user
-    let email = formData.get('email');
-    let phone = formData.get('phone');
-    let password = formData.get('password');
-    let name = formData.get('name')
+        console.log('Processing sign up in the server');
+        console.log(formData)
+        // if the user is there then return , else create and set up the user
+        let email = formData.get('email');
+        let phone = formData.get('phone');
+        let password = formData.get('password');
+        let name = formData.get('name')
 
-    let sentInfo = email ? email : phone;
-    let role = 
-    phone 
-    ?
-        (phone === adminPhoneNumber) ? 'admin' :
-        (phone === kitchenPhoneNumber) ? 'kitchen' : 'user'
-    :
-        'user';
-    
+        let sentInfo = email ? email : phone;
+        let role = 
+        phone 
+        ?
+            (phone === adminPhoneNumber) ? 'admin' :
+            (phone === kitchenPhoneNumber) ? 'kitchen' : 'user'
+        :
+            'user';
+        
 
-    try {
-            let isUserThere = await checkUserExists(sentInfo)
-        
-            // using useServerAction to hook up the client's form to the state action
-            if (isUserThere.found) {
-                return {
-                    success: false,
-                    reason: 'try logging into your account' // this is just for dev
-                }
-            }
-        
-            // else create the user object and then set it up in the users.json
-        
-            // when they sign up check and assign them roles to have
-        
-            let newUsers = [...isUserThere.users,
-                {
-                    [sentInfo]: {
-                        password: hashInfo(password), // hash the password
-                        name,
-                        role
+        try {
+                let isUserThere = await checkUserExists(sentInfo)
+            
+                // using useServerAction to hook up the client's form to the state action
+                if (isUserThere.found) {
+                    return {
+                        success: false,
+                        reason: 'try logging into your account' // this is just for dev
                     }
                 }
-            ]
-        
-        
-            // writeFile receives strings as input
-            await fs.writeFile('../(data)/users.json', JSON.stringify(
-                newUsers
-            ))
-
-            let newSession = await createSession({givenIdentifier : sentInfo , role })
             
-            redirect('/')
+                // else create the user object and then set it up in the users.json
+            
+                // when they sign up check and assign them roles to have
+            
+                let newUsers = [...isUserThere.users,
+                    {
+                        [sentInfo]: {
+                            password: hashInfo(password), // hash the password
+                            name,
+                            role
+                        }
+                    }
+                ]
+            
+            
+                // writeFile receives strings as input
+                await fs.writeFile('../(data)/users.json', JSON.stringify(
+                    newUsers
+                ))
 
-            // // to the form this is what u return and it will redirect them
-            // return {
-            //     success : true,
-            //     name,
-            //     session : newSession
-            //     // the client shld have the name saved in the localStorage 
-            //     // and push the user to the / - specials
-            // }
-    } catch (err) {
-        console.log(`Error happened during sign up ${err}`)
-        return {
-            success : false,
-            reason :`Error happened during sign up ${err}`
+                await createSession({givenIdentifier : sentInfo , role })
+                
+            
+
+                // to the form this is what u return and it will redirect them
+                return {
+                    success : true,
+                    name
+                    // the client shld have the name saved in the localStorage 
+                    // and push the user to the / - specials
+                }
+        } catch (err) {
+            console.log(`Error happened during sign up ${err}`)
+            return {
+                success : false,
+                reason :`Error happened during sign up ${err}`
+            }
+            
         }
-        
-    }
-
-
-
-
-    
 }
 
 let logIn= async (formData) => {
@@ -139,15 +135,15 @@ let logIn= async (formData) => {
         if (data.password === password) {
             // then that is the user create the session
             // the createSession will put in the cookies
-            let newSession = await createSession({givenIdentifier : sentInfo , role : data.role });
+            await createSession({givenIdentifier : sentInfo , role : data.role });
 
-            redirect('/')
+        
 
-            // return {
-            //     success : true,
-            //     name : data.name,
-            //     session : newSession
-            // }
+            return {
+                success : true,
+                name : data.name
+                // session : newSession the session data is set by the cookie
+            }
             
         } else{
             return {

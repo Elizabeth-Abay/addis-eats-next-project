@@ -1,0 +1,500 @@
+/* ==========================================
+   MESOB UI DESIGN SYSTEM & COLOR TOKENS
+   ========================================== */
+:root {
+  --bg-parchment: #FAF4EE;
+  --bg-card: #FFFFFF;
+  --bg-tertiary: #F6ECE2;
+  --bg-input: #FAFAF8;
+  
+  --brand-espresso: #2A1810;
+  --brand-espresso-hover: #42271B;
+  --brand-ochre: #8C5D28;
+  --brand-ochre-light: rgba(140, 93, 40, 0.1);
+  --brand-gold: #C4883B;
+  
+  --text-primary: #2A1810;
+  --text-secondary: #6E5A4F;
+  --text-muted: #8C6A5A;
+  
+  --border-light: #EAD3C1;
+  --border-subtle: #F0E2D8;
+  --border-focus: #8C5D28;
+  
+  --shadow-sm: 0 2px 8px rgba(42, 24, 16, 0.04);
+  --shadow-md: 0 8px 24px rgba(42, 24, 16, 0.07);
+  --shadow-lg: 0 16px 36px rgba(42, 24, 16, 0.1);
+  
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================
+   1. WELCOME CARD STYLES
+   ========================================== */
+.welcome-card {
+  position: relative;
+  background: linear-gradient(145deg, #FAF4EE 0%, #FDF7F2 50%, #F5EBE1 100%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  max-width: 520px;
+  margin: 20px auto;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--brand-ochre-light);
+  border: 1px solid rgba(140, 93, 40, 0.18);
+  color: var(--brand-ochre);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.welcome-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--brand-ochre);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--brand-ochre);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.welcome-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.welcome-icon {
+  font-size: 26px;
+  background: linear-gradient(135deg, var(--brand-ochre) 0%, var(--brand-gold) 100%);
+  color: #FFFFFF;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(140, 93, 40, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-text {
+  flex: 1;
+}
+
+.welcome-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brand-espresso);
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+.welcome-subtitle {
+  margin: 10px 0 20px 0;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.welcome-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--brand-espresso);
+  color: #FFF8F0;
+  border: none;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(42, 24, 16, 0.15);
+}
+
+.welcome-btn:hover {
+  background-color: var(--brand-espresso-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(42, 24, 16, 0.25);
+}
+
+.welcome-btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================
+   2. USER INFORMATION CARD STYLES
+   ========================================== */
+.user-info-card {
+  width: 100%;
+  max-width: 460px;
+  margin: 16px auto;
+  background-color: var(--bg-parchment);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.user-info-card:hover {
+  border-color: var(--brand-ochre);
+  box-shadow: var(--shadow-md);
+}
+
+.user-info-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #FAF0E8 0%, #F5E6DA 100%);
+  border: 1px solid var(--border-subtle);
+  color: var(--brand-ochre);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(140, 93, 40, 0.08);
+}
+
+.user-info-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
+.user-info-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.user-info-value {
+  margin: 3px 0 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand-espresso);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================
+   3. AUTH LOGIN FORM STYLES
+   ========================================== */
+.auth-card-container {
+  width: 100%;
+  max-width: 460px;
+  margin: 20px auto;
+  background-color: var(--bg-parchment);
+  border: 1px solid var(--border-light);
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+  box-shadow: var(--shadow-md);
+}
+
+/* OR Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.auth-divider-text {
+  padding: 0 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+}
+
+/* Tab Switcher Group */
+.auth-tab-group {
+  display: flex;
+  background-color: #EFE0D5;
+  padding: 5px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 22px;
+  gap: 6px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 14px;
+}
+
+.auth-tab-btn:hover:not(.active) {
+  color: var(--brand-espresso);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.auth-tab-btn.active {
+  background-color: var(--bg-card);
+  color: var(--brand-espresso);
+  box-shadow: 0 3px 12px rgba(42, 24, 16, 0.08);
+  font-weight: 700;
+}
+
+.tab-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.tab-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.15;
+}
+
+.tab-title {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--brand-espresso);
+}
+
+.tab-subtitle {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--brand-espresso);
+  opacity: 0.85;
+}
+
+.tab-single-title {
+  font-weight: 700;
+  font-size: 13.5px;
+}
+
+/* Form Layout */
+.auth-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--brand-espresso);
+}
+
+.carrier-sublabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-ochre);
+}
+
+/* Inputs & Containers */
+.input-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  height: 52px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-box:focus-within {
+  border-color: var(--brand-ochre);
+  box-shadow: 0 0 0 3px rgba(140, 93, 40, 0.15);
+}
+
+/* Country Prefix Badge (+251) */
+.country-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #FAF0E8;
+  padding: 0 14px;
+  height: 100%;
+  border-right: 1px solid var(--border-subtle);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ethiopia-flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.country-code {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--brand-espresso);
+}
+
+.chevron-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-secondary);
+}
+
+/* Inputs */
+.input-field {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 16px;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--brand-espresso);
+  background: transparent;
+}
+
+.input-field.full-padding {
+  padding: 0 16px;
+}
+
+.input-field::placeholder {
+  color: #A08D85;
+}
+
+/* Password Input Styling */
+.password-input-box {
+  padding: 0 14px;
+}
+
+.field-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+}
+
+.left-icon {
+  margin-right: 10px;
+}
+
+.password-field {
+  padding: 0;
+  letter-spacing: 2px;
+}
+
+.toggle-password-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-password-btn:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Done Submit Button */
+.done-btn {
+  width: 100%;
+  height: 52px;
+  background-color: var(--brand-espresso);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 16px rgba(42, 24, 16, 0.18);
+}
+
+.done-btn:hover {
+  background-color: var(--brand-espresso-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(42, 24, 16, 0.25);
+}
+
+.done-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(42, 24, 16, 0.15);
+}

@@ -1,14 +1,24 @@
 'use client'
 
+import { useEffect, useState } from "react";
+
 // bc it will depend on the client and will read the username from the local storage
 export default function NameCircle(){
-    let name = localStorage.get('name');
+    let [ name , setName ] = useState('User')
 
-    let letter = name ? name[0] : 'U';
+    let letter = name[0];
+
+    useEffect(
+        () => {
+            let userName = localStorage.getItem('name') || 'User';
+
+            setName(userName);
+        } , [name]
+    )
 
     return (
         <div>
-            <div class="user-badge" 
+            <div className="user-badge" 
                 style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -16,7 +26,7 @@ export default function NameCircle(){
                 }}
             >
                 <div 
-                    class="user-avatar" 
+                    className="user-avatar" 
                     aria-label="Alex Johnson"
                     style={
                         {
@@ -39,7 +49,7 @@ export default function NameCircle(){
                     letter
                 }   
                 </div>
-                <span class="user-name"
+                <span className="user-name"
                     style={
                         {
                             fontSize: "1rem",
