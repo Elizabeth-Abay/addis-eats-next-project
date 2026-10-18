@@ -1,10 +1,13 @@
 "use client"
 import { useRouter } from "next/navigation";
 import useCartStore from "../../(stores)/CartStore";
+import { setUpHistory } from "@/app/(actions)/orderHistory";
 
-export default function ConfirmOrderAndaPay(){
+export default function ConfirmOrderAndaPay({userId}){
     let grandTotal = useCartStore(state => state.grandTotal);
-    let updateGrandTotal = useCartStore(state => state.updateGrandTotal)
+    let updateGrandTotal = useCartStore(state => state.updateGrandTotal);
+    let cart = useCartStore(state => state.cart);
+    let deliveryFee = useCartStore(state => state.deliveryFee)
     
     let disabled = false;
     let isLoading = false;
@@ -21,6 +24,11 @@ export default function ConfirmOrderAndaPay(){
         // we should use Navigate component for navigation purpose
 
         updateGrandTotal({ amount : grandTotal , sign : 'minus' ,  percentage : false});
+
+        // here also update the order history
+        // order history - will include the name of things and the date and total price
+
+        setUpHistory({userId , deliveryFee , grandTotal , cart})
 
         // //console.log('the state of the cart after confirm payment');
         // //console.log(state)
