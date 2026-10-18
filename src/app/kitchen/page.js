@@ -1,2 +1,14 @@
-// this is a page where staff people could set up amounts
-// so this user action will update the cache but 
+import { Suspense } from "react";
+import FullPage from "./components/fullPage";
+
+export default function Page(){
+    return (
+        <Suspense fallback={
+            <div>
+                Loading
+            </div>
+        }>
+            <FullPage/>
+        </Suspense>
+    )
+}

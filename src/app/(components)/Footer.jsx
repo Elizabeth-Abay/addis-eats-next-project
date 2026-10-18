@@ -60,6 +60,17 @@ export default function Footer() {
         <HiOutlineUser className="nav-icon" />
         <span>Orders</span>
       </button>
+
+
+      <button
+        onClick={
+          () => router.replace('/kitchen')
+        } 
+        className={`nav-link ${pathname === '/kitchen' ? 'active' : ''}`}
+      >
+        <HiOutlineUser className="nav-icon" />
+        <span>Kitchen</span>
+      </button>
     </div>
   );
 }

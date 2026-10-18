@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from "react";
 // what if we make this a client component and make it do a fetch for a route handler
 import OrderHistoryList from "./components/OrdersList";
 import useSWR from 'swr';
