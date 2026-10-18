@@ -27,7 +27,7 @@ export default function LogInForm(){
 
             localStorage.setItem('name' , name);
 
-            console.log('log in successful')
+            // // console.log('log in successful')
         } catch (err){
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }

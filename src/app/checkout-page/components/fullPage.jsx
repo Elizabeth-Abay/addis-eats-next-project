@@ -35,9 +35,9 @@ if (cookies.sessionInfo) {
 }
 
 
-    // console.log('Getting the headers for checkouty');
-    // console.log(Object.fromEntries(headersList));
-    console.log(userId)
+    // // // console.log('Getting the headers for checkouty');
+    // // // console.log(Object.fromEntries(headersList));
+    // // console.log(userId)
     // in the checkout button when u confirm the payment - order history
     // 
     

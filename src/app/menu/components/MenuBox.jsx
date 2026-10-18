@@ -33,7 +33,7 @@ export default function MenuBox({dish}){
     };
 
 
-    // console.log("rendering menuBox")
+    // // // console.log("rendering menuBox")
 
     return (
         <div

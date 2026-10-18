@@ -39,8 +39,8 @@ export default async function MenuContainer({searchParams}){
 
     let { data } = res;
 
-    // console.log("Data from menu");
-    // console.log(data)
+    // // // console.log("Data from menu");
+    // // // console.log(data)
 
     let rendered = data; // the source of truth for the thing to be rendered in the menu container
 
@@ -48,7 +48,7 @@ export default async function MenuContainer({searchParams}){
         const escapedInput = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const searchRegex = new RegExp(escapedInput, 'i');
 
-        // console.log("Rendering data from the name filter")
+        // // // console.log("Rendering data from the name filter")
         rendered = data.filter(
             item => {
                 if(searchRegex.test(item.nameEn)) {
@@ -91,8 +91,8 @@ export default async function MenuContainer({searchParams}){
     }
 
 
-    // console.log("Rendered thing in the menu");
-    // console.log(rendered)
+    // // // console.log("Rendered thing in the menu");
+    // // // console.log(rendered)
 
     return (
         <div className="menu-container">

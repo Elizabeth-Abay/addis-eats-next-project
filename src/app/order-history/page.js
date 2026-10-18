@@ -10,6 +10,9 @@ export default  function Page(){
 
     const { data  , error , isLoading } = useSWR('http://localhost:3000/my-orders' , fetcher)
 
+    // console.log('data that came');
+    // console.log(data)
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center py-12 text-zinc-500">

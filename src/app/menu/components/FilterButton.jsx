@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function FilterButton({name , type}){
     let [activeCategory , setActiveCategory ] = useState('All');
-    // console.log(`type in the filter button ${type}`)
+    // // // console.log(`type in the filter button ${type}`)
 
      
 

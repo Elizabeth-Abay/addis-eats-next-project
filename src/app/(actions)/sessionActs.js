@@ -53,7 +53,7 @@ export default async function createSession({givenIdentifier , role }) {
 
     
     } catch (error) {
-        console.log(`Error while setting up the session , ${error}`)
+        // // console.log(`Error while setting up the session , ${error}`)
         return {
             success : false,
             reason : `Error while setting up the session , ${error}`

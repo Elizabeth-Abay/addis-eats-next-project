@@ -30,8 +30,8 @@ export default function ConfirmOrderAndaPay({userId}){
 
         setUpHistory({userId , deliveryFee , grandTotal , cart})
 
-        // //console.log('the state of the cart after confirm payment');
-        // //console.log(state)
+        // //// // console.log('the state of the cart after confirm payment');
+        // //// // console.log(state)
         router.replace('/receipt')
         // returns from event handlers are ignored 
     }

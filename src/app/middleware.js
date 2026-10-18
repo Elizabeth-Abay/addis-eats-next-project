@@ -4,14 +4,14 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
 
-    console.log('Middleware being called')
+    // // console.log('Middleware being called')
     // take the request and check the pathname
     // some routes are protected others aren't
     // we can have the matcher config to not include the paths /login and /signup
 
     // the protected routes are /kitchen , /check-out 
     const { pathname } = req.nextUrl;
-    console.log(`Pathname for that url ${pathname}`);
+    // // console.log(`Pathname for that url ${pathname}`);
 
 
     // req.cookies.get()
@@ -22,8 +22,8 @@ export function middleware(req) {
     if (!sessionCookie) return NextResponse.redirect(new URL('/auth', req.url)); // the menu and specials pages are not protected
     
     let sessionObj = JSON.parse(sessionCookie.value);
-    console.log('Session Object');
-    console.log(sessionObj)
+    // // console.log('Session Object');
+    // // console.log(sessionObj)
     // then check the role and the path the user is trying to access
     
     // to pass information like userId to the pages

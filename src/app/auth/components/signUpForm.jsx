@@ -22,7 +22,7 @@ export default function SignUpForm(){
 
     const handleSignUp = async () => {
         try {
-            console.log('sign up button clicked')
+            // // console.log('sign up button clicked')
             
 
             let formData = new FormData() 
@@ -35,14 +35,14 @@ export default function SignUpForm(){
                 :
                 formData.append('email' , email);
 
-            console.log('formData');
-            console.log(formData);
+            // // console.log('formData');
+            // // console.log(formData);
 
 
             let result = await signUp(formData);
 
-            console.log('result is');
-            console.log(result)
+            // // console.log('result is');
+            // // console.log(result)
 
             if (!result.success) throw new Error('Unsuccessful log in');
 
@@ -50,10 +50,10 @@ export default function SignUpForm(){
 
             localStorage.setItem('name' , userName);
 
-            console.log('sign up successful')
+            // // console.log('sign up successful')
         } catch (err){
-            console.log('Error happened during sign up');
-            console.log(err)
+            // // console.log('Error happened during sign up');
+            // // console.log(err)
             
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }
@@ -171,7 +171,7 @@ export default function SignUpForm(){
                         placeholder="example@domain.com"
                         value={name}
                         onChange={(e) => {
-                            console.log(`Setting the name ${e.target.value}`)
+                            // // console.log(`Setting the name ${e.target.value}`)
                             setName(e.target.value)
                         }}
                         aria-invalid={Boolean(errors.name)}

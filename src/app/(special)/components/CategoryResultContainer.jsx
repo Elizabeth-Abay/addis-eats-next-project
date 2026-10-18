@@ -11,7 +11,7 @@ export default async function CategoryResultContainer({searchParams}) {
     // this is a dynamic page
 
     let filter = searchParamsUpdated?.category || "all";
-    // console.log(`filter selected ${filter}`)
+    // // // console.log(`filter selected ${filter}`)
 
     // * issues faced
     // * --> prerendering 
@@ -27,8 +27,8 @@ export default async function CategoryResultContainer({searchParams}) {
     let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials' , { next : { revalidate : 3600} } );
 
     if (!res.ok) {
-        console.log("Erorr while fetching the data");
-        console.log(res)
+        // // console.log("Erorr while fetching the data");
+        // // console.log(res)
     }
 
     
@@ -36,8 +36,8 @@ export default async function CategoryResultContainer({searchParams}) {
 
     let { data } = result;
 
-    // console.log("data incoming");
-    // console.log(data)
+    // // // console.log("data incoming");
+    // // // console.log(data)
 
     // but filter the things seen in here
     // bc we may set the data in there --> according to the filter
@@ -74,8 +74,8 @@ export default async function CategoryResultContainer({searchParams}) {
             filteredData = data
     }
 
-    // console.log("filtered data");
-    // console.log(filteredData);
+    // // // console.log("filtered data");
+    // // // console.log(filteredData);
 
     return (<div
         style={{

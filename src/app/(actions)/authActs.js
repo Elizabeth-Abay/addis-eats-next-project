@@ -13,7 +13,7 @@ const filePath = path.join(
 );
 
 
-console.log(`filePath globally is ${filePath}`)
+// // console.log(`filePath globally is ${filePath}`)
 
 
 
@@ -57,10 +57,10 @@ let checkUserExists = async (given) => {
 
 // this are server actions used for authentication
 let signUp =  async (formData) => {
-        console.log('directory name');
-        console.log(__dirname)
-        console.log('Processing sign up in the server');
-        console.log(formData)
+        // // console.log('directory name');
+        // // console.log(__dirname)
+        // // console.log('Processing sign up in the server');
+        // // console.log(formData)
         // if the user is there then return , else create and set up the user
         let email = formData.get('email');
         let phone = formData.get('phone');
@@ -79,8 +79,8 @@ let signUp =  async (formData) => {
 
         try {
                 let isUserThere = await checkUserExists(sentInfo)
-                console.log('is user there');
-                console.log(isUserThere)
+                // // console.log('is user there');
+                // // console.log(isUserThere)
 
             
             
@@ -108,10 +108,10 @@ let signUp =  async (formData) => {
 
                 // const filePath = path.join( __dirname, '../data/users.json');
             
-                // console.log(`filePath is ${filePath}`)
+                // // // console.log(`filePath is ${filePath}`)
 
-                console.log('new users in the house');
-                console.log(newUsers)
+                // // console.log('new users in the house');
+                // // console.log(newUsers)
 
        
             
@@ -122,7 +122,7 @@ let signUp =  async (formData) => {
                     newUsers
                 ))
 
-                console.log('fs is successfull')
+                // // console.log('fs is successfull')
 
                 await createSession({givenIdentifier : sentInfo , role })
                 
@@ -136,7 +136,7 @@ let signUp =  async (formData) => {
                     // and push the user to the / - specials
                 }
         } catch (err) {
-            console.log(`Error happened during sign up ${err}`)
+            // // console.log(`Error happened during sign up ${err}`)
             return {
                 success : false,
                 reason :`Error happened during sign up ${err}`
@@ -185,7 +185,7 @@ let logIn= async (formData) => {
             }
         }
     } catch (error) {
-        console.log(`Error during log in ${error}`)
+        // // console.log(`Error during log in ${error}`)
         return {
             success : false,
             reason : `Error during log in ${error}`

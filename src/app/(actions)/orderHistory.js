@@ -46,7 +46,7 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart }){
             success : true
         }
     } catch (error) {
-        console.log(`Error while order history writing ${error}`)
+        // // console.log(`Error while order history writing ${error}`)
         
     }
 
@@ -55,10 +55,18 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart }){
 
 
 export async function getOrderHistory(userId) {
+    // console.log("orders imported from json")
+    // console.log(orders)
+
     let userIdsFromOrderHistory = Array.from(Object.keys(orders));
     let targetId = userId.toLowerCase()
+    // console.log('target ids');
+    // console.log(targetId);
+    // console.log(userIdsFromOrderHistory)
 
-    for (item of userIdsFromOrderHistory){
+    for (let item of userIdsFromOrderHistory){
+        // console.log("item from here")
+        // console.log(item)
         if (item.toLowerCase() === targetId){
             return {
                 success : true,

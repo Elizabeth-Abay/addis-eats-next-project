@@ -14,8 +14,8 @@ export default function AddToCart({ total, onClick }) {
     router.push("/cart");
   };
 
-  console.log("The total received in the addToCart")
-  console.log(total)
+  // // console.log("The total received in the addToCart")
+  // // console.log(total)
   const formattedTotal =
     typeof total === "number" ? total.toLocaleString() : total;
 

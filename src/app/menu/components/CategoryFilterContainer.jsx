@@ -12,7 +12,7 @@ export default function CategoryFilterContainer(){
     ];
     
 
-    // console.log('returning category filters')
+    // // // console.log('returning category filters')
     
     return (
         <div className="category-filter-contaienr">
