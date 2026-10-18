@@ -1,26 +1,37 @@
 'use server'
 
-import fs from "node:fs";
-import { redirect } from 'next/navigation';
+import fs from "fs/promises";
+import path from "path";
+// import { redirect } from 'next/navigation';
 import hashInfo from "../(utils)/hashing";
 import { adminPhoneNumber, kitchenPhoneNumber } from "../(constants)/variable";
 import createSession from "./sessionActs";
+import users from '../data/users.json';
+const filePath = path.join(
+    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
+    "users.json"
+);
+
+
+console.log(`filePath globally is ${filePath}`)
+
 
 
 let checkUserExists = async (given) => {
     // we will have to loop through the users 
     // server fetch 
-    let users;
-    try {
-            users = await fetch('../(data)/users.json' , {next : { revalidate : 1200}});
-            // since it will cache the data I want to revalidate the data every 20 minutes
+    // let users;
+    // try {
+    //         users = await fetch('c/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data/users.json' , {next : { revalidate : 1200}});
+    //         // since it will cache the data I want to revalidate the data every 20 minutes
         
-    } catch (error) {
-        throw error;
-    }
+    // } catch (error) {
+    //     throw error;
+    // }
     // return a boolean
     // in the users it is an object key - maybe phone / email
     // loop through the keys and then return the password
+
     let userIdentifiers = Array.from(Object.keys(users))
     let userFound = userIdentifiers.find(key => key.toLowerCase() === given.toLowerCase())
     
@@ -31,17 +42,23 @@ let checkUserExists = async (given) => {
         users 
     }
 
+    // if user is not found u have to add it
     return {
         success : true,
-        found : false
+        found : false,
+        users
     }
 
     
 }
 
 
+
+
 // this are server actions used for authentication
 let signUp =  async (formData) => {
+        console.log('directory name');
+        console.log(__dirname)
         console.log('Processing sign up in the server');
         console.log(formData)
         // if the user is there then return , else create and set up the user
@@ -62,6 +79,10 @@ let signUp =  async (formData) => {
 
         try {
                 let isUserThere = await checkUserExists(sentInfo)
+                console.log('is user there');
+                console.log(isUserThere)
+
+            
             
                 // using useServerAction to hook up the client's form to the state action
                 if (isUserThere.found) {
@@ -84,12 +105,24 @@ let signUp =  async (formData) => {
                         }
                     }
                 ]
+
+                // const filePath = path.join( __dirname, '../data/users.json');
             
+                // console.log(`filePath is ${filePath}`)
+
+                console.log('new users in the house');
+                console.log(newUsers)
+
+       
             
                 // writeFile receives strings as input
-                await fs.writeFile('../(data)/users.json', JSON.stringify(
+                await fs.writeFile(
+                    filePath,
+                    JSON.stringify(
                     newUsers
                 ))
+
+                console.log('fs is successfull')
 
                 await createSession({givenIdentifier : sentInfo , role })
                 

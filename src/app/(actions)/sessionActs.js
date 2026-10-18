@@ -1,19 +1,22 @@
 'use server'
 import { cookies } from 'next/headers';
 import crypto from 'node:crypto';
-import fs from 'node:fs';
+import fs from 'fs/promises';
+import path from 'node:path';
+import currentSessions from '../data/sessions.json'
+
+const filePath = path.join(
+    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
+    "sessions.json"
+);
 
 export default async function createSession({givenIdentifier , role }) {
     // fetch the current sessions and then update that
 
-    try {
-        let currentSessions = fetch('../(data)/sessions.json');
-        const sessionExpiry = new Date();
-    
-        // 2. Add 1 to the current day
-        sessionExpiry.setDate(tomorrow.getDate() + 1);
+    try { 
+        // ! why is this not working
+        // let currentSessions = await fetch('../data/sessions.json');
         
-    
         // sessions need to be identified first - uuid shld be attached to the sessions
         // the session info is what wld be stored in the cookie
         // sessions - [ { id : { sessionExpiryTime , userIdentifier - user specific routes , role  }}]
@@ -24,7 +27,6 @@ export default async function createSession({givenIdentifier , role }) {
     
         let sessionInfo = {
             uniqueId,
-            sessionExpiry,
             role,
             userId : givenIdentifier
         }
@@ -34,14 +36,20 @@ export default async function createSession({givenIdentifier , role }) {
         ]
     
         await fs.writeFile(
-            '../(data)/sessions.json' , JSON.stringify(newSessions)
+            filePath , JSON.stringify(newSessions)
         )
 
 
         let cookieSend = await cookies();
+
+
         cookieSend.set(
-            sessionInfo
-        )
+            'sessionInfo' , JSON.stringify(sessionInfo) , {
+                httpOnly : true,
+                sameSite : 'lax',
+                maxAge : 60 * 60 * 24 // tomorrow
+            }
+        );
 
     
     } catch (error) {

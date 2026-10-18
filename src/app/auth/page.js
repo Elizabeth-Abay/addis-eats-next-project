@@ -1,3 +1,4 @@
+import AuthForm from "./components/authForm";
 import LogInForm from "./components/logInForm";
 import SignUpForm from "./components/signUpForm";
 import WelcomePart from "./components/WelcomePart";
@@ -8,8 +9,7 @@ export default function Page(){
         <div>
             <WelcomePart/>
 
-            <SignUpForm/>
-            <LogInForm />
+            <AuthForm/>
         </div>
     )
 }

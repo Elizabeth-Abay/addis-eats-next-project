@@ -13,7 +13,9 @@ export default function SignUpForm(){
     let [errors, setErrors] = useState({});
 
 
+
     const handleTabSwitch = (method) => {
+
         setAuthMethod(method);
         setErrors({});
     };
@@ -31,8 +33,9 @@ export default function SignUpForm(){
             authMethod === "phone" ? 
                 formData.append('phone' , phone)
                 :
-                formData.append('email');
+                formData.append('email' , email);
 
+            console.log('formData');
             console.log(formData);
 
 
@@ -43,12 +46,15 @@ export default function SignUpForm(){
 
             if (!result.success) throw new Error('Unsuccessful log in');
 
-            let { name } = result;
+            let { name : userName } = result;
 
-            localStorage.setItem('name' , name);
+            localStorage.setItem('name' , userName);
 
             console.log('sign up successful')
         } catch (err){
+            console.log('Error happened during sign up');
+            console.log(err)
+            
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }
 
@@ -95,7 +101,7 @@ export default function SignUpForm(){
             </div>
 
             <form action={handleSignUp} className="auth-form-fields" noValidate>
-                {authMethod === "mobile" ? (
+                {authMethod === "phone" ? (
                     <div className="form-group">
                     <div className="label-row">
                     <label htmlFor="mobileNumber" className="field-label">Mobile Number</label>
@@ -164,7 +170,10 @@ export default function SignUpForm(){
                         className="input-field full-padding"
                         placeholder="example@domain.com"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => {
+                            console.log(`Setting the name ${e.target.value}`)
+                            setName(e.target.value)
+                        }}
                         aria-invalid={Boolean(errors.name)}
                     />
                     </div>
