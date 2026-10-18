@@ -40,13 +40,13 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart }){
     }
     
     try {
-        await fs.writeFile(filePath , JSON.stringify(finalOrders));
+        await fs.writeFile(filePath , JSON.stringify(orders));
     
         return {
             success : true
         }
     } catch (error) {
-        console.log(`Error while order history writing ${err}`)
+        console.log(`Error while order history writing ${error}`)
         
     }
 
