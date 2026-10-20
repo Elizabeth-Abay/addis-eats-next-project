@@ -15,7 +15,7 @@ export default function DeliveryDestination() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // based on the location update the total price
-        setDeliveryFee( SUB_CITIES[subCity])
+        setDeliveryFee( {deliveryFee : SUB_CITIES[subCity] , destinationPlace : subCity})
 
         orderDispatch({  subCity ,houseNo , landmark  });
 

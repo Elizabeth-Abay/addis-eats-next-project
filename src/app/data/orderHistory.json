@@ -1,9 +1,1 @@
-{
-    "965433236":[
-        {
-            "cart":[
-                {"id":"menu-6","name":"Crisp Siga Derek Tibs","amount":1,"price":620,"customOrder":{}}
-            ],
-            "payment":{"deliveryFee":0,"grandTotal":620},
-            "date":"10/18/2026, 9:17:41 PM"},
-            {"cart":[{"id":"menu-1","name":"Classic Doro Wat","amount":3,"price":650,"customOrder":{}}],"payment":{"deliveryFee":0,"grandTotal":1950},"date":"10/18/2026, 9:53:30 PM"}]}
+{"elizabeth@gmail.com":[{"cart":[{"id":"menu-1","name":"Classic Doro Wat","amount":1,"price":650,"customOrder":{}},{"id":"menu-18","name":"House Fermented Tej (500ml Carafe)","amount":1,"price":350,"customOrder":{}}],"payment":{"deliveryFee":80,"grandTotal":1080},"date":"10/20/2026, 10:22:37 PM","destinationPlace":"Arada"}]}

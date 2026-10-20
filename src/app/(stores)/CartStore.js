@@ -36,6 +36,7 @@ const useCartStore = create(
             ] ,
             grandTotal : 0,
             deliveryFee : 0,
+            destinationPlace : "Bole",
             // we will also have the updator functions here
             addItem : (dish) => {
                 let added = false
@@ -224,7 +225,7 @@ const useCartStore = create(
                 
 
             },
-            setDeliveryFee : (deliveryFee) => {
+            setDeliveryFee : ({deliveryFee , destinationPlace}) => {
                 set(
                     state => {
                         return {
@@ -232,7 +233,8 @@ const useCartStore = create(
                             // we will have to work with the deliveryFee bc since we are changing the data
                             // like say akaki first then gulele second then it will mean remove the akaki fee and then add the gulele fee 
                             grandTotal : Number(state.grandTotal - state.deliveryFee  + deliveryFee),
-                            deliveryFee : Number(deliveryFee)
+                            deliveryFee : Number(deliveryFee),
+                            destinationPlace : destinationPlace
                         }
                     }
                 )

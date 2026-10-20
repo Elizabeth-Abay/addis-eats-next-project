@@ -8,7 +8,7 @@ const filePath = path.join(
     "orderHistory.json"
 );
 
-export async function setUpHistory({userId , deliveryFee , grandTotal , cart }){
+export async function setUpHistory({userId , deliveryFee , grandTotal , cart , destinationPlace }){
     // the userId will be the key
     // cart is an array of objects = [{ id , name , amount , price , customOrder }] ,
 
@@ -18,7 +18,7 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart }){
     // loop through the object keys and then match the userId
 
     let found = false;
-    let orderHist = {cart , payment : { deliveryFee , grandTotal} , date : new Date().toLocaleString()}
+    let orderHist = {cart , payment : { deliveryFee , grandTotal} , date : new Date().toLocaleString() , destinationPlace}
 
 
     let targetId = userId.toLowerCase()
