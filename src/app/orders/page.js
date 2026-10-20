@@ -4,6 +4,8 @@
 
 import OrderTable from "./component/OrderTable";
 import Pager from "./component/Pager";
+import { headers } from "next/headers";
+import orders from '../data/orderHistory.json'
 
 // order table - real markup , sorting in the url 
 // links for paging
@@ -13,8 +15,35 @@ export default async function Page({ searchParams }){
     // to filter the orders based on price
     // above some price point
     let parameters = await searchParams;
+
+    let headerrs = await headers();
+    let cookieString = headerrs.get('cookie')
+    
+
+    const cookies = cookieString.split(';').reduce((acc, cookie) => {
+    const [key, value] = cookie.trim().split('=');
+        acc[key] = value;
+        return acc;
+    }, {});
+    
+    let userId = null;
+
+    if (cookies.sessionInfo) {
+        // 2. Decode URL encoding (e.g., %7B -> {, %22 -> ", etc.)
+        const decodedSession = decodeURIComponent(cookies.sessionInfo);
+        
+        // 3. Parse the JSON string into an object
+        const sessionObj = JSON.parse(decodedSession);
+        
+        // 4. Grab the userId
+        userId = sessionObj.userId;
+        // the userId will be for accepting the cart
+    }
+
+
     console.log("Received the search Params");
     console.log(parameters)
+
 
     // the pages will be given in the search parameters
     // and the user will be able to see the number of orders based on the size
@@ -22,43 +51,47 @@ export default async function Page({ searchParams }){
     let page = Number( parameters?.page ?? 1);
     console.log(`page ${page}`)
 
-    let ordersPerPage = 5
+    let ordersPerPage = 1
 
     // users shld see some of their orders
     // let ordersPage = page * ordersPerPage;
 
     // then get the orders array
+    // this page displays the order for the user
 
-    let orders = [ 
-            { id : 1 , grandTotal : 400 } ,  
-            { id : 2 , grandTotal : 4000 } , 
-            { id : 3 , grandTotal : 7654 } , 
-            { id : 4 , grandTotal : 49400 },
-            { id : 5 , grandTotal : 49200 },
-            { id : 6 , grandTotal : 49300 },
-            { id : 7 , grandTotal : 49200 },
-            { id : 8 , grandTotal : 49060 },
-            { id : 9 , grandTotal : 46900 },
-            { id : 10 , grandTotal : 49060 },
-            { id : 11 , grandTotal : 46900 },
-            { id : 12 , grandTotal : 49007 },
-            { id : 13 , grandTotal : 49600 },
-    ];
-
+    let ids = 1;
         
 
     let startIndex = (page - 1) * ordersPerPage;
     let endIndex = startIndex + ordersPerPage;
-    let seenOrders = orders.slice(startIndex ,endIndex )
+
+    let userOrder = orders[userId]; // give us an array
+
     
-    console.log("seenOrders");
-    console.log(seenOrders)
+    endIndex = endIndex >= userOrder.length ? userOrder.length : endIndex
+
+    // to give the orders number
+    let seenOrders = userOrder.slice(startIndex ,endIndex )
+
+
+    let importantInfo = seenOrders.slice(startIndex , endIndex).map(
+        item => {return {
+            id : ids++,
+            grandTotal : item["payment"]["grandTotal"]
+        }}
+    )
+    
+    console.log("importantInfo");
+    console.log(importantInfo);
+
+
+
     // using the search params for sorting and ordering
     // to order the things in the order page using parameters
     return (
         <div>
-            <OrderTable orders={seenOrders}/>
-            <Pager seenOrders={seenOrders}/>
+            <OrderTable orders={importantInfo}/>
+            <Pager seenOrders={importantInfo}/>
         </div>
 
         // and there is a pager
