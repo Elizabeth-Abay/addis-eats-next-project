@@ -3,6 +3,7 @@ import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
 import CartButton from "./CartButton";
 import { usePathname, useRouter } from "next/navigation";
+import LogOutButton from "./LogOutButton";
 
 
 // to usePathname == we will need to make it client component
@@ -71,6 +72,8 @@ export default function Footer() {
         <HiOutlineUser className="nav-icon" />
         <span>Kitchen</span>
       </button>
+
+      <LogOutButton/>
     </div>
   );
 }

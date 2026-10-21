@@ -33,6 +33,8 @@ export function middleware(req) {
 
     const requestHeader = new Headers(req.headers);
     requestHeader.set('userId' , sessionObj.userId);
+    requestHeader.set('role' , sessionObj.role );
+    requestHeader.set('cookieId' , sessionObj.uniqueId);
 
     // users can't access the kitchen route
     if (sessionObj.role === 'user' && pathname === '/kitchen') return NextResponse.json(
@@ -56,6 +58,7 @@ export function middleware(req) {
 
 // this means this middleware will run in those paths
 export const config = {
-    matcher: ['/kitchen', '/checkout-page', '/order-history' , '/cart'
+    matcher: [
+        '/kitchen', '/checkout-page', '/order-history' , '/cart'
     ],
 };
