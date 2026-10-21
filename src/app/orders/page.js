@@ -51,7 +51,7 @@ export default async function Page({ searchParams }){
     let page = Number( parameters?.page ?? 1);
     console.log(`page ${page}`)
 
-    let ordersPerPage = 1
+    let ordersPerPage = 5
 
     // users shld see some of their orders
     // let ordersPage = page * ordersPerPage;
@@ -65,7 +65,11 @@ export default async function Page({ searchParams }){
     let startIndex = (page - 1) * ordersPerPage;
     let endIndex = startIndex + ordersPerPage;
 
+    console.log("userId");
+    console.log(userId)
     let userOrder = orders[userId]; // give us an array
+    console.log("userOrder");
+    console.log(userOrder)
 
     
     endIndex = endIndex >= userOrder.length ? userOrder.length : endIndex

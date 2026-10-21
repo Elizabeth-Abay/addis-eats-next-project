@@ -55,7 +55,7 @@ export default function LogInForm(){
                 </svg>
                 <div className="tab-text">
                     <span className="tab-title">Ethiopian</span>
-                    <span className="tab-subtitle">Mobile (+251)</span>
+                    <span className="tab-subtitle">Phone</span>
                 </div>
                 </button>
 
@@ -70,14 +70,14 @@ export default function LogInForm(){
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <span className="tab-single-title">Email Address</span>
+                <span className="tab-single-title">Email</span>
                 </button>
             </div>
 
             <form action={
                 (formData) => handleLogIn(formData)
                 } className="auth-form-fields" noValidate>
-                {authMethod === "mobile" ? (
+                {authMethod === "phone" ? (
                     <div className="form-group">
                     <div className="label-row">
                     <label htmlFor="mobileNumber" className="field-label">Mobile Number</label>

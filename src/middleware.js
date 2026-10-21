@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
 
+    console.log(req)
     // // console.log('Middleware being called')
     // take the request and check the pathname
     // some routes are protected others aren't
@@ -55,6 +56,6 @@ export function middleware(req) {
 
 // this means this middleware will run in those paths
 export const config = {
-    matcher: ['/kitchen', '/checkout-page', '/order-history'
+    matcher: ['/kitchen', '/checkout-page', '/order-history' , '/cart'
     ],
 };

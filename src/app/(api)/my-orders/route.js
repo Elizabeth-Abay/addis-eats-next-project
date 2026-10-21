@@ -38,7 +38,8 @@ export async function GET(req) {
         // 
 
 
-    } catch (Err){
+    } catch (error){
+         return Response.json({'error': error});
         // console.log(`Error while get handling ${Err}`)
     }
     

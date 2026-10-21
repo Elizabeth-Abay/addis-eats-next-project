@@ -23,45 +23,59 @@ import orders from "../../data/orderHistory.json"
 
 
 let userIds = Array.from(Object.keys(orders));
-console.log("user ids")
-console.log(userIds)
 
-let revenueCalculator = (subCity) => {
-    let totalRevenue = 0
-    // so loop through the history object
-    // find all the objects where the destination is the same as the subcity 
-    // add the grandtotal for that
 
+
+let paymentData = {
+    'Addis Ketema' : 0,
+    'Akaki Kaliti' : 0,
+    'Arada' : 0 ,
+    'Bole' : 0,
+    'Gulele' : 0,
+    'Kirkos' : 0 ,
+    'Kolfe Keranio' : 0,
+    'Lemi Kura' : 0,
+    'Lideta' : 0,
+    'Nifas Silk-Lafto' : 0,
+    'Yeka' : 0
+}
+
+
+let revenueCalculator = () => {
+    
     userIds.forEach(
         key => {
-            let value = orders[key][0];
 
-            if (value['destinationPlace'] === subCity) {
-                totalRevenue += value.payment.grandTotal
-            }
+            // get the order for each user
+            // then loop through the order , then update 
+            // the destination and then the grand total
+            console.log("values");
+            let value = orders[key];
+
+            // then loop through the value 
+            // and then update the total price
+            console.log(value)
+
+
+            value.forEach(
+                orderObj => {
+                    let destination = orderObj['destinationPlace']
+
+                    paymentData[destination] += orderObj['payment']['grandTotal']
+                }
+            )
+
+            // loop through the values array 
+            // update the 
             
         }
     )
 
 
-
-    return totalRevenue;
-
 }
 
 
 
-
-
-const byArea = Array.from(Object.keys(SUB_CITIES)).map(
-    (subCity) => {
-        return {
-            subCity,
-
-            revenue : revenueCalculator(subCity)
-        }
-    }
-)
 
 
 
@@ -101,8 +115,27 @@ export default async function FullPage(){
 
     if (role !== "admin") return <div>You are not allowed to see this page </div>
 
+    revenueCalculator()
+
+    // but chart drawings require an array to  be passed 
+    // thus creating an array
+
+    let arrayOfVals = []
+
+    let subCityKeys = Array.from(Object.keys(paymentData));
+
+    subCityKeys.forEach(
+        key => {
+            // create a new object
+            arrayOfVals.push({
+                subCity : key,
+                revenue : paymentData[key] 
+            })
+        }
+    )
+
     return (
-        <RevenueChart data={byArea} />
+        <RevenueChart data={arrayOfVals} />
     )
 
 }

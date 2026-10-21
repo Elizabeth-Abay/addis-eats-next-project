@@ -1,4 +1,5 @@
 import SpecialContainerBox from "./SpecialContainerBox";
+export const revalidate = 3600
 
 
 // ! ! things that i have issues with is the caching and pre rendering parts
@@ -12,7 +13,6 @@ export default async function CategoryResultContainer({searchParams}) {
 
     let filter = searchParamsUpdated?.category || "all";
     // // // console.log(`filter selected ${filter}`)
-
     // * issues faced
     // * --> prerendering 
     // build time / revalidation - serve the stale data while revalidating
