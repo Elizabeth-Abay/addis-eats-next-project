@@ -10,16 +10,17 @@ import SpecialContainerBox from "./SpecialContainerBox";
 
 export default function CategoryResult(){
         // the fetcher useSWR - enables client side caching
-    let { data , isLoading , error} = useSWR('https://addis-eats-backend.onrender.com/menu/specials' , fetcher 
+    let { data , isLoading , error} = useSWR('https://addis-eats-backend.onrender.com/menu/specials' , fetcher ,
+        {
+            // refresh on every 15 minutes
+            refreshInterval: 900000,      // Disable automatic polling (default is 0)
+            revalidateOnFocus: true, // Revalidate when window gets focused (default: true)
+            revalidateOnReconnect: true, // Revalidate when browser regains network (default: true)
+            dedupingInterval: 2000,  // Request deduplication time window in ms (default: 2000)
+        }
     );
 
-    // {
-            // refresh on every 15 minutes
-        //     refreshInterval: 900000,      // Disable automatic polling (default is 0)
-        //     revalidateOnFocus: true, // Revalidate when window gets focused (default: true)
-        //     revalidateOnReconnect: true, // Revalidate when browser regains network (default: true)
-        //     dedupingInterval: 2000,  // Request deduplication time window in ms (default: 2000)
-        // }
+    
     // the data sent here is returned by the fetcher
 
     // then everytime u do a refetch you should reset the total

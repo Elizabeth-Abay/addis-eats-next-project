@@ -1,10 +1,13 @@
 "use client"
+import useMenuStore from "@/app/(stores)/MenuStores";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
  // bc the client will have to click this
 
 export default function FilterButton({name , type}){
+    console.log("type from filter btn");
+    console.log(type)
     let [activeCategory , setActiveCategory ] = useState('All');
     // // // console.log(`type in the filter button ${type}`)
 
@@ -16,15 +19,18 @@ export default function FilterButton({name , type}){
     // ! we may need to change the css here to accomodate for the change
 
     
+    let filterFunction = useMenuStore(state => state.setRenderedThings)
 
-    const router = useRouter();
-    const pathName = usePathname();
+    // const router = useRouter();
+    // const pathName = usePathname();
 
-    const handleCategoryClick = (categoryName) => {
-        setActiveCategory(categoryName);
+    const handleCategoryClick = () => {
+        setActiveCategory(type);
+        // console.log(type)
         // this is the filter
+        filterFunction(type);
 
-        router.push(`${pathName}?category=${type}`)
+        // router.push(`${pathName}?category=${type}`)
     
     };
 

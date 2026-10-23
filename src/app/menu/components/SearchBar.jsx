@@ -3,6 +3,7 @@
 
 import {  useState } from "react";
 import { usePathname , useRouter } from "next/navigation";
+import useMenuStore from "@/app/(stores)/MenuStores";
 
 // search bar needs to have an access to the menu
 export default function SearchBar(){
@@ -11,8 +12,10 @@ export default function SearchBar(){
     // this is a client component
 
 
-    let router = useRouter()
-    let pathname = usePathname() // to access the pathname
+    let setSearchBarFilter = useMenuStore( state => state.setSearchBarFilter);
+
+    // let router = useRouter()
+    // let pathname = usePathname() // to access the pathname
     // let searchParams = useSearchParams() // read the current url string
 
     const handleChange = (e) =>{
@@ -21,7 +24,9 @@ export default function SearchBar(){
         // setting new URL search Params
         // we are pushing to the menu 
 
-        router.replace(`${pathname}?name=${e.target.value}`)
+        setSearchBarFilter(searchWord)
+        // ! server component
+        // router.replace(`${pathname}?name=${e.target.value}`)
     } 
 
     return (
