@@ -4,6 +4,7 @@ import FeatureHead from "./components/FeatureHead";
 import FilterContainer from "./components/FilterContainer";
 import SpecialSelectionCard from "./components/specialSelection";
 import CategoryResult from "./components/CategoryResultContainerClient";
+import './style/style.css'
 
 
 // this will make it dynamic

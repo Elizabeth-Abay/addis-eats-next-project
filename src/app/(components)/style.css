@@ -1,0 +1,118 @@
+/* Container styling */
+.footer-nav {
+  height: 70px;
+  background: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Individual navigation item button/wrapper */
+.nav-item {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Icon style */
+.nav-icon {
+  font-size: 22px;
+  margin-bottom: 3px;
+  transition: transform 0.2s ease;
+}
+
+/* Label text style */
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Hover effects */
+.nav-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-item:hover .nav-icon {
+  transform: translateY(-2px);
+}
+
+/* Active state styling */
+.nav-item.active {
+  color: #ff5722; /* Use your primary brand color (e.g., vibrant orange) */
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 24px;
+  height: 3px;
+  background-color: #ff5722;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.6);
+}
+
+/* Logout button spacing container */
+.nav-logout-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.8;
+}
+
+
+/* Header container styling */
+.header-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Restaurant name styling */
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin: 0;
+  /* Optional: adds a subtle gradient to the brand name text */
+  background: linear-gradient(135deg, #ffffff 60%, rgba(255, 255, 255, 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Right-side elements grouping (Cart + Profile/NameCircle) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

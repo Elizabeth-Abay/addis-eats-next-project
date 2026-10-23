@@ -1,79 +1,54 @@
 "use client"
-import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
+import { HiOutlineFire, HiOutlineUser, HiOutlineClipboardDocumentList, HiOutlineCog6Tooth } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
 import CartButton from "./CartButton";
 import { usePathname, useRouter } from "next/navigation";
 import LogOutButton from "./LogOutButton";
-
-
-// to usePathname == we will need to make it client component
-
+import './style.css'
 
 export default function Footer() {
-  const router = useRouter()
+  const router = useRouter();
   const pathname = usePathname();
 
+  const navItems = [
+    { label: "Specials", path: "/", icon: HiOutlineFire },
+    { label: "Menu", path: "/menu", icon: LuUtensilsCrossed },
+    { label: "Cart", path: "/cart", isCustom: true },
+    { label: "Account", path: "/auth", icon: HiOutlineUser },
+    { label: "Orders", path: "/order-history", icon: HiOutlineClipboardDocumentList },
+    { label: "Kitchen", path: "/kitchen", icon: HiOutlineCog6Tooth },
+  ];
+
   return (
-    <div className="footer-nav">
-      <button 
-        onClick={
-          () => router.replace('/')
-        }
-        className={`nav-link ${pathname === '/' ? 'active' : ''}`}
-      >
-        <HiOutlineFire className="nav-icon" />
-        <span>Specials</span>
-      </button>
+    <nav className="footer-nav">
+      {navItems.map((item) => {
+        const isActive = pathname === item.path;
+        const Icon = item.icon;
 
-      <button 
-        onClick={
-          () => router.replace('/menu')
+        if (item.isCustom) {
+          return (
+            <div key={item.path} className={`nav-item ${isActive ? "active" : ""}`}>
+              <CartButton className="nav-icon" />
+              <span className="nav-label">Cart</span>
+            </div>
+          );
         }
-        className={`nav-link ${pathname === '/menu'  ? 'active' : ''}`}
-      >
-        <LuUtensilsCrossed className="nav-icon" />
-        <span>Menu</span>
-      </button>
 
-      <div 
-        className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}
-      >
-        <CartButton className="nav-icon" />
-        <span>Cart</span>
+        return (
+          <button
+            key={item.path}
+            onClick={() => router.replace(item.path)}
+            className={`nav-item ${isActive ? "active" : ""}`}
+          >
+            <Icon className="nav-icon" />
+            <span className="nav-label">{item.label}</span>
+          </button>
+        );
+      })}
+
+      <div className="nav-logout-wrapper">
+        <LogOutButton />
       </div>
-
-      <button
-        onClick={
-          () => router.replace('/auth')
-        } 
-        className={`nav-link ${pathname === '/my-acc' ? 'active' : ''}`}
-      >
-        <HiOutlineUser className="nav-icon" />
-        <span>Account</span>
-      </button>
-
-      <button
-        onClick={
-          () => router.replace('/order-history')
-        } 
-        className={`nav-link ${pathname === '/order-history' ? 'active' : ''}`}
-      >
-        <HiOutlineUser className="nav-icon" />
-        <span>Orders</span>
-      </button>
-
-
-      <button
-        onClick={
-          () => router.replace('/kitchen')
-        } 
-        className={`nav-link ${pathname === '/kitchen' ? 'active' : ''}`}
-      >
-        <HiOutlineUser className="nav-icon" />
-        <span>Kitchen</span>
-      </button>
-
-      <LogOutButton/>
-    </div>
+    </nav>
   );
 }

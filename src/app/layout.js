@@ -33,25 +33,15 @@ export const metadata = {
 export default function RootLayout({children}){
     return(
         <html lang="en" >
-        <head>
-            <meta property="og:title" content="Your Catchy Page Title Here" />
-            <meta property="og:description" content="A brief, compelling summary of what this page is about." />
-            <meta property="og:image" content="https://www.google.com/imgres?q=doro%20wat%20image&imgurl=https%3A%2F%2Fcookingwithclaudy.com%2Fwp-content%2Fuploads%2F2024%2F12%2F20241112124418_IMG_8244_copy_1200x1200_3.jpg&imgrefurl=https%3A%2F%2Fcookingwithclaudy.com%2Fdoro-wat-ethiopian-spicy-chicken-stew%2F&docid=AMXtY8E59qDbPM&tbnid=KThc2AXC9GaFRM&vet=12ahUKEwiw3tOkucSXAxWhgf0HHcrgOrUQnPAOegQIOBAA..i&w=1200&h=1200&hcb=2&ved=2ahUKEwiw3tOkucSXAxWhgf0HHcrgOrUQnPAOegQIOBAA" />
-            <meta property="og:url" content="http://localhost:3000" />
-            <meta property="og:type" content="website" />
-
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content="Your Catchy Page Title Here" />
-            <meta name="twitter:description" content="A brief, compelling summary." />
-            <meta name="twitter:image" content="https://www.yourwebsite.com/images/preview-image.jpg" />
-        </head>
+            <head>
+            </head>
             
             <body>
                 <Header/>
-                <main>{children}</main>
                 <Suspense>
                     <Footer/>
                 </Suspense>
+                <main>{children}</main>
             </body>
         </html>
     )

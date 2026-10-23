@@ -30,27 +30,57 @@ export default function MenuContainerClient(){
     let rendered = useMenuStore(state => state.renderedMenuItems);
 
     if (isLoading) return (
-        <div>
-            Loading Menu from the client
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "300px",
+            color: "#f59e0b",
+            fontSize: "16px",
+            fontWeight: "500",
+            fontFamily: "'Playfair Display', serif"
+        }}>
+            Loading culinary delights...
         </div>
-    )
+    );
 
     if (error) return (
-        <div>error</div>
-    )
+        <div style={{
+            textAlign: "center",
+            padding: "40px",
+            color: "#ef4444",
+            fontSize: "14px"
+        }}>
+            Failed to load menu items. Please check your connection.
+        </div>
+    );
 
 
 return (
-        <div className="menu-container">
+        <div 
+            style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "24px",
+                padding: "20px 0",
+                width: "100%",
+            }}
+        >
             {rendered.length > 0 ? (
-                        rendered.map((item) => (
-                        <MenuBox key={item.id} dish={item} />
-                        ))
-                    ) : (
-                        <p style={{ color: "rgba(255,255,255,0.6)", gridColumn: "1 / -1" }}>
-                        No items available for this category.
-                        </p>
-                    )}
+                rendered.map((item) => (
+                    <MenuBox key={item.id} dish={item} />
+                ))
+            ) : (
+                <p style={{
+                    color: "rgba(255,255,255,0.6)",
+                    gridColumn: "1 / -1",
+                    textAlign: "center",
+                    padding: "40px 0",
+                    fontSize: "15px"
+                }}>
+                    No items available for this category.
+                </p>
+            )}
         </div>
 )
 }
