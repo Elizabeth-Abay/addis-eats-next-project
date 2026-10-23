@@ -196,7 +196,11 @@ let logIn= async (formData) => {
 let logOut = async () => {
     // when we get the session then we will need 
     // read the cookies
+    console.log("logging out the user")
     let header = await headers();
+
+    console.log('header hopefully from the middleware');
+    console.log(Object.fromEntries(header.entries()))
 
     let cookieId = header.get('cookieId');
 

@@ -1,5 +1,6 @@
 "use client"
 
+import useSpecialItemsChoice from "@/app/(stores)/SpecialItems";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -18,21 +19,26 @@ export default function CategoryFilter({type , filterName }){
     // the first render wld make the container have all data
     // but the client action will make it change
 
-    let currentPath = usePathname();
+    // ! for server comp
+    // let currentPath = usePathname();
+
+    let filterFunction = useSpecialItemsChoice(state => state.setRenderedThings)
+
 
     
     let onClick = () => {
         // fetch the data then 
         // refeth
         // onClick set the parent url path , when it rerenders then make the whole thing again
-        let params = new URLSearchParams();
-        params.set('category' , filterName);
+        // ! for server component
+        // let params = new URLSearchParams();
+        // params.set('category' , filterName);
         
+        // ! for server component
+        // router.replace(`${currentPath}?${params.toString()}`)
 
-
-        
-
-        router.replace(`${currentPath}?${params.toString()}`)
+        filterFunction(filterName);
+        // which will cause a rerender
     }
 
 
