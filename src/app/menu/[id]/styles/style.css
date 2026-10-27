@@ -1,0 +1,204 @@
+/* Page Centering Layout */
+.order-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #1c120e; /* Deep dark roasted brown background */
+  gap: 24px;
+}
+
+/* Title Container Styling */
+.title-container {
+  border: 2px solid #f59e0b; /* Warm Gold / Amber Accent Border */
+  background-color: #2b1b17; /* Rich dark brown card background */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px; /* Responsive max width instead of fixed px */
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.title-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fef3c7; /* Soft golden-white heading */
+  line-height: 1.2;
+  margin: 0;
+}
+
+.spice-indicators {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.spice-badge {
+  display: inline-flex;
+  transition: opacity 0.2s ease;
+}
+
+.spice-badge.active {
+  color: #ef4444; /* Fiery Berbere Red */
+}
+
+.spice-badge.inactive {
+  color: rgba(245, 158, 11, 0.2); /* Soft inactive gold */
+}
+
+.title-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 700;
+}
+
+.currency {
+  font-size: 13px;
+  color: #f59e0b; /* Vibrant Yellow/Gold */
+  font-weight: 700;
+}
+
+.amount {
+  font-size: 22px;
+  color: #fef3c7;
+}
+
+.tax-label {
+  font-size: 11px;
+  color: #d97706; /* Deep Amber */
+  margin-top: 2px;
+}
+
+.item-description {
+  font-size: 14px;
+  color: #d1d5db; /* Clean soft contrast readable body text */
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(245, 158, 11, 0.2); /* Delicate gold divider */
+}
+
+
+/* Main Container */
+.customize-order {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #2b1b17; /* Deep roasted coffee bean dark brown */
+  border: 1px solid #4a332a; /* Muted warm brown border */
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  color: #f3e9dc; /* Warm cream text color */
+}
+
+/* Optional: Typography headings inside selectors */
+.customize-order h2, 
+.customize-order h3 {
+  color: #f7f1eb;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Interactive Option Cards / Selectors (Generic Styling for Inner Selectors) */
+.customize-order .spice-selector,
+.customize-order .injera-selector,
+.customize-order .side-accents-selector {
+  background-color: #38241d; /* Slightly lighter warm brown container */
+  border: 1px solid #4f362c;
+  border-radius: 12px;
+  padding: 18px;
+  transition: border-color 0.2s ease;
+}
+
+.customize-order .spice-selector:hover,
+.customize-order .injera-selector:hover,
+.customize-order .side-accents-selector:hover {
+  border-color: #8c583f; /* Terracotta / Amber highlight on hover */
+}
+
+/* Active or Selected State Elements */
+.customize-order .selected,
+.customize-order input[type="radio"]:checked + label,
+.customize-order input[type="checkbox"]:checked + label {
+  border-color: #c86d38; /* Warm spice orange */
+  background-color: #4a2e24;
+}
+
+/* Amount Setter Section Styling */
+.customize-order .amount-setter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #38241d;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid #4f362c;
+}
+
+/* Add To Cart Button Styling (Warm Caramel / Amber Gradient) */
+.customize-order .add-to-cart-btn,
+.customize-order button[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #b85d26 0%, #944018 100%); /* Rich berbere / terracotta gradient */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(184, 93, 38, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.customize-order .add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #c7672d, #a2471c);
+  box-shadow: 0 6px 20px rgba(184, 93, 38, 0.6);
+  transform: translateY(-1px);
+}
+
+.customize-order .add-to-cart-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(184, 93, 38, 0.4);
+}
+
+

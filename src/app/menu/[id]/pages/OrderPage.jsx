@@ -22,7 +22,9 @@ export default async function OrderPage({params}){
 
 
     // here since there is deduplication it will use that and not make too many request to the server
-    let result = await fetch('https://addis-eats-backend.onrender.com/menu/');
+    let result = await fetch('https://addis-eats-backend.onrender.com/menu/' , {
+        next : {revalidate : 3600}
+    });
     
 
     
@@ -40,7 +42,7 @@ export default async function OrderPage({params}){
     let item =  { id : found.id ,name : found.nameEn , description : found.description  , price : found.priceETB }
     
     return (
-        <div>
+        <div className="order-page">
             <TitleContainer item={item}/>
             <CustomizeOrder item={item}/>
         </div>

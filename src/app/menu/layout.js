@@ -16,13 +16,7 @@ export default function LayOutComponent({children}){
                 }
         >
             {/* the other parts are ok */}
-            <SearchBar/>
-            <TraditionalGursha/>
-            <div className="root-layout-structure-for-menu">
-                {children}
-            </div>
-
-            <SelectedItemsContainer/>
+            {children}
         </div>
     )
 }
