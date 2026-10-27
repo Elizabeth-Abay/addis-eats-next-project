@@ -20,9 +20,10 @@ export default function NameCircle(){
         <div>
             <div className="user-badge" 
                 style={{
-                    display: "inline-flex",
+                    display: "flex",
                     alignItems: "center",
-                    gap:"12px"
+                    flexDirection : "column",
+                    gap:"2px"
                 }}
             >
                 <div 
@@ -33,7 +34,7 @@ export default function NameCircle(){
                             width: "48px",
                             height: "48px",
                             borderRadius: "50%",
-                            backgroundColor: "#4f46e5", /* Indigo accent color */
+                            backgroundColor: "#c2640d", /* Indigo accent color */
                             color: "#ffffff",
                             display: "flex",
                             alignItems: "center",
@@ -54,7 +55,7 @@ export default function NameCircle(){
                         {
                             fontSize: "1rem",
                             fontWeight: 500,
-                            color: "#1f2937",
+                            color: "#050505",
                         }
                     }   
                 >{

@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation"
-import { logOut } from "../(actions)/authActs"
+import { logOut } from "../(actions)/authActs";
+import './style.css'
 
 export default function LogOutButton(){
     let router = useRouter()
@@ -23,13 +24,15 @@ export default function LogOutButton(){
                 alert('log out unsuccessful')
             }
         } catch (error) {
-            
+            // incase of error have it log out something to the logger
         }
         
     }
 
     return (
-        <button onClick={handleClick}>
+        <button onClick={handleClick}
+            className="btn-logout-warning"
+        >
             Log Out
         </button>
     )

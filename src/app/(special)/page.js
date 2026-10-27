@@ -5,6 +5,8 @@ import FilterContainer from "./components/FilterContainer";
 import SpecialSelectionCard from "./components/specialSelection";
 import CategoryResult from "./components/CategoryResultContainerClient";
 import './style/style.css'
+import RootLayout from "../layout";
+import RootLayoutBox from "./layout";
 
 
 // this will make it dynamic
@@ -41,9 +43,13 @@ export default function SpecialPage({searchParams}){
         >
             <SpecialSelectionCard/>
             <FeatureHead />
-            <FilterContainer/>
 
-            <CategoryResult/>
+            <RootLayoutBox>
+                <FilterContainer/>
+
+                <CategoryResult/>
+            </RootLayoutBox>
+        
             
         </div>
     )

@@ -5,6 +5,8 @@ export default function FilterContainer(){
     return (
         <div className="selection-buttons" style={{
             display: "flex",
+            width :"300px",
+            flexDirection : "column",
             gap: "10px",
             overflowX: "auto",
             padding: "16px 0 8px 0",

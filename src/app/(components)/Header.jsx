@@ -11,7 +11,7 @@ export default function Header() {
             <h1 className="header-title">{RESTAURANT_NAME}</h1>
             
             <div className="header-actions">
-                <CartButton />
+                
                 <NameCircle />
             </div>
         </header>

@@ -116,3 +116,28 @@
   align-items: center;
   gap: 12px;
 }
+
+
+.btn-logout-warning {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #dc2626; /* Deep Red */
+  background-color: #fee2e2; /* Light Red */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-logout-warning:hover {
+  background-color: #fca5a5;
+  color: #991b1b;
+}
+
+.btn-logout-warning:active {
+  transform: scale(0.98);
+}
