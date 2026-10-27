@@ -126,3 +126,42 @@
   border-color: #f59e0b; /* Warm accent color */
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
 }
+
+.category-filter-container{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+
+.root-layout-structure-for-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 32px; /* Space between filter sidebar and main content */
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  align-items: flex-start; /* Prevents sidebar from stretching full height */
+}
+
+/* Give your filter container a fixed/min width so it doesn't squish */
+.root-layout-structure-for-menu > div:first-child {
+  flex: 0 0 260px; /* Sidebar stays fixed at 260px width */
+  position: sticky;
+  top: 24px; /* Optional: keeps filters sticky while scrolling */
+}
+
+/* Make the main content area take up the remaining space */
+.root-layout-structure-for-menue > div:last-child {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.container-for-menu-box{
+  display: grid;
+  grid-template-columns : repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+  width: 100%;
+
+}

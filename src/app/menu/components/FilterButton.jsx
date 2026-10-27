@@ -5,13 +5,10 @@ import { useState } from "react";
 
  // bc the client will have to click this
 
-export default function FilterButton({name , type}){
-    console.log("type from filter btn");
-    console.log(type)
-    let [activeCategory , setActiveCategory ] = useState('All');
-    // // // console.log(`type in the filter button ${type}`)
+export default function FilterButton({name , type , activeCategory , setActive}){
+    
 
-     
+
 
     // the thing is onClick 
     // I want to push the current category to the router to deal with it
@@ -25,7 +22,7 @@ export default function FilterButton({name , type}){
     // const pathName = usePathname();
 
     const handleCategoryClick = () => {
-        setActiveCategory(type);
+        setActive(type);
         // console.log(type)
         // this is the filter
         filterFunction(type);
@@ -35,10 +32,16 @@ export default function FilterButton({name , type}){
     };
 
 
+    let isActive = activeCategory === type
+
+
+
+
     return (
         <button className="category-filter-btn active"
         style={{
                 padding: "8px 18px",
+                margin : "5px" ,
                 borderRadius: "9999px",
                 fontSize: "13px",
                 fontWeight: isActive ? "700" : "500",
@@ -48,8 +51,8 @@ export default function FilterButton({name , type}){
                 outline: "none",
                 // Active vs Inactive Styles
                 backgroundColor: isActive
-                    ? "#f59e0b"
-                    : "rgba(38, 20, 14, 0.6)",
+                    ? "rgba(29, 168, 41, 0.6)"
+                    : "#f59e0b",
                 color: isActive ? "#180c07" : "rgba(255, 255, 255, 0.8)",
                 border: isActive
                     ? "1px solid #f59e0b"

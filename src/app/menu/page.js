@@ -11,13 +11,12 @@ export default async  function MenuPage({searchParams}){
 
     // we wld have used the server component wld require Suspense surrounding it
     return(
-        <div>
-            <SearchBar/>
-            <TraditionalGursha/>
+        <>
+            
             <CategoryFilterContainer/>
             
             <MenuContainerClient/>
-            <SelectedItemsContainer/>
-        </div>
+            
+        </>
     )
 }

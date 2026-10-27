@@ -58,13 +58,7 @@ export default function MenuContainerClient(){
 
 return (
         <div 
-            style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                gap: "24px",
-                padding: "20px 0",
-                width: "100%",
-            }}
+            className="container-for-menu-box"
         >
             {rendered.length > 0 ? (
                 rendered.map((item) => (

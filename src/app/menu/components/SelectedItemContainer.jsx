@@ -46,46 +46,29 @@ export default function SelectedItemsContainer(){
                     gap: "14px",
                 }}
             >
-            <div className="basket-icon-box"
             
-                style={{
-                    position: "relative",
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "14px",
-                    backgroundColor: "rgba(245, 158, 11, 0.15)",
-                    border: "1px solid rgba(245, 158, 11, 0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#f59e0b",
-                    flexShrink: 0,
-                }}
-            >
-                {/* <ShoppingBag size={22} color="#ffffff" strokeWidth={2} /> */}
-            </div>
             
             <div className="basket-info">
                 <div className="basket-header">
                 <span className="item-count"
                     style={{
-              position: "absolute",
-              top: "-6px",
-              right: "-6px",
-              backgroundColor: "#ef4444",
-              color: "#ffffff",
-              fontSize: "10px",
-              fontWeight: "700",
-              width: "20px",
-              height: "20px",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              border: "2px solid #180c07",
+                position: "absolute",
+                top: "-6px",
+                right: "-6px",
+                backgroundColor: "#ef4444",
+                color: "#ffffff",
+                fontSize: "10px",
+                fontWeight: "700",
+                width: "20px",
+                height: "20px",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "2px solid #180c07",
             }}
                 >
-                    Selected: {cart?.length || 0} {cart?.length === 1 ? 'item' : 'items'}
+                    {cart?.length || 0}
                 </span>
                 <span className="dot">•</span>
                 <span className="price-display"

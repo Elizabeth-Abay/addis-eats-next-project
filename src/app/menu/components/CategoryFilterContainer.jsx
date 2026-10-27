@@ -1,6 +1,10 @@
+"use client"
+import { useState } from "react";
 import FilterButton from "./FilterButton";
 
 export default function CategoryFilterContainer(){
+
+    let [activeCategory , setActive] = useState('all')
 
     const categories = [
         { name: 'All', action: 'get_all' , type : 'all' },
@@ -15,7 +19,7 @@ export default function CategoryFilterContainer(){
     // // // console.log('returning category filters')
     
     return (
-        <div className="category-filter-contaienr">
+        <div className="category-filter-container">
             {/* on click add active classtype to them  */}
             {
                 categories.map(
@@ -24,6 +28,8 @@ export default function CategoryFilterContainer(){
                             key={cat.name}
                             name={cat.name}
                             type={cat.type}
+                            activeCategory={activeCategory}
+                            setActive={setActive}
                         ></FilterButton>
                     )
                 )
