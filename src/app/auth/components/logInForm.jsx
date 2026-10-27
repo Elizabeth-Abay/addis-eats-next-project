@@ -1,21 +1,32 @@
 'use client'
 
 import { logIn } from "@/app/(actions)/authActs";
-import { useState } from "react"
+import { useRouter } from "next/navigation";
+import { useState  , useEffect} from "react"
 
 export default function LogInForm(){
+    let router = useRouter()
     let [ phone , setPhone] = useState('');
     let [email , setEmail ] = useState('');
     let [ password , setPassword] = useState('');
     let [authMethod, setAuthMethod] = useState("phone");
     let [showPassword, setShowPassword] = useState(false);
     let [errors, setErrors] = useState({});
+    let [ previousUrl , setPreviousUrl ] = useState('')
 
 
     const handleTabSwitch = (method) => {
         setAuthMethod(method);
         setErrors({});
     };
+
+    useEffect(() => {
+        // Reads the URL of the page that navigated to this one
+            if (document.referrer) {
+                setPreviousUrl(document.referrer);
+            }
+        }, []);
+    
 
     const handleLogIn = async (formData) => {
         try {
@@ -27,7 +38,9 @@ export default function LogInForm(){
 
             localStorage.setItem('name' , name);
 
-            // // console.log('log in successful')
+            console.log('log in successful')
+
+            (previousUrl === '/auth') ? router.push('/') : router.push(previousUrl)
         } catch (err){
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }

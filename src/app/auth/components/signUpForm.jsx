@@ -1,9 +1,11 @@
 'use client'
 
 import { signUp } from "@/app/(actions)/authActs";
-import {useState } from "react"
+import { useRouter } from "next/navigation";
+import {useState , useEffect } from "react"
 
 export default function SignUpForm(){
+    let router = useRouter()
     let [ phone , setPhone] = useState('');
     let [ name , setName ] = useState('');
     let [email , setEmail ] = useState('');
@@ -12,6 +14,17 @@ export default function SignUpForm(){
     let [showPassword, setShowPassword] = useState(false);
     let [errors, setErrors] = useState({});
 
+
+    let [ previousUrl , setPreviousUrl ] = useState('/')
+
+
+    // to set the previous url for visiting
+    useEffect(() => {
+    // Reads the URL of the page that navigated to this one
+        if (document.referrer) {
+            setPreviousUrl(document.referrer);
+        }
+    }, []);
 
 
     const handleTabSwitch = (method) => {
@@ -22,7 +35,7 @@ export default function SignUpForm(){
 
     const handleSignUp = async () => {
         try {
-            // // console.log('sign up button clicked')
+            console.log('sign up button clicked')
             
 
             let formData = new FormData() 
@@ -47,13 +60,22 @@ export default function SignUpForm(){
             if (!result.success) throw new Error('Unsuccessful log in');
 
             let { name : userName } = result;
+            
+            console.log('sign up successful')
+            console.log(name)
+            console.log(userName)
+
+            console.log(previousUrl)
 
             localStorage.setItem('name' , userName);
 
-            // // console.log('sign up successful')
+            // then set the user to the cart page
+            (previousUrl === 'http://localhost:3000/auth') ? router.push('/') : router.push(previousUrl)
+
+            console.log('sign up successful')
         } catch (err){
-            // // console.log('Error happened during sign up');
-            // // console.log(err)
+            console.log('Error happened during sign up');
+            console.log(err)
             
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }

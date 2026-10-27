@@ -33,10 +33,14 @@ let checkUserExists = async (given) => {
         // user obj - key
         let userId = Object.keys(userObj)
 
+
+        let key = userId[0]
+
         if (key.toLowerCase() === given.toLowerCase()){
             return userObj
         }
     })
+
 
     if (userFound) return {
         success : true,
@@ -75,10 +79,13 @@ let signUp =  async (formData) => {
                 (phone === kitchenPhoneNumber) ? 'kitchen' : 'user'
             :
                 'user';
+
+        
         
 
         try {
                 let isUserThere = await checkUserExists(sentInfo)
+
             
             
                 // using useServerAction to hook up the client's form to the state action
@@ -103,6 +110,9 @@ let signUp =  async (formData) => {
                     }
                 ]
 
+
+    
+                
                 // const filePath = path.join( __dirname, '../data/users.json');
             
                 // // // console.log(`filePath is ${filePath}`)
@@ -145,6 +155,9 @@ let logIn= async (formData) => {
     let password = formData.get('password');
     // this is 
 
+    console.log("log in info");
+    console.log(formData)
+
     let sentInfo = email ? email : phone;
 
     try {
@@ -160,8 +173,17 @@ let logIn= async (formData) => {
         // else the user is there 
         let { data } = user;
 
-        let hashedUserLogInPassword = await hashInfo(data.password)
+        console.log('user found')
+        console.log(data)
+
+        console.log("password");
+        console.log(data[sentInfo].password)
+
+        let hashedUserLogInPassword = await hashInfo(data[sentInfo].password)
+        console.log('hashed user password');
+        console.log(hashedUserLogInPassword)
         if (hashedUserLogInPassword === password) {
+            console.log('password has matched')
             // then that is the user create the session
             // the createSession will put in the cookies
             await createSession({givenIdentifier : sentInfo , role : data.role });

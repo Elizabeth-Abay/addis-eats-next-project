@@ -15,6 +15,7 @@ export default function AuthForm(){
                     type="button"
                     onClick={() => setSignUp(true)}
                     style={{
+                        width : '200px',
                         flex: 1,
                         padding: '10px 0',
                         margin : '10px',
@@ -23,10 +24,10 @@ export default function AuthForm(){
                         borderRadius: '8px',
                         cursor: 'pointer',
                         transition: 'all 0.2s ease',
-                        backgroundColor: !signUpEnabled ? '#ffffff' : 'transparent',
-                        color: !signUpEnabled ? '#111827' : '#6b7280',
-                        boxShadow: !signUpEnabled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
-                        border: !signUpEnabled ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
+                        backgroundColor:  '#334d0b',
+                        color: '#030303',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid rgba(0, 0, 0, 0.05)'
                     }}
                     className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
                         signUpEnabled
@@ -40,6 +41,7 @@ export default function AuthForm(){
                 <button
                     type="button"
                     style={{
+                        width : '100px',
                         flex: 1,
                         padding: '10px 0',
                         fontSize: '14px',
@@ -48,10 +50,10 @@ export default function AuthForm(){
                         borderRadius: '8px',
                         cursor: 'pointer',
                         transition: 'all 0.2s ease',
-                        backgroundColor: !signUpEnabled ? '#ffffff' : 'transparent',
-                        color: !signUpEnabled ? '#111827' : '#6b7280',
-                        boxShadow: !signUpEnabled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
-                        border: !signUpEnabled ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
+                        backgroundColor:  '#67c927',
+                        color: '#111827',
+                        boxShadow:  '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid rgba(0, 0, 0, 0.05)',
                     }}
                     onClick={() => setSignUp(false)}
                     className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${

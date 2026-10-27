@@ -202,3 +202,135 @@
 }
 
 
+/* Container Centering (Matches .order-page) */
+.order-page-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #1c120e;
+  gap: 24px;
+}
+
+/* Card Shell Base */
+.skeleton-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #2b1b17;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Common Shimmer Element */
+.skeleton-box {
+  background: linear-gradient(
+    90deg,
+    rgba(79, 54, 44, 0.4) 25%,
+    rgba(245, 158, 11, 0.12) 50%,
+    rgba(79, 54, 44, 0.4) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 8px;
+  animation: warm-shimmer 1.5s infinite linear;
+}
+
+/* Header Row Alignment */
+.skeleton-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.skeleton-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 60%;
+}
+
+.skeleton-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  width: 30%;
+}
+
+/* Element Specific Heights & Widths */
+.title-line {
+  height: 28px;
+  width: 85%;
+}
+
+.spice-line {
+  height: 16px;
+  width: 40%;
+}
+
+.price-line {
+  height: 24px;
+  width: 70%;
+}
+
+.tax-line {
+  height: 12px;
+  width: 50%;
+}
+
+.desc-line {
+  height: 40px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.section-line {
+  height: 20px;
+  width: 40%;
+}
+
+.option-box {
+  height: 52px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.amount-box {
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.button-box {
+  height: 54px;
+  width: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(184, 93, 38, 0.3) 25%,
+    rgba(245, 158, 11, 0.25) 50%,
+    rgba(184, 93, 38, 0.3) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* Keyframe Animation */
+@keyframes warm-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
