@@ -10,6 +10,8 @@ const filePath = path.join(
     "sessions.json"
 );
 
+
+// this is called from a server action so it is ok for it not to have second validation
 export default async function createSession({givenIdentifier , role }) {
     // fetch the current sessions and then update that
 
