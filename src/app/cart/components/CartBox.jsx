@@ -66,16 +66,7 @@ export default function CartBox({item}){
         <div className="cart-card">
             <div className="cart-card-body">
             {/* Left: Image with Spicy Badge */}
-                <div className="cart-img-wrapper">
-                    <img
-                    // image is undefined
-                    src={"image" || "https://via.placeholder.com/100"}
-                    alt={name}
-                    className="cart-img"
-                    />
-                    {spiceLevel && <span className="cart-badge"> SpiceLevel {spiceLevel}</span>}
-                    {injera &&  <span className="cart-badge"> injera {injera}</span> }
-                </div>
+
 
                 {/* Right Top: Title, Subtext, Delete Icon */}
                 <div className="cart-info">
@@ -87,11 +78,11 @@ export default function CartBox({item}){
                         onClick={handleRemove}
                         aria-label="Remove item"
                     >
-                        ✕
+                        X
                     </button>
                     </div>
 
-                    <p className="cart-subtext"> Injera - {injera}</p>
+                    <p className="cart-subtext"> Injera  {injera}</p>
                     <p className="cart-subtext"> Side Accents</p>
                     {
                         sideAccents?.map(

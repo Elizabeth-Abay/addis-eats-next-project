@@ -4,7 +4,7 @@
 
 import OrderTable from "./component/OrderTable";
 import Pager from "./component/Pager";
-import { headers } from "next/headers";
+import { headers , cookies } from "next/headers";
 import orders from '../data/orderHistory.json'
 
 // order table - real markup , sorting in the url 
@@ -18,9 +18,15 @@ export default async function Page({ searchParams }){
 
     let headerrs = await headers();
     let cookieString = headerrs.get('cookie')
+
+
+    let cookiesUser = await cookies()
+    
+    console.log("cookies object for /orders routes")
+    console.log(JSON.parse(cookiesUser.get('sessionInfo')['value']))
     
 
-    const cookies = cookieString.split(';').reduce((acc, cookie) => {
+    const cookiesEr = cookieString.split(';').reduce((acc, cookie) => {
     const [key, value] = cookie.trim().split('=');
         acc[key] = value;
         return acc;
@@ -28,9 +34,9 @@ export default async function Page({ searchParams }){
     
     let userId = null;
 
-    if (cookies.sessionInfo) {
+    if (cookiesEr.sessionInfo) {
         // 2. Decode URL encoding (e.g., %7B -> {, %22 -> ", etc.)
-        const decodedSession = decodeURIComponent(cookies.sessionInfo);
+        const decodedSession = decodeURIComponent(cookiesEr.sessionInfo);
         
         // 3. Parse the JSON string into an object
         const sessionObj = JSON.parse(decodedSession);
@@ -72,13 +78,13 @@ export default async function Page({ searchParams }){
     console.log(userOrder)
 
     
-    endIndex = endIndex >= userOrder.length ? userOrder.length : endIndex
+    endIndex = endIndex >= userOrder?.length ? userOrder?.length : endIndex
 
     // to give the orders number
-    let seenOrders = userOrder.slice(startIndex ,endIndex )
+    let seenOrders = userOrder?.slice(startIndex ,endIndex ) || []
 
 
-    let importantInfo = seenOrders.slice(startIndex , endIndex).map(
+    let importantInfo = seenOrders?.slice(startIndex , endIndex).map(
         item => {return {
             id : ids++,
             grandTotal : item["payment"]["grandTotal"]

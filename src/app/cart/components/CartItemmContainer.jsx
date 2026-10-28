@@ -11,7 +11,7 @@ export default function CartItemContainer(){
     return(
         <div className="scroll-container">
             {cart?.map((item) => (
-                <CartBox className="scroll-item" key={item.id} item={item}/>
+                <CartBox key={item.id} item={item}/>
             ))}
         </div>
     )

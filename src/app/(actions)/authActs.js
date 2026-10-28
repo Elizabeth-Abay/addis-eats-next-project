@@ -8,7 +8,7 @@ import { adminPhoneNumber, kitchenPhoneNumber } from "../(constants)/variable";
 import createSession from "./sessionActs";
 import users from '../data/users.json';
 import currentSessions from '../data/sessions.json';
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 
 const filePath = path.join(
     "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
@@ -60,6 +60,10 @@ let checkUserExists = async (given) => {
 }
 
 
+// the issue here is the cookie handling part 
+// shld be handled by the middleware and not here
+// ! refactoring
+
 
 
 // this are server actions used for authentication
@@ -70,6 +74,10 @@ let signUp =  async (formData) => {
         let phone = formData.get('phone');
         let password = formData.get('password');
         let name = formData.get('name')
+
+
+        console.log("sign up information");
+        console.log(formData)
 
         let sentInfo = email ? email : phone;
         let role = 
@@ -153,7 +161,8 @@ let logIn= async (formData) => {
     let email = formData.get('email');
     let phone = formData.get('phone');
     let password = formData.get('password');
-    // this is 
+    // this is the password sent from the user
+    // hash that and compare it to the one saved in the database
 
     console.log("log in info");
     console.log(formData)
@@ -162,6 +171,9 @@ let logIn= async (formData) => {
 
     try {
         let user = await checkUserExists(sentInfo);
+
+        console.log("response from checking out the user")
+        console.log(user)
     
         if (!user.found){
             return {
@@ -179,10 +191,11 @@ let logIn= async (formData) => {
         console.log("password");
         console.log(data[sentInfo].password)
 
-        let hashedUserLogInPassword = await hashInfo(data[sentInfo].password)
+        let checkAgainst = data[sentInfo].password
+        let hashedUserLogInPassword = hashInfo(password)
         console.log('hashed user password');
         console.log(hashedUserLogInPassword)
-        if (hashedUserLogInPassword === password) {
+        if (hashedUserLogInPassword === checkAgainst) {
             console.log('password has matched')
             // then that is the user create the session
             // the createSession will put in the cookies
@@ -192,7 +205,7 @@ let logIn= async (formData) => {
 
             return {
                 success : true,
-                name : data.name
+                name : data[sentInfo].name
                 // session : newSession the session data is set by the cookie
             }
             
@@ -218,19 +231,26 @@ let logIn= async (formData) => {
 let logOut = async () => {
     // when we get the session then we will need 
     // read the cookies
-    console.log("logging out the user")
-    let header = await headers();
+    let cookiesUser = await cookies()
 
-    console.log('header hopefully from the middleware');
-    console.log(Object.fromEntries(header.entries()))
+    // accessing the actual object
+    let actualCookieValue = JSON.parse(cookiesUser.get('sessionInfo')['value']);
 
-    let cookieId = header.get('cookieId');
-
-    // read the sessions and then remove that
+    let {uniqueId } = actualCookieValue
 
     let updatedSessions = currentSessions.filter(
-        sessionInfo => sessionInfo['uniqueId'] !== cookieId
+        sessionInfo => {
+            
+            if (sessionInfo['uniqueId'] != uniqueId) {
+                console.log("found 1")
+                return sessionInfo
+            } else {
+                console.log("found a matcher")
+                console.log(sessionInfo)
+            }
+        }
     )
+
 
     try {
         await fs.writeFile(
@@ -238,7 +258,8 @@ let logOut = async () => {
             JSON.stringify(
             updatedSessions
         ))
-    
+
+
     
         return {
             success : true

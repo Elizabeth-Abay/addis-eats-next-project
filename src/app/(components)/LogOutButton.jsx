@@ -17,7 +17,11 @@ export default function LogOutButton(){
 
             if (result.success) { 
                 alert('successful log out')
-                router.push('/')
+                // then clear out the localStorage set up
+                localStorage.removeItem('name')
+
+                router.refresh()
+                router.replace('/')
             }
 
             else{

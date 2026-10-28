@@ -12,6 +12,7 @@ import { headers } from "next/headers";
 export default async function FullPage(){
     
     // in the checkout u will update the order history as well
+    // this will make it be a dynamic page - reading headers
 
     const headersList = await headers();
     const cookieString = headersList.get('cookie');
@@ -54,10 +55,9 @@ export default async function FullPage(){
     // 
     
     return (
-        <div>
+        <div className="checkout-container"> 
             <RecipientContact/>
             <DeliveryDestination />
-            <ConfirmOrderAndaPay userId={userId}/>
             {
                 paymentMethods.map(
                     paymentMethod => <PaymentMethodBox key={paymentMethod.id} item={paymentMethod}/>
@@ -65,6 +65,9 @@ export default async function FullPage(){
             }
 
             <OrderItems/>
+
+            <ConfirmOrderAndaPay userId={userId}/>
+
 
         </div>
     );
