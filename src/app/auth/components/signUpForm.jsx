@@ -12,7 +12,7 @@ export default function SignUpForm(){
     let [ password , setPassword] = useState('');
     let [authMethod, setAuthMethod] = useState("phone");
     let [showPassword, setShowPassword] = useState(false);
-    let [errors, setErrors] = useState({});
+    let [errors, setErrors] = useState('');
 
 
     let [ previousUrl , setPreviousUrl ] = useState('/')
@@ -57,7 +57,7 @@ export default function SignUpForm(){
             // // console.log('result is');
             // // console.log(result)
 
-            if (!result.success) throw new Error('Unsuccessful log in');
+            if (!result.success) setErrors('Unsuccessful sign up , try changing email/phone or password');
 
             let { name : userName } = result;
             
@@ -251,7 +251,9 @@ export default function SignUpForm(){
                 <button type="submit" className="done-btn">
                 Done
                 </button>
+
             </form>
+            <p>{`${errors}`}</p>
         </div>
     );
 }

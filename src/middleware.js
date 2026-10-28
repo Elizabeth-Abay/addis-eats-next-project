@@ -1,6 +1,5 @@
 // this middleware - I want it to take in the requests 
 
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
@@ -19,6 +18,9 @@ export function middleware(req) {
     // the protected routes are /kitchen , /check-out 
     const { pathname } = req.nextUrl;
 
+    console.log("pathname is")
+    console.log(pathname)
+
 
     // req.cookies.get()
     const sessionCookie = req.cookies.get('sessionInfo');
@@ -35,6 +37,8 @@ export function middleware(req) {
     if (!sessionCookie) return NextResponse.redirect(new URL('/auth', req.url)); // the menu and specials pages are not protected
     
     let sessionObj = JSON.parse(sessionCookie['value']);
+    console.log("session obj")
+    console.log(sessionObj)
     // // console.log('Session Object');
     // // console.log(sessionObj)
     // then check the role and the path the user is trying to access
@@ -52,7 +56,10 @@ export function middleware(req) {
 
     // middleware can provide route protection
     // users can't access the kitchen route
-    if (sessionObj.role === 'user' && pathname === '/kitchen') return NextResponse.json(
+
+    // the cookie will hold role
+
+    if (sessionObj.role === 'user' && (pathname === '/kitchen' || pathname === '/orders')) return NextResponse.json(
         {
             success : false,
             message : 'Forbidden: No session found'

@@ -1,6 +1,7 @@
 'use server';
 import orders from "../data/orderHistory.json";
 import fs from "fs/promises";
+import { cookies } from "next/headers";
 import path from "path";
 
 const filePath = path.join(
@@ -8,7 +9,8 @@ const filePath = path.join(
     "orderHistory.json"
 );
 
-export async function setUpHistory({userId , deliveryFee , grandTotal , cart , destinationPlace }){
+// this is called directly from the client side
+export async function setUpHistory({deliveryFee , grandTotal , cart , destinationPlace }){
     // the userId will be the key
     // cart is an array of objects = [{ id , name , amount , price , customOrder }] ,
 
@@ -20,6 +22,13 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart , d
     let found = false;
     let orderHist = {cart , payment : { deliveryFee , grandTotal} , date : new Date().toLocaleString() , destinationPlace}
 
+
+    let userCookie = await cookies();
+
+    // accessing the actual object
+    let actualCookieValue = JSON.parse(userCookie.get('sessionInfo')['value']);
+
+    let {userId } = actualCookieValue;
 
     let targetId = userId.toLowerCase()
     for (let key of Array.from(Object.keys(orders))){
@@ -54,6 +63,7 @@ export async function setUpHistory({userId , deliveryFee , grandTotal , cart , d
 }
 
 
+// this part is called from the route handler so it is ok
 export async function getOrderHistory(userId) {
     // console.log("orders imported from json")
     // console.log(orders)

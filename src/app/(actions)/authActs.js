@@ -98,6 +98,7 @@ let signUp =  async (formData) => {
             
                 // using useServerAction to hook up the client's form to the state action
                 if (isUserThere.found) {
+                    console.log("User already found")
                     return {
                         success: false,
                         reason: 'try logging into your account' // this is just for dev
@@ -199,7 +200,7 @@ let logIn= async (formData) => {
             console.log('password has matched')
             // then that is the user create the session
             // the createSession will put in the cookies
-            await createSession({givenIdentifier : sentInfo , role : data.role });
+            await createSession({givenIdentifier : sentInfo , role : data[sentInfo].role });
 
         
 

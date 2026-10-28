@@ -29,7 +29,10 @@ export default function ConfirmOrderAndaPay({userId}){
         // here also update the order history
         // order history - will include the name of things and the date and total price
 
-        setUpHistory({userId , deliveryFee , grandTotal , cart , destinationPlace})
+        // this is bad 
+        // we need to get the userId from the cookie not the client
+        // layer of protection
+        setUpHistory({deliveryFee , grandTotal , cart , destinationPlace})
 
         // //// // console.log('the state of the cart after confirm payment');
         // //// // console.log(state)
