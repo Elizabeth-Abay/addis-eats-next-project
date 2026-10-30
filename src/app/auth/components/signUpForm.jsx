@@ -70,7 +70,7 @@ export default function SignUpForm(){
             localStorage.setItem('name' , userName);
 
             // then set the user to the cart page
-            (previousUrl === 'http://localhost:3000/auth') ? router.push('/') : router.push(previousUrl)
+            (previousUrl === 'https://addis-eats-next-project.vercel.app/auth') ? router.push('/') : router.push(previousUrl)
 
             console.log('sign up successful')
         } catch (err){

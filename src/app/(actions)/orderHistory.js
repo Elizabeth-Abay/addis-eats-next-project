@@ -4,10 +4,7 @@ import fs from "fs/promises";
 import { cookies } from "next/headers";
 import path from "path";
 
-const filePath = path.join(
-    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
-    "orderHistory.json"
-);
+const filePath = path.join(process.cwd(), 'src/app/data/orderHistory.json');
 
 // this is called directly from the client side
 export async function setUpHistory({deliveryFee , grandTotal , cart , destinationPlace }){

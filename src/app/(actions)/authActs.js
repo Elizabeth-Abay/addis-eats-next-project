@@ -9,17 +9,20 @@ import createSession from "./sessionActs";
 import users from '../data/users.json';
 import currentSessions from '../data/sessions.json';
 import { cookies } from "next/headers";
+import 'path';
 
-const filePath = path.join(
-    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
-    "users.json"
-);
+// path.join(
+//     "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
+//     "users.json"
+// );
+
+const filePath = path.join(process.cwd(), 'src/app/data/users.json');
+console.log('file path updated')
+console.log(filePath)
 
 
-const sessionFilePath =  path.join(
-    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
-    "sessions.json"
-);
+const sessionFilePath =  path.join(process.cwd(), 'src/app/data/sessions.json');
+    
 
 // // console.log(`filePath globally is ${filePath}`)
 

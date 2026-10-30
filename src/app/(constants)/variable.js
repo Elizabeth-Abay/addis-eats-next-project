@@ -124,3 +124,10 @@ export const SIDE_ACCENTS_CONFIG = [
 
 export const adminPhoneNumber = '911111111'
 export const kitchenPhoneNumber = '900000000';
+
+
+export const branchLocations = {
+    // [ lat , long]
+    "Bole" : [ 8.9831 , 38.8101],
+    "Kazanchis" : [ 9.0168 , 38.7713 ]
+}

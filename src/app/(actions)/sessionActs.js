@@ -5,10 +5,7 @@ import fs from 'fs/promises';
 import path from 'node:path';
 import currentSessions from '../data/sessions.json'
 
-const filePath = path.join(
-    "C:/Users/HP/OneDrive/Desktop/Addis-Eats-final/addis-eats/src/app/data", 
-    "sessions.json"
-);
+const filePath = path.join(process.cwd(), 'src/app/data/sessions.json');
 
 
 // this is called from a server action so it is ok for it not to have second validation
