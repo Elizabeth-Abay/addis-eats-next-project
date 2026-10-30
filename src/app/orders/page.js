@@ -4,8 +4,8 @@
 
 import OrderTable from "./component/OrderTable";
 import Pager from "./component/Pager";
-import { headers , cookies } from "next/headers";
-import orders from '../data/orderHistory'
+import {  cookies } from "next/headers";
+import { supabase } from "../clients/supabaseClient";
 
 // order table - real markup , sorting in the url 
 // links for paging
@@ -16,36 +16,9 @@ export default async function Page({ searchParams }){
     // above some price point
     let parameters = await searchParams;
 
-    let headerrs = await headers();
-    let cookieString = headerrs.get('cookie')
-
-
-    let cookiesUser = await cookies()
-    
-    console.log("cookies object for /orders routes")
-    console.log(JSON.parse(cookiesUser.get('sessionInfo')['value']))
-    
-
-    const cookiesEr = cookieString.split(';').reduce((acc, cookie) => {
-    const [key, value] = cookie.trim().split('=');
-        acc[key] = value;
-        return acc;
-    }, {});
-    
-    let userId = null;
-
-    if (cookiesEr.sessionInfo) {
-        // 2. Decode URL encoding (e.g., %7B -> {, %22 -> ", etc.)
-        const decodedSession = decodeURIComponent(cookiesEr.sessionInfo);
-        
-        // 3. Parse the JSON string into an object
-        const sessionObj = JSON.parse(decodedSession);
-        
-        // 4. Grab the userId
-        userId = sessionObj.userId;
-        // the userId will be for accepting the cart
-    }
-
+    let userCookie = await cookies();
+    let actualCookieValue = JSON.parse(userCookie.get('sessionInfo').value);
+    let userId = actualCookieValue.userId;
 
     console.log("Received the search Params");
     console.log(parameters)
@@ -64,49 +37,59 @@ export default async function Page({ searchParams }){
 
     // then get the orders array
     // this page displays the order for the user
-
-    let ids = 1;
         
+    // 2. Fetch orders from Supabase using the validated userId from middleware
+    let userOrder = [];
+    if (userId) {
+        try {
+            const { data, error } = await supabase
+                .from('orders')
+                .select('*')
+                .ilike('user_id', userId)
+                .order('id', { ascending: false });
+
+            if (error) throw error;
+
+            // Map Supabase columns back to the structure your app expects
+            userOrder = (data || []).map(order => ({
+                cart: order.cart,
+                payment: {
+                    deliveryFee: order.delivery_fee,
+                    grandTotal: order.grand_total
+                },
+                destinationPlace: order.destination_place,
+                date: order.date
+            }));
+        } catch (err) {
+            console.error("Error fetching orders from Supabase:", err.message);
+        }
+    }
+
+    console.log("userOrder from database:", userOrder);
 
     let startIndex = (page - 1) * ordersPerPage;
     let endIndex = startIndex + ordersPerPage;
-
-    console.log("userId");
-    console.log(userId)
-    let userOrder = orders[userId]; // give us an array
-    console.log("userOrder");
-    console.log(userOrder)
-
     
-    endIndex = endIndex >= userOrder?.length ? userOrder?.length : endIndex
+    let totalOrdersCount = userOrder.length;
+    endIndex = endIndex >= totalOrdersCount ? totalOrdersCount : endIndex;
 
-    // to give the orders number
-    let seenOrders = userOrder?.slice(startIndex ,endIndex ) || []
+    // Get the slice of orders for the current page
+    let seenOrders = userOrder.slice(startIndex, endIndex);
 
-
-    let importantInfo = seenOrders?.slice(startIndex , endIndex).map(
-        item => {return {
-            id : ids++,
-            grandTotal : item["payment"]["grandTotal"]
-        }}
-    )
+    let ids = startIndex + 1; 
+    let importantInfo = seenOrders.map(item => {
+        return {
+            id: ids++,
+            grandTotal: item["payment"]["grandTotal"]
+        };
+    });
     
-    console.log("importantInfo");
-    console.log(importantInfo);
+    console.log("importantInfo:", importantInfo);
 
-
-
-    // using the search params for sorting and ordering
-    // to order the things in the order page using parameters
     return (
         <div>
-            <OrderTable orders={importantInfo}/>
-            <Pager seenOrders={importantInfo}/>
+            <OrderTable orders={importantInfo} />
+            <Pager seenOrders={importantInfo} totalCount={totalOrdersCount} page={page} />
         </div>
-
-        // and there is a pager
-        // the pager will contain a line chart representation of the data
-        // and when the user clicks next then push on the router
-        
-    )
+    );
 }

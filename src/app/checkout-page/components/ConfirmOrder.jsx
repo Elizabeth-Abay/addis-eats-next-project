@@ -32,7 +32,11 @@ export default function ConfirmOrderAndaPay({userId}){
         // this is bad 
         // we need to get the userId from the cookie not the client
         // layer of protection
+        console.log("confirming order")
+        console.log(cart)
         setUpHistory({deliveryFee , grandTotal , cart , destinationPlace})
+
+        console.log("sent message to cart")
 
         // //// // console.log('the state of the cart after confirm payment');
         // //// // console.log(state)
