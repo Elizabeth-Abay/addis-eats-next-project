@@ -7,7 +7,7 @@ import { fetcher } from "../fetcher";
 export default  function Page(){
     // this is a server component but we need to call the order histroy
 
-    const { data  , error , isLoading } = useSWR('http://localhost:3000/my-orders' , fetcher)
+    const { data  , error , isLoading } = useSWR('https://addis-eats-next-project.vercel.app/my-orders' , fetcher)
 
     // console.log('data that came');
     // console.log(data)
