@@ -97,6 +97,12 @@ export async function setUpHistory({ deliveryFee, grandTotal, cart, destinationP
         let actualCookieValue = JSON.parse(userCookie.get('sessionInfo').value);
         let userId = actualCookieValue.userId;
 
+        console.log("setting the users history")
+        console.log(cart);
+        console.log("user id")
+        console.log(userId)
+
+
         // Insert order directly to Supabase orders table
         const { error } = await supabase
             .from('orders')
@@ -113,7 +119,7 @@ export async function setUpHistory({ deliveryFee, grandTotal, cart, destinationP
 
         return { success: true };
     } catch (error) {
-        console.error(`Error while writing order history: ${error.message}`);
+        console.log(`Error while writing order history: ${error.message}`);
         return { success: false };
     }
 }
