@@ -35,17 +35,7 @@ export default function Footer() {
           );
         }
 
-
-        let role = localStorage.getItem('role');
-
-        console.log('role from footer')
-        console.log(role)
-
-        if (item.label === "Orders" || item.label === "Kitchen"){
-          // then check the role
-          if( role.toLowerCase() === "user") return <></>
-
-        }
+      
 
         return (
           <button
