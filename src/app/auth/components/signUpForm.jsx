@@ -66,7 +66,7 @@ export default function SignUpForm(){
 
         
 
-            let { name : userName } = result;
+            let { name : userName , role  } = result;
             
             console.log('sign up successful')
             console.log(name)
@@ -75,6 +75,7 @@ export default function SignUpForm(){
             console.log(previousUrl)
 
             localStorage.setItem('name' , userName);
+            localStorage.setItem('role' , role)
 
             // then set the user to the cart page
             (previousUrl === 'https://addis-eats-next-project.vercel.app/auth') ? router.push('/') : router.push(previousUrl)

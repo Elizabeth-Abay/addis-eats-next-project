@@ -350,7 +350,7 @@ let signUp = async (formData) => {
 
         await createSession({ givenIdentifier: sentInfo, role });
 
-        return { success: true, name };
+        return { success: true, name , role };
     } catch (error) {
         return { success: false, reason: `Error happened during sign up ${error.message}` };
     }
@@ -374,7 +374,7 @@ let logIn = async (formData) => {
 
         if (hashedUserLogInPassword === userData.password) {
             await createSession({ givenIdentifier: sentInfo, role: userData.role });
-            return { success: true, name: userData.name };
+            return { success: true, name: userData.name , role : userData.role  };
         } else {
             return { success: false, reason: 'Password mismatch' };
         }

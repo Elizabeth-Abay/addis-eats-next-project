@@ -1,5 +1,5 @@
 "use client"
-import { HiOutlineFire, HiOutlineUser, HiOutlineClipboardDocumentList, HiOutlineCog6Tooth } from "react-icons/hi2";
+import { HiOutlineFire, HiOutlineUser, HiOutlineClipboardDocumentList, HiOutlineCog6Tooth , HiCog6Tooth } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
 import CartButton from "./CartButton";
 import { usePathname, useRouter } from "next/navigation";
@@ -15,8 +15,9 @@ export default function Footer() {
     { label: "Menu", path: "/menu", icon: LuUtensilsCrossed },
     { label: "Cart", path: "/cart", isCustom: true },
     { label: "Account", path: "/auth", icon: HiOutlineUser },
-    { label: "Orders", path: "/order-history", icon: HiOutlineClipboardDocumentList },
+    { label: "History", path: "/order-history", icon: HiOutlineClipboardDocumentList },
     { label: "Kitchen", path: "/kitchen", icon: HiOutlineCog6Tooth },
+    { label : "Orders" , path : "/orders" , icon : HiCog6Tooth}
   ];
 
   return (
@@ -32,6 +33,15 @@ export default function Footer() {
               <span className="nav-label">Cart</span>
             </div>
           );
+        }
+
+
+        let role = localStorage.getItem('role');
+
+        if (item.label === "Orders" || item.label === "Kitchen"){
+          // then check the role
+          if( role.toLowerCase() === "user") return <></>
+
         }
 
         return (

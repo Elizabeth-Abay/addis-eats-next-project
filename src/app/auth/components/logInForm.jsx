@@ -34,9 +34,10 @@ export default function LogInForm(){
 
             if (!result.success) throw new Error('Unsuccessful log in');
 
-            let { name } = result;
+            let { name , role} = result;
 
             localStorage.setItem('name' , name);
+            localStorage.setItem('role' , role)
 
             console.log('log in successful')
 
