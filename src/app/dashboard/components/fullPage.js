@@ -4,7 +4,7 @@
 import { headers } from "next/headers"
 import { SUB_CITIES } from "../../(constants)/variable"
 import RevenueChart from "./RevenueChart"
-import orders from "../../data/orderHistory.json"
+import orders from "../../data/orderHistory"
 
 // dashboard - revenue ordered by neighbourhood // bar chart
 // orders over time as a line chart 

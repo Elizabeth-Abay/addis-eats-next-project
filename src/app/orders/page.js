@@ -5,7 +5,7 @@
 import OrderTable from "./component/OrderTable";
 import Pager from "./component/Pager";
 import { headers , cookies } from "next/headers";
-import orders from '../data/orderHistory.json'
+import orders from '../data/orderHistory'
 
 // order table - real markup , sorting in the url 
 // links for paging
