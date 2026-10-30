@@ -49,7 +49,6 @@ export default async function FullPage() {
     // this is page level security
     return (
         <div>
-            <SuspenseFooter/>
             Welcome to the kitchen role
         </div>
     )

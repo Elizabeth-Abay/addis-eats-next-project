@@ -6,7 +6,6 @@ import './style/style.css'
 export default function Page(){
     return (
         <div>   
-            <SuspenseFooter/>
             <StepOne/>
         </div>
     )

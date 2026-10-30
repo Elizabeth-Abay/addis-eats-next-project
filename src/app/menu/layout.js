@@ -18,7 +18,6 @@ export default function LayOutComponent({children}){
                 }
         >
             {/* the other parts are ok */}
-            <SuspenseFooter/>
             {children}
         </div>
     )

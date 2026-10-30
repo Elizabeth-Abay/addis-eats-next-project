@@ -138,7 +138,6 @@ export default async function FullPage(){
 
     return (
         <div>
-            <SuspenseFooter/>
             <RevenueChart data={arrayOfVals} />
 
         </div>

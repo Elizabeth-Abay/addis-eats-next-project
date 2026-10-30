@@ -11,7 +11,7 @@ export default function Home(){
                         <span>Date: Today</span>      
                     </div>
         }>
-            <SuspenseFooter/>
+        
             <ThankYouPage/>
         </Suspense>
     );

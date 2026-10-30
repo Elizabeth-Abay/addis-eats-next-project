@@ -57,7 +57,6 @@ export default async function FullPage(){
     
     return (
         <div className="checkout-container"> 
-            <SuspenseFooter/>
             <RecipientContact/>
             <DeliveryDestination />
             {

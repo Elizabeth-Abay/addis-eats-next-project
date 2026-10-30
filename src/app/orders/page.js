@@ -89,7 +89,6 @@ export default async function Page({ searchParams }){
 
     return (
         <div>
-            <SuspenseFooter/>
             <OrderTable orders={importantInfo} />
             <Pager seenOrders={importantInfo} totalCount={totalOrdersCount} page={page} />
         </div>
