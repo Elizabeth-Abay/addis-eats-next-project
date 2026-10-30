@@ -45,7 +45,6 @@ export default async function Page({ searchParams }){
             const { data, error } = await supabase
                 .from('orders')
                 .select('*')
-                .ilike('user_id', userId)
                 .order('id', { ascending: false });
 
             if (error) throw error;
