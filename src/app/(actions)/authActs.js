@@ -139,6 +139,10 @@ let signUp =  async (formData) => {
                     newUsers
                 ))
 
+
+                console.log('user written to the file')
+
+                console.log(newUsers)
                 await createSession({givenIdentifier : sentInfo , role })
                 
             

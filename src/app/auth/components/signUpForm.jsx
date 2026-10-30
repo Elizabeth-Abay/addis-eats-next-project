@@ -57,7 +57,14 @@ export default function SignUpForm(){
             // // console.log('result is');
             // // console.log(result)
 
+
+            console.log('result is');
+            console.log(result)
+
             if (!result.success) setErrors('Unsuccessful sign up , try changing email/phone or password');
+
+
+        
 
             let { name : userName } = result;
             
