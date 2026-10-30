@@ -3,6 +3,7 @@
 import OrderHistoryList from "./components/OrdersList";
 import useSWR from 'swr';
 import { fetcher } from "../fetcher";
+import Footer from "../(components)/Footer";
 
 export default  function Page(){
     // this is a server component but we need to call the order histroy
@@ -32,6 +33,7 @@ export default  function Page(){
 
     return (
         <div>
+            <Footer/>
             <OrderHistoryList orders={data}/>
         </div>
     )

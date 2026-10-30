@@ -1,6 +1,8 @@
 // this is a page where staff people could set up amounts
 // so this user action will update the cache but 
 // lets make it to be a toy and display a message like privilleged view
+import Footer from "@/app/(components)/Footer";
+import SuspenseFooter from "@/app/(components)/SuspenseFooter";
 import { headers } from "next/headers";
 
 
@@ -47,6 +49,7 @@ export default async function FullPage() {
     // this is page level security
     return (
         <div>
+            <SuspenseFooter/>
             Welcome to the kitchen role
         </div>
     )

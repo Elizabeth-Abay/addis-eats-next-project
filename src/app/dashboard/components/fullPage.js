@@ -5,6 +5,8 @@ import { headers } from "next/headers"
 import { SUB_CITIES } from "../../(constants)/variable"
 import RevenueChart from "./RevenueChart"
 import orders from "../../data/orderHistory"
+import Footer from "@/app/(components)/Footer";
+import SuspenseFooter from "@/app/(components)/SuspenseFooter";
 
 // dashboard - revenue ordered by neighbourhood // bar chart
 // orders over time as a line chart 
@@ -135,7 +137,11 @@ export default async function FullPage(){
     )
 
     return (
-        <RevenueChart data={arrayOfVals} />
+        <div>
+            <SuspenseFooter/>
+            <RevenueChart data={arrayOfVals} />
+
+        </div>
     )
 
 }

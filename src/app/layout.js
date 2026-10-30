@@ -38,9 +38,9 @@ export default function RootLayout({children}){
             
             <body>
                 <Header/>
-                <Suspense fallback={<div>Nav bar</div>}>
+                {/* <Suspense fallback={<div>Nav bar</div>}>
                     <Footer/>
-                </Suspense>
+                </Suspense> */}
                 <main>{children}</main>
             </body>
         </html>

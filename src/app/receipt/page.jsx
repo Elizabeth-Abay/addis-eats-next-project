@@ -1,3 +1,5 @@
+import Footer from "../(components)/Footer";
+import SuspenseFooter from "../(components)/SuspenseFooter";
 import ThankYouPage from "./page/ThankYouPage";
 import { Suspense } from "react";
 
@@ -9,6 +11,7 @@ export default function Home(){
                         <span>Date: Today</span>      
                     </div>
         }>
+            <SuspenseFooter/>
             <ThankYouPage/>
         </Suspense>
     );

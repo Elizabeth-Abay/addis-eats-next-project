@@ -6,6 +6,8 @@ import OrderTable from "./component/OrderTable";
 import Pager from "./component/Pager";
 import {  cookies } from "next/headers";
 import { supabase } from "../clients/supabaseClient";
+import Footer from "../(components)/Footer";
+import SuspenseFooter from "../(components)/SuspenseFooter";
 
 // order table - real markup , sorting in the url 
 // links for paging
@@ -87,6 +89,7 @@ export default async function Page({ searchParams }){
 
     return (
         <div>
+            <SuspenseFooter/>
             <OrderTable orders={importantInfo} />
             <Pager seenOrders={importantInfo} totalCount={totalOrdersCount} page={page} />
         </div>

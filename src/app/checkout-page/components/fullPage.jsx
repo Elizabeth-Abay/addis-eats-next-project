@@ -7,6 +7,7 @@ import PaymentMethodBox from "./PaymentMethod";
 import { paymentMethods  } from "../../(constants)/variable";
 import '../../cart/style/style.css'
 import { headers } from "next/headers";
+import SuspenseFooter from "@/app/(components)/SuspenseFooter";
 
 
 export default async function FullPage(){
@@ -56,6 +57,7 @@ export default async function FullPage(){
     
     return (
         <div className="checkout-container"> 
+            <SuspenseFooter/>
             <RecipientContact/>
             <DeliveryDestination />
             {

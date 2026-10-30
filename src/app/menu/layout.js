@@ -1,3 +1,5 @@
+import Footer from "../(components)/Footer";
+import SuspenseFooter from "../(components)/SuspenseFooter";
 import SearchBar from "./components/SearchBar";
 import SelectedItemsContainer from "./components/SelectedItemContainer";
 import TraditionalGursha from "./components/TraditionalGursha";
@@ -16,6 +18,7 @@ export default function LayOutComponent({children}){
                 }
         >
             {/* the other parts are ok */}
+            <SuspenseFooter/>
             {children}
         </div>
     )
