@@ -24,7 +24,7 @@ export default function Footer() {
     } catch (e) {
       console.error("Failed to parse session info from localStorage", e);
     }
-  }, []);
+  }, [pathname]);
 
   const navItems = [
     { label: "Specials", path: "/", icon: HiOutlineFire },
