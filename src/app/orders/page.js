@@ -20,15 +20,15 @@ export default async function Page({ searchParams }){
     let actualCookieValue = JSON.parse(userCookie.get('sessionInfo').value);
     let userId = actualCookieValue.userId;
 
-    console.log("Received the search Params");
-    console.log(parameters)
+    // console.log("Received the search Params");
+    // console.log(parameters)
 
 
     // the pages will be given in the search parameters
     // and the user will be able to see the number of orders based on the size
 
     let page = Number( parameters?.page ?? 1);
-    console.log(`page ${page}`)
+    // console.log(`page ${page}`)
 
     let ordersPerPage = 5
 
@@ -64,7 +64,7 @@ export default async function Page({ searchParams }){
         }
     }
 
-    console.log("userOrder from database:", userOrder);
+    // console.log("userOrder from database:", userOrder);
 
     let startIndex = (page - 1) * ordersPerPage;
     let endIndex = startIndex + ordersPerPage;
@@ -83,7 +83,7 @@ export default async function Page({ searchParams }){
         };
     });
     
-    console.log("importantInfo:", importantInfo);
+    // console.log("importantInfo:", importantInfo);
 
     return (
         <div>

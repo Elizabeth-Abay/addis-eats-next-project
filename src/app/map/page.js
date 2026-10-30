@@ -25,8 +25,8 @@ export default function Page(){
         let userloc = async () => {
             let locationFound = await getUserLocation();
 
-            console.log("user location is");
-            console.log(locationFound)
+            // console.log("user location is");
+            // console.log(locationFound)
 
             if (locationFound.length === 0) return alert('Array returned 0')
 

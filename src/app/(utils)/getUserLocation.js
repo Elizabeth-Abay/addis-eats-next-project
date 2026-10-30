@@ -17,8 +17,8 @@ export default function getUserLocation() {
             (position) => {
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
-                console.log(`latitude is ${latitude}`);
-                console.log(`longitude is ${longitude}`);
+                // console.log(`latitude is ${latitude}`);
+                // console.log(`longitude is ${longitude}`);
                 resolve([latitude, longitude]); // <--- Resolves the Promise with the array
             },
             (error) => {

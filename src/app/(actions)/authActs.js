@@ -16,14 +16,14 @@ import 'path';
 // );
 
 // const filePath = path.join(process.cwd(), 'src/app/data/users.json');
-// console.log('file path updated')
-// console.log(filePath)
+// // console.log('file path updated')
+// // console.log(filePath)
 
 
 // const sessionFilePath =  path.join(process.cwd(), 'src/app/data/sessions.json');
     
 
-// // // console.log(`filePath globally is ${filePath}`)
+// // // // console.log(`filePath globally is ${filePath}`)
 
 
 
@@ -78,8 +78,8 @@ import 'path';
 //         let name = formData.get('name')
 
 
-//         console.log("sign up information");
-//         console.log(formData)
+//         // console.log("sign up information");
+//         // console.log(formData)
 
 //         let sentInfo = email ? email : phone;
 //         let role = 
@@ -100,7 +100,7 @@ import 'path';
             
 //                 // using useServerAction to hook up the client's form to the state action
 //                 if (isUserThere.found) {
-//                     console.log("User already found")
+//                     // console.log("User already found")
 //                     return {
 //                         success: false,
 //                         reason: 'try logging into your account' // this is just for dev
@@ -126,10 +126,10 @@ import 'path';
                 
 //                 // const filePath = path.join( __dirname, '../data/users.json');
             
-//                 // // // console.log(`filePath is ${filePath}`)
+//                 // // // // console.log(`filePath is ${filePath}`)
 
-//                 // // console.log('new users in the house');
-//                 // // console.log(newUsers)
+//                 // // // console.log('new users in the house');
+//                 // // // console.log(newUsers)
 
 //                 // writeFile receives strings as input
 //                 await fs.writeFile(
@@ -139,9 +139,9 @@ import 'path';
 //                 ))
 
 
-//                 console.log('user written to the file')
+//                 // console.log('user written to the file')
 
-//                 console.log(newUsers)
+//                 // console.log(newUsers)
 //                 await createSession({givenIdentifier : sentInfo , role })
                 
             
@@ -154,7 +154,7 @@ import 'path';
 //                     // and push the user to the / - specials
 //                 }
 //         } catch (error) {
-//             // // console.log(`erroror happened during sign up ${err}`)
+//             // // // console.log(`erroror happened during sign up ${err}`)
 //             return {
 //                 success : false,
 //                 reason :`Error happened during sign up ${error}`
@@ -171,16 +171,16 @@ import 'path';
 //     // this is the password sent from the user
 //     // hash that and compare it to the one saved in the database
 
-//     console.log("log in info");
-//     console.log(formData)
+//     // console.log("log in info");
+//     // console.log(formData)
 
 //     let sentInfo = email ? email : phone;
 
 //     try {
 //         let user = await checkUserExists(sentInfo);
 
-//         console.log("response from checking out the user")
-//         console.log(user)
+//         // console.log("response from checking out the user")
+//         // console.log(user)
     
 //         if (!user.found){
 //             return {
@@ -192,18 +192,18 @@ import 'path';
 //         // else the user is there 
 //         let { data } = user;
 
-//         console.log('user found')
-//         console.log(data)
+//         // console.log('user found')
+//         // console.log(data)
 
-//         console.log("password");
-//         console.log(data[sentInfo].password)
+//         // console.log("password");
+//         // console.log(data[sentInfo].password)
 
 //         let checkAgainst = data[sentInfo].password
 //         let hashedUserLogInPassword = hashInfo(password)
-//         console.log('hashed user password');
-//         console.log(hashedUserLogInPassword)
+//         // console.log('hashed user password');
+//         // console.log(hashedUserLogInPassword)
 //         if (hashedUserLogInPassword === checkAgainst) {
-//             console.log('password has matched')
+//             // console.log('password has matched')
 //             // then that is the user create the session
 //             // the createSession will put in the cookies
 //             await createSession({givenIdentifier : sentInfo , role : data[sentInfo].role });
@@ -217,14 +217,14 @@ import 'path';
 //             }
             
 //         } else{
-//             console.log("User couldn't log in")
+//             // console.log("User couldn't log in")
 //             return {
 //                 success : false,
 //                 reason : 'Password mismatch'
 //             }
 //         }
 //     } catch (error) {
-//         // // console.log(`Error during log in ${error}`)
+//         // // // console.log(`Error during log in ${error}`)
 //         return {
 //             success : false,
 //             reason : `Error during log in ${error}`
@@ -249,11 +249,11 @@ import 'path';
 //         sessionInfo => {
             
 //             if (sessionInfo['uniqueId'] != uniqueId) {
-//                 console.log("found 1")
+//                 // console.log("found 1")
 //                 return sessionInfo
 //             } else {
-//                 console.log("found a matcher")
-//                 console.log(sessionInfo)
+//                 // console.log("found a matcher")
+//                 // console.log(sessionInfo)
 //             }
 //         }
 //     )
@@ -273,7 +273,7 @@ import 'path';
 //         }
     
 //     } catch (error) {
-//         console.log("Error while logging out" , error);
+//         // console.log("Error while logging out" , error);
 //         return {
 //             success : false
 //         }
@@ -399,7 +399,7 @@ let logOut = async () => {
 
         return { success: true };
     } catch (error) {
-        console.log("Error while logging out", error);
+        // console.log("Error while logging out", error);
         return { success: false };
     }
 };

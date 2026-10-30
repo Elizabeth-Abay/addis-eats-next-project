@@ -37,7 +37,7 @@ export default function CategoryFilter({type , filterName }){
         // ! for server component
         // router.replace(`${currentPath}?${params.toString()}`)
 
-        console.log("filter btn clicked")
+        // console.log("filter btn clicked")
         filterFunction(filterName);
         // which will cause a rerender
     }

@@ -4,8 +4,8 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
 
-    console.log("Request from the middleware")
-    console.log(req)
+    // console.log("Request from the middleware")
+    // console.log(req)
     // request has got cookies property
     // it contains the protocol , pathname 
     // cookies - { sessionInfo : { name : "sessionInfo" , value : {uniqueId : sthg , role : sthg , userId : sthg}}}
@@ -18,8 +18,8 @@ export function middleware(req) {
     // the protected routes are /kitchen , /check-out 
     const { pathname } = req.nextUrl;
 
-    console.log("pathname is")
-    console.log(pathname)
+    // console.log("pathname is")
+    // console.log(pathname)
 
 
     // req.cookies.get()
@@ -37,10 +37,10 @@ export function middleware(req) {
     if (!sessionCookie) return NextResponse.redirect(new URL('/auth', req.url)); // the menu and specials pages are not protected
     
     let sessionObj = JSON.parse(sessionCookie['value']);
-    console.log("session obj")
-    console.log(sessionObj)
-    // // console.log('Session Object');
-    // // console.log(sessionObj)
+    // console.log("session obj")
+    // console.log(sessionObj)
+    // // // console.log('Session Object');
+    // // // console.log(sessionObj)
     // then check the role and the path the user is trying to access
     
     // to pass information like userId to the pages

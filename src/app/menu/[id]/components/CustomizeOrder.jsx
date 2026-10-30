@@ -15,9 +15,9 @@ import SpiceLevelSelector from "./SpiceLevelSelector";
 
 
 export default function CustomizeOrder({item }){
-    // // // console.log("price sent is here")
+    // // // // console.log("price sent is here")
     let {id , name ,  price} = item;
-    // // // console.log(price)
+    // // // // console.log(price)
     let addItem = useCartStore(state => state.addItem)
 
     // use addItem for saying add to cart and updating the cart items

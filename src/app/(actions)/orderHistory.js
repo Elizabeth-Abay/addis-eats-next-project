@@ -53,7 +53,7 @@ const filePath = path.join(process.cwd(), 'src/app/data/orderHistory.json');
 //             success : true
 //         }
 //     } catch (error) {
-//         // // console.log(`Error while order history writing ${error}`)
+//         // // // console.log(`Error while order history writing ${error}`)
         
 //     }
 
@@ -63,18 +63,18 @@ const filePath = path.join(process.cwd(), 'src/app/data/orderHistory.json');
 
 // // this part is called from the route handler so it is ok
 // export async function getOrderHistory(userId) {
-//     // console.log("orders imported from json")
-//     // console.log(orders)
+//     // // console.log("orders imported from json")
+//     // // console.log(orders)
 
 //     let userIdsFromOrderHistory = Array.from(Object.keys(orders));
 //     let targetId = userId.toLowerCase()
-//     // console.log('target ids');
-//     // console.log(targetId);
-//     // console.log(userIdsFromOrderHistory)
+//     // // console.log('target ids');
+//     // // console.log(targetId);
+//     // // console.log(userIdsFromOrderHistory)
 
 //     for (let item of userIdsFromOrderHistory){
-//         // console.log("item from here")
-//         // console.log(item)
+//         // // console.log("item from here")
+//         // // console.log(item)
 //         if (item.toLowerCase() === targetId){
 //             return {
 //                 success : true,
@@ -117,7 +117,7 @@ export async function setUpHistory({ deliveryFee, grandTotal, cart, destinationP
 
         return { success: true , userId , deliveryFee , grandTotal , };
     } catch (error) {
-        console.log(`Error while writing order history: ${error.message}`);
+        // console.log(`Error while writing order history: ${error.message}`);
         return { success: false };
     }
 }

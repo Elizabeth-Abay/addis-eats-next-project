@@ -49,12 +49,12 @@ let revenueCalculator = () => {
             // get the order for each user
             // then loop through the order , then update 
             // the destination and then the grand total
-            console.log("values");
+            // console.log("values");
             let value = orders[key];
 
             // then loop through the value 
             // and then update the total price
-            console.log(value)
+            // console.log(value)
 
 
             value.forEach(

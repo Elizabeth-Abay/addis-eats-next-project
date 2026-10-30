@@ -26,8 +26,8 @@ export default function CategoryResult(){
     // then everytime u do a refetch you should reset the total
     let setTotalSpecialItems  = useSpecialItemsChoice(state => state.setTotalSpecialItems);
 
-    // console.log('data from fetchimg');
-    // console.log(data)
+    // // console.log('data from fetchimg');
+    // // console.log(data)
 
     useEffect(
         () => {

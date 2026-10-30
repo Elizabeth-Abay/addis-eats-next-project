@@ -35,7 +35,7 @@ export default function SignUpForm(){
 
     const handleSignUp = async () => {
         try {
-            console.log('sign up button clicked')
+            // console.log('sign up button clicked')
             
 
             let formData = new FormData() 
@@ -48,18 +48,18 @@ export default function SignUpForm(){
                 :
                 formData.append('email' , email);
 
-            // // console.log('formData');
-            // // console.log(formData);
+            // // // console.log('formData');
+            // // // console.log(formData);
 
 
             let result = await signUp(formData);
 
-            // // console.log('result is');
-            // // console.log(result)
+            // // // console.log('result is');
+            // // // console.log(result)
 
 
-            console.log('result is');
-            console.log(result)
+            // console.log('result is');
+            // console.log(result)
 
             if (!result.success) setErrors('Unsuccessful sign up , try changing email/phone or password');
 
@@ -68,11 +68,11 @@ export default function SignUpForm(){
 
             let { name : userName , role  } = result;
             
-            console.log('sign up successful')
-            console.log(name)
-            console.log(userName)
+            // console.log('sign up successful')
+            // console.log(name)
+            // console.log(userName)
 
-            console.log(previousUrl)
+            // console.log(previousUrl)
 
             localStorage.setItem('name' , userName);
             localStorage.setItem('role' , role)
@@ -80,10 +80,10 @@ export default function SignUpForm(){
             // then set the user to the cart page
             (previousUrl === 'https://addis-eats-next-project.vercel.app/auth') ? router.push('/') : router.push(previousUrl)
 
-            console.log('sign up successful')
+            // console.log('sign up successful')
         } catch (err){
-            console.log('Error happened during sign up');
-            console.log(err)
+            // console.log('Error happened during sign up');
+            // console.log(err)
             
             setErrors(prev => {return { ...prev , logInErr : err.message}})
         }
@@ -201,7 +201,7 @@ export default function SignUpForm(){
                         placeholder="example@domain.com"
                         value={name}
                         onChange={(e) => {
-                            // // console.log(`Setting the name ${e.target.value}`)
+                            // // // console.log(`Setting the name ${e.target.value}`)
                             setName(e.target.value)
                         }}
                         aria-invalid={Boolean(errors.name)}

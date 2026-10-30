@@ -18,11 +18,11 @@ export async function GET(req) {
         let { userId } = actualCookieValue;
     
 
-        // console.log('trying to get the order history')
-        // console.log(userId)
+        // // console.log('trying to get the order history')
+        // // console.log(userId)
         let orders = await getOrderHistory(userId);
-        // console.log("Orders sent from there")
-        // console.log(orders)
+        // // console.log("Orders sent from there")
+        // // console.log(orders)
 
         return Response.json(orders);
 
@@ -31,7 +31,7 @@ export async function GET(req) {
 
     } catch (error){
         return Response.json({'error': error});
-        // console.log(`Error while get handling ${Err}`)
+        // // console.log(`Error while get handling ${Err}`)
     }
     
 }

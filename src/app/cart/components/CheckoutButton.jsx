@@ -9,7 +9,7 @@ export default function CheckoutButton() {
 
 
   const formattedPrice = Number(price).toLocaleString('en-US');
-  //// // console.log(`price is ${price} , formatted price is ${formattedPrice} `);
+  //// // // console.log(`price is ${price} , formatted price is ${formattedPrice} `);
 
   return (
     <button className="checkout-btn" onClick={

@@ -41,8 +41,8 @@ const useCartStore = create(
             addItem : (dish) => {
                 let added = false
                 let { id , name , amount , price , customOrder} = dish
-                //// // console.log('adding items to cart')
-                //// // console.log({ id , name , amount , price , customOrder})
+                //// // // console.log('adding items to cart')
+                //// // // console.log({ id , name , amount , price , customOrder})
                 // the price wld need to include the custom ordered items as well
                 let totalPriceAdded = Number(amount) * Number(price);
 
@@ -124,7 +124,7 @@ const useCartStore = create(
             },
             updateCart : (dish)=>{
                 let  { id , customOrder , amount , price} = dish;
-                //// // console.log('updating the cart state');
+                //// // // console.log('updating the cart state');
                 let newPrice = Number(amount) * Number(price);
                 let oldPrice = 0
 
@@ -147,15 +147,15 @@ const useCartStore = create(
                         if (item.id === id && safeStringify(item.customOrder) == safeCustomOrder){
                             // we will find the difference between the price
                             oldPrice = Number(item.amount) * Number(item.price);
-                            //// // console.log('Old price is updated');
-                            //// // console.log(oldPrice)
+                            //// // // console.log('Old price is updated');
+                            //// // // console.log(oldPrice)
                         }
                     }
                 )
 
                 let newFinalPrice = Number(total) - oldPrice + newPrice
-                //// // console.log('Calculating the new Final price');
-                //// // console.log(newFinalPrice)
+                //// // // console.log('Calculating the new Final price');
+                //// // // console.log(newFinalPrice)
                 let newGrandTotal = Number(grandTotal) - oldPrice + newPrice
 
                 set(

@@ -12,4 +12,4 @@
 
 ## 3. Off-Limit Actions / Restricted Edits
 * Do not commit raw local development overrides or machine-specific absolute file paths (like specific Windows user directory paths) into shared code branches.
-* Avoid using direct `console.log` on complex internal web API wrappers (such as raw `headers()` objects) to prevent Node inspection private member crashes.
+* Avoid using direct `// console.log` on complex internal web API wrappers (such as raw `headers()` objects) to prevent Node inspection private member crashes.

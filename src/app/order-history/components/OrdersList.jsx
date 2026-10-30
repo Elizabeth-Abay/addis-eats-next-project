@@ -3,8 +3,8 @@ import React from 'react';
 import HistoryContainer from './historyContainer';
 
 export default function OrderHistoryList({ orders }) {
-    // console.log('order that came from here')
-    // console.log(orders)
+    // // console.log('order that came from here')
+    // // console.log(orders)
     
     // If there are no orders yet
     if (!orders || orders.length === 0) {

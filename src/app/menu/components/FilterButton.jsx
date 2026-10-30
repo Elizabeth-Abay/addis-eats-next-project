@@ -23,7 +23,7 @@ export default function FilterButton({name , type , activeCategory , setActive})
 
     const handleCategoryClick = () => {
         setActive(type);
-        // console.log(type)
+        // // console.log(type)
         // this is the filter
         filterFunction(type);
 

@@ -7,8 +7,8 @@ import {BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis , Bar} from "rechar
 
 
 export default function RevenueChart({data}){
-    console.log("Data passed to revenue chart")
-    console.log(data)
+    // console.log("Data passed to revenue chart")
+    // console.log(data)
 
     
     return (

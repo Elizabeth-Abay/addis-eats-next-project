@@ -1,7 +1,7 @@
 export default function TitleContainer({ item }){
-    //// // console.log('Loading the title container page')
+    //// // // console.log('Loading the title container page')
     let { name  , price , description} = item
-    //// // console.log(name  , price , description)
+    //// // // console.log(name  , price , description)
     // the price here will be the base price
     // but when we add things then we will update the price
     return (

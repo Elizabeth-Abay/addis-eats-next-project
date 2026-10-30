@@ -33,7 +33,7 @@ export default function CartBox({item}){
     // we can use amount directly here
     // bc when we update the items since its parent depends on cart it will rerender
     let increment = ()=>{
-        // //// // console.log('Clicking increment button');
+        // //// // // console.log('Clicking increment button');
         // let newNumItem = numItem + 1
         // setNumItem(newNumItem)
         // dispatch for the cart to be updated
@@ -48,7 +48,7 @@ export default function CartBox({item}){
     }
 
     let decrement = ()=>{
-        // //// // console.log('Clicking decrement button');
+        // //// // // console.log('Clicking decrement button');
         // let newNumItem = numItem - 1
 
         // setNumItem( newNumItem)

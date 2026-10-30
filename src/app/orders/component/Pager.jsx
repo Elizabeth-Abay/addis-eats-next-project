@@ -5,9 +5,9 @@ import { LineChart , Line,  XAxis,  YAxis,  CartesianGrid,  Tooltip,  Responsive
 
 export default function Pager({seenOrders}){
     
-    console.log("loading pager");
-    console.log("seen orders for pagers")
-    console.log(seenOrders)
+    // console.log("loading pager");
+    // console.log("seen orders for pagers")
+    // console.log(seenOrders)
 
     return (
         // else fetch the amount of orders according to the page 

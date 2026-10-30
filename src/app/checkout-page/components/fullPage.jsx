@@ -18,10 +18,10 @@ export default async function FullPage(){
     const cookieString = headersList.get('cookie');
 
 
-    console.log("headers list from the fullpage in checkout page");
-    console.log(Object.fromEntries(headersList.entries()));
-    console.log("cookies string")
-    console.log(cookieString)
+    // console.log("headers list from the fullpage in checkout page");
+    // console.log(Object.fromEntries(headersList.entries()));
+    // console.log("cookies string")
+    // console.log(cookieString)
 
     const cookies = cookieString.split(';').reduce((acc, cookie) => {
             const [key, value] = cookie.trim().split('=');
@@ -45,12 +45,12 @@ export default async function FullPage(){
     }
 
 
-    console.log("user id  from checkout");
-    console.log(userId)
+    // console.log("user id  from checkout");
+    // console.log(userId)
 
-    // // // console.log('Getting the headers for checkouty');
-    // // // console.log(Object.fromEntries(headersList));
-    // // console.log(userId)
+    // // // // console.log('Getting the headers for checkouty');
+    // // // // console.log(Object.fromEntries(headersList));
+    // // // console.log(userId)
     // in the checkout button when u confirm the payment - order history
     // 
     

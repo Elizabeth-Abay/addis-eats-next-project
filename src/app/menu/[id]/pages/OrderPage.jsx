@@ -15,8 +15,8 @@ export default async function OrderPage({params}){
 
     let items = await params;
 
-    // // console.log("items from the order page");
-    // // console.log(items)
+    // // // console.log("items from the order page");
+    // // // console.log(items)
 
     let {id} = items;
 

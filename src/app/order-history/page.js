@@ -9,8 +9,8 @@ export default  function Page(){
 
     const { data  , error , isLoading } = useSWR('https://addis-eats-next-project.vercel.app/my-orders' , fetcher)
 
-    // console.log('data that came');
-    // console.log(data)
+    // // console.log('data that came');
+    // // console.log(data)
 
     if (isLoading) {
         return (

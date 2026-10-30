@@ -39,7 +39,7 @@ export default function LogInForm(){
             localStorage.setItem('name' , name);
             localStorage.setItem('role' , role)
 
-            console.log('log in successful')
+            // console.log('log in successful')
 
             (previousUrl === '/auth') ? router.push('/') : router.push(previousUrl)
         } catch (err){

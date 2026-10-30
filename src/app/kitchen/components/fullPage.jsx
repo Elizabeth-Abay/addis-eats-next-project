@@ -35,7 +35,7 @@ export default async function FullPage() {
     
     // page level security 
     if (!(role === 'kitchen' || role === 'admin')){
-        // console.log("Returning the role")
+        // // console.log("Returning the role")
         return (
             <div>
                 Sorry You Can't Access this page because of your role

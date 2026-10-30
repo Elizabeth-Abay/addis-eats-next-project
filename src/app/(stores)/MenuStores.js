@@ -71,7 +71,7 @@ const useMenuStore = create(
                 const searchRegex = new RegExp(escapedInput, 'i');
 
                 let { totalMenuItems : data } = get();
-                // // // console.log("Rendering data from the name filter")
+                // // // // console.log("Rendering data from the name filter")
                 let rendered = data.filter(
                     item => {
                         if(searchRegex.test(item.nameEn)) {

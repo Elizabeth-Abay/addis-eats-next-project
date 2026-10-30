@@ -13,8 +13,8 @@ function MapController({ targetLocation }) {
 
     useEffect(
         () => {
-            console.log("The final location passed to controller");
-            console.log(finalLoc)
+            // console.log("The final location passed to controller");
+            // console.log(finalLoc)
 
             let dddd = [ 9.67 , 9.7]
             // Example A: Move the map whenever targetLocation changes
@@ -34,7 +34,7 @@ function MapController({ targetLocation }) {
 
 export default function Map({userLocation}){
 
-    console.log(userLocation)
+    // console.log(userLocation)
 
     // if (userLocation.length === 0) return alert("Couldn't find the user location")
 

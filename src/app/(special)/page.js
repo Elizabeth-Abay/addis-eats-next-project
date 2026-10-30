@@ -13,8 +13,8 @@ export default function SpecialPage({searchParams}){
     // import the client components in here 
 
     // let param = await searchParams;
-    // // // console.log(`Search params from page `)
-    // // // console.log(param)
+    // // // // console.log(`Search params from page `)
+    // // // // console.log(param)
     // another thing to do is to have is to set the approach to be 
     // like the thing make the component a client code and then have it be there
 
