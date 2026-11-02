@@ -3,6 +3,7 @@
 import { signUp } from "@/app/(actions)/authActs";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import userStore from "@/app/(stores)/userStore";
 
 export default function SignUpForm() {
     const router = useRouter();
@@ -14,6 +15,8 @@ export default function SignUpForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState('');
     const [previousUrl, setPreviousUrl] = useState('/');
+    const setUserName = userStore(state => state.setUserName)
+    const setRole = userStore(state => state.setRole)
 
     useEffect(() => {
         if (document.referrer) {
@@ -47,8 +50,8 @@ export default function SignUpForm() {
 
         const { name: userName, role } = result;
 
-        localStorage.setItem('name', userName);
-        localStorage.setItem('role', role);
+        setUserName(userName);
+        setRole(role);
 
         if (previousUrl === 'https://addis-eats-next-project.vercel.app/auth') {
             router.push('/');
@@ -56,7 +59,7 @@ export default function SignUpForm() {
             router.push(previousUrl);
         }
         } catch (err) {
-        setErrors(err.message || 'Error occurred during sign up');
+            setErrors(err.message || 'Error occurred during sign up');
         }
     };
 

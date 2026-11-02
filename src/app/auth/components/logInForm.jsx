@@ -3,6 +3,7 @@
 import { logIn } from "@/app/(actions)/authActs";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import userStore from "@/app/(stores)/userStore";
 
 export default function LogInForm() {
     const router = useRouter();
@@ -13,6 +14,8 @@ export default function LogInForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
     const [previousUrl, setPreviousUrl] = useState('');
+    const setUserName = userStore(state => state.setUserName)
+    const setRole = userStore(state => state.setRole)
 
     const handleTabSwitch = (method) => {
         setAuthMethod(method);
@@ -33,8 +36,8 @@ export default function LogInForm() {
 
         const { name, role } = result;
 
-        localStorage.setItem('name', name);
-        localStorage.setItem('role', role);
+        setUserName(name);
+        setRole(role);
 
         if (previousUrl === '/auth') {
             router.push('/');

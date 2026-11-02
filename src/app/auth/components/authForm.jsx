@@ -6,6 +6,7 @@ import LogInForm from "./logInForm";
 
 export default function AuthForm() {
     const [signUpEnabled, setSignUp] = useState(true);
+    
 
     return (
         <div className="auth-wrapper-card">
