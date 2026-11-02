@@ -1,5 +1,3 @@
-import Footer from "../(components)/Footer";
-import SuspenseFooter from "../(components)/SuspenseFooter";
 import ThankYouPage from "./page/ThankYouPage";
 import { Suspense } from "react";
 

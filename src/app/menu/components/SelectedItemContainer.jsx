@@ -6,13 +6,11 @@ import { FaBagShopping } from "react-icons/fa6";
 
 export default function SelectedItemsContainer() {
     const router = useRouter();
-    const cart = useCartStore((state) => state.cart);
-    const totalPrice = useCartStore((state) => state.total);
+    const cart = useCartStore(state => state.cart);
+    const totalPrice = useCartStore(state => state.total);
 
     const itemCount = cart?.length || 0;
 
-    // Optional: Hide floating cart when empty
-    // if (itemCount === 0) return null;
 
     return (
         <div className="floatingCartContainer">

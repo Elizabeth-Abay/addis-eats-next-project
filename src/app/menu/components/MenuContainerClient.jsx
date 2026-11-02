@@ -27,9 +27,9 @@ export default function MenuContainerClient(){
         } , [setTotalMenuItems , data]
     )
 
-    let rendered = useMenuStore(state => state.renderedMenuItems);
+    let rendered = useMenuStore(state => state.renderedMenuItems)  || [];
 
-    if (isLoading) return (
+    if (isLoading || rendered.length === 0) return (
         <div style={{
             display: "flex",
             justifyContent: "center",

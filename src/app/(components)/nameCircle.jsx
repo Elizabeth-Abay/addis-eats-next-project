@@ -1,20 +1,13 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import userStore from "../(stores)/userStore";
 
 // bc it will depend on the client and will read the username from the local storage
 export default function NameCircle(){
-    let [ name , setName ] = useState('User')
+    let name = userStore(state => state.userName)
 
-    let letter = name[0];
 
-    useEffect(
-        () => {
-            let userName = localStorage.getItem('name') || 'User';
-
-            setName(userName);
-        } , [name]
-    )
+    let letter = name && name.length > 0 ? name[0] : "U";;
 
     return (
         <div>

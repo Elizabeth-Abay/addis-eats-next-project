@@ -1,5 +1,3 @@
-import Footer from "../(components)/Footer";
-import SuspenseFooter from "../(components)/SuspenseFooter";
 import StepOne from "./page/stepOne";
 import './style/style.css'
 

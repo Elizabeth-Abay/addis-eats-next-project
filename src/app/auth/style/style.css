@@ -1,280 +1,223 @@
-/* ==========================================
-   MESOB UI DESIGN SYSTEM & COLOR TOKENS
-   ========================================== */
+/* ==========================================================================
+   Design Tokens & CSS Variables
+   ========================================================================== */
 :root {
-  --bg-parchment: #FAF4EE;
-  --bg-card: #FFFFFF;
-  --bg-tertiary: #F6ECE2;
-  --bg-input: #FAFAF8;
+  /* Surface & Backgrounds */
+  --bg-container: rgba(30, 15, 9, 0.6);
+  --bg-card: rgba(15, 8, 4, 0.55);
+  --bg-card-dark: rgba(15, 8, 4, 0.7);
+  --bg-input: rgba(15, 8, 4, 0.8);
+  --bg-toggle-track: rgba(255, 255, 255, 0.05);
+  --background--color: #0d0604;
+
+  /* Brand Accents */
+  --color-accent: #f59e0b;
+  --color-accent-dark: #d97706;
+  --color-accent-light: #fde047;
+  --color-accent-soft: rgba(245, 158, 11, 0.15);
+  --color-accent-glow: rgba(245, 158, 11, 0.35);
   
-  --brand-espresso: #2A1810;
-  --brand-espresso-hover: #42271B;
-  --brand-ochre: #8C5D28;
-  --brand-ochre-light: rgba(140, 93, 40, 0.1);
-  --brand-gold: #C4883B;
-  
-  --text-primary: #2A1810;
-  --text-secondary: #6E5A4F;
-  --text-muted: #8C6A5A;
-  
-  --border-light: #EAD3C1;
-  --border-subtle: #F0E2D8;
-  --border-focus: #8C5D28;
-  
-  --shadow-sm: 0 2px 8px rgba(42, 24, 16, 0.04);
-  --shadow-md: 0 8px 24px rgba(42, 24, 16, 0.07);
-  --shadow-lg: 0 16px 36px rgba(42, 24, 16, 0.1);
-  
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
-  
-  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Status & Auxiliary */
+  --color-error: #ef4444;
+  --color-error-soft: rgba(239, 68, 68, 0.15);
+  --color-success: #34d399;
+
+  /* Text Hierarchy */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-subtle: rgba(255, 255, 255, 0.45);
+  --text-dark: #180c07;
+
+  /* Borders */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(245, 158, 11, 0.35);
+  --border-accent-focus: rgba(245, 158, 11, 0.7);
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-btn: 0 8px 24px var(--color-accent-glow);
+  --shadow-btn-hover: 0 12px 28px rgba(245, 158, 11, 0.45);
 }
 
-/* ==========================================
-   1. WELCOME CARD STYLES
-   ========================================== */
+/* Page Layout */
+.auth-page-wrapper {
+  min-height: 100vh;
+  background-color: var(--background--color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   Welcome Card Component
+   ========================================================================== */
 .welcome-card {
-  position: relative;
-  background: linear-gradient(145deg, #FAF4EE 0%, #FDF7F2 50%, #F5EBE1 100%);
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--bg-container);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 32px;
-  max-width: 520px;
-  margin: 20px auto;
-  box-shadow: var(--shadow-md);
-  font-family: var(--font-sans);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.welcome-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+.welcome-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .welcome-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: var(--brand-ochre-light);
-  border: 1px solid rgba(140, 93, 40, 0.18);
-  color: var(--brand-ochre);
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--border-accent);
+  color: var(--color-accent-light);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  padding: 5px 14px;
-  border-radius: 30px;
-  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .welcome-dot {
-  width: 7px;
-  height: 7px;
-  background-color: var(--brand-ochre);
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--brand-ochre);
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent-glow);
 }
 
 .welcome-content {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 16px;
 }
 
 .welcome-icon {
-  font-size: 26px;
-  background: linear-gradient(135deg, var(--brand-ochre) 0%, var(--brand-gold) 100%);
-  color: #FFFFFF;
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 6px 16px rgba(140, 93, 40, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 36px;
+  line-height: 1;
+  padding: 10px;
+  background-color: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
 }
 
 .welcome-text {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .welcome-title {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--brand-espresso);
-  line-height: 1.2;
-  letter-spacing: -0.3px;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--text-primary);
 }
 
 .welcome-subtitle {
-  margin: 10px 0 20px 0;
-  color: var(--text-secondary);
-  font-size: 14.5px;
-  line-height: 1.55;
-  font-weight: 400;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .welcome-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--brand-espresso);
-  color: #FFF8F0;
+  align-self: flex-start;
+  margin-top: 8px;
+  background: transparent;
   border: none;
-  padding: 12px 22px;
-  font-size: 14px;
+  color: var(--color-accent-light);
+  font-size: 13px;
   font-weight: 700;
-  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(42, 24, 16, 0.15);
+  padding: 0;
+  transition: color 0.2s ease;
 }
 
 .welcome-btn:hover {
-  background-color: var(--brand-espresso-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(42, 24, 16, 0.25);
+  color: var(--color-accent);
 }
 
-.welcome-btn:active {
-  transform: translateY(0);
-}
-
-/* ==========================================
-   2. USER INFORMATION CARD STYLES
-   ========================================== */
-.user-info-card {
+/* ==========================================================================
+   Auth Form Container & Switcher
+   ========================================================================== */
+.auth-wrapper-card {
   width: 100%;
-  max-width: 460px;
-  margin: 16px auto;
-  background-color: var(--bg-parchment);
+  max-width: 480px;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--bg-container);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 20px 22px;
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font-sans);
-  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+
+.auth-toggle-container {
+  display: flex;
+  background-color: var(--bg-toggle-track);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.auth-toggle-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.user-info-card:hover {
-  border-color: var(--brand-ochre);
-  box-shadow: var(--shadow-md);
-}
-
-.user-info-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.user-info-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, #FAF0E8 0%, #F5E6DA 100%);
-  border: 1px solid var(--border-subtle);
-  color: var(--brand-ochre);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(140, 93, 40, 0.08);
-}
-
-.user-info-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.user-info-text {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  flex: 1;
-}
-
-.user-info-label {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-}
-
-.user-info-value {
-  margin: 3px 0 0 0;
-  font-size: 18px;
+.auth-toggle-btn.active {
+  background-color: var(--color-accent);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-btn);
   font-weight: 700;
-  color: var(--brand-espresso);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-/* ==========================================
-   3. AUTH LOGIN FORM STYLES
-   ========================================== */
-.auth-card-container {
-  width: 100%;
-  max-width: 460px;
-  margin: 20px auto;
-  background-color: var(--bg-parchment);
-  border: 1px solid var(--border-light);
-  padding: 28px;
-  border-radius: var(--radius-xl);
-  font-family: var(--font-sans);
-  box-sizing: border-box;
-  box-shadow: var(--shadow-md);
-}
-
-/* OR Divider */
+/* Divider */
 .auth-divider {
   display: flex;
   align-items: center;
   text-align: center;
-  margin-bottom: 22px;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 20px;
 }
 
 .auth-divider-text {
-  padding: 0 14px;
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-subtle);
+  width: 100%;
+  text-transform: uppercase;
 }
 
-/* Tab Switcher Group */
+/* Tabs Switcher Inside Forms */
 .auth-tab-group {
   display: flex;
-  background-color: #EFE0D5;
-  padding: 5px;
-  border-radius: var(--radius-lg);
-  margin-bottom: 22px;
-  gap: 6px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .auth-tab-btn {
@@ -282,71 +225,59 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border: none;
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  font-size: 14px;
-}
-
-.auth-tab-btn:hover:not(.active) {
-  color: var(--brand-espresso);
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.auth-tab-btn.active {
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
   background-color: var(--bg-card);
-  color: var(--brand-espresso);
-  box-shadow: 0 3px 12px rgba(42, 24, 16, 0.08);
-  font-weight: 700;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-tab-btn.active,
+.auth-tab-btn[aria-selected="true"] {
+  border-color: var(--border-accent);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-light);
 }
 
 .tab-icon {
   width: 18px;
   height: 18px;
-  flex-shrink: 0;
 }
 
 .tab-text {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   text-align: left;
-  line-height: 1.15;
 }
 
-.tab-title {
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--brand-espresso);
+.tab-title,
+.tab-single-title {
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .tab-subtitle {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--brand-espresso);
-  opacity: 0.85;
+  font-size: 10px;
+  opacity: 0.8;
 }
 
-.tab-single-title {
-  font-weight: 700;
-  font-size: 13.5px;
-}
-
-/* Form Layout */
+/* ==========================================================================
+   Form Control Fields
+   ========================================================================== */
 .auth-form-fields {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .label-row {
@@ -356,145 +287,156 @@
 }
 
 .field-label {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--brand-espresso);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .carrier-sublabel {
   font-size: 11px;
-  font-weight: 700;
-  color: var(--brand-ochre);
+  color: var(--text-subtle);
 }
 
-/* Inputs & Containers */
 .input-box {
+  position: relative;
   display: flex;
   align-items: center;
-  background-color: var(--bg-card);
-  border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-md);
-  height: 52px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.input-box:focus-within {
-  border-color: var(--brand-ochre);
-  box-shadow: 0 0 0 3px rgba(140, 93, 40, 0.15);
-}
-
-/* Country Prefix Badge (+251) */
-.country-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #FAF0E8;
-  padding: 0 14px;
-  height: 100%;
-  border-right: 1px solid var(--border-subtle);
-  cursor: pointer;
-  user-select: none;
-}
-
-.ethiopia-flag {
-  font-size: 18px;
-  line-height: 1;
-}
-
-.country-code {
-  font-size: 14.5px;
-  font-weight: 800;
-  color: var(--brand-espresso);
-}
-
-.chevron-icon {
-  width: 14px;
-  height: 14px;
-  color: var(--text-secondary);
-}
-
-/* Inputs */
 .input-field {
-  flex: 1;
-  height: 100%;
-  border: none;
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
   outline: none;
-  padding: 0 16px;
-  font-size: 15.5px;
-  font-weight: 500;
-  color: var(--brand-espresso);
-  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--border-accent-focus);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .input-field.full-padding {
-  padding: 0 16px;
+  padding-left: 14px;
 }
 
-.input-field::placeholder {
-  color: #A08D85;
+.mobile-input-box .input-field {
+  padding-left: 96px;
 }
 
-/* Password Input Styling */
-.password-input-box {
-  padding: 0 14px;
+.country-badge {
+  position: absolute;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+.ethiopia-flag {
+  font-size: 14px;
+}
+
+.country-code {
+  color: var(--color-accent-light);
+}
+
+.chevron-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--text-muted);
+}
+
+/* Password Input Modifications */
+.password-input-box .input-field {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .field-icon {
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
   color: var(--text-muted);
 }
 
 .left-icon {
-  margin-right: 10px;
+  left: 14px;
+  pointer-events: none;
 }
 
-.password-field {
-  padding: 0;
-  letter-spacing: 2px;
+.right-icon {
+  right: 14px;
 }
 
 .toggle-password-btn {
-  background: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 42px;
+  background: transparent;
   border: none;
-  padding: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
 }
 
-.toggle-password-btn:hover {
-  background-color: var(--bg-tertiary);
-}
-
-/* Done Submit Button */
+/* Form Action Button */
 .done-btn {
-  width: 100%;
-  height: 52px;
-  background-color: var(--brand-espresso);
-  color: #FFFFFF;
-  border: none;
-  border-radius: var(--radius-md);
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
   margin-top: 8px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 16px rgba(42, 24, 16, 0.18);
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  border: none;
+  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .done-btn:hover {
-  background-color: var(--brand-espresso-hover);
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(42, 24, 16, 0.25);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .done-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 8px rgba(42, 24, 16, 0.15);
+  transform: translateY(0);
+}
+
+/* Error States */
+.input-error .input-field {
+  border-color: var(--color-error);
+}
+
+.error-message {
+  font-size: 12px;
+  color: var(--color-error);
+  margin-top: 2px;
+}
+
+.form-error-banner {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--color-error-soft);
+  border: 1px solid var(--color-error);
+  color: #fca5a5;
+  font-size: 13px;
+  text-align: center;
 }

@@ -10,7 +10,6 @@ export default function FilterButton({name , type , activeCategory , setActive})
     let filterFunction = useMenuStore(state => state.setRenderedThings)
 
 
-
     const handleCategoryClick = () => {
         setActive(type);
         filterFunction(type);    

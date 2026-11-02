@@ -5,23 +5,10 @@ import { headers } from "next/headers"
 import { SUB_CITIES } from "../../(constants)/variable"
 import RevenueChart from "./RevenueChart"
 import orders from "../../data/orderHistory"
-import Footer from "@/app/(components)/Footer";
-import SuspenseFooter from "@/app/(components)/SuspenseFooter";
 
-// dashboard - revenue ordered by neighbourhood // bar chart
-// orders over time as a line chart 
+
+
 // ! ways to create a line chart
-// paged order table sorted from the url
-
-// get the whole orders first
-// then check the area of delivery and the total revenue u got from the place
-
-
-
-// in the orders when u set them up 
-// add the destination along with the grandTotal
-// import the orders from the json file first
-
 
 
 let userIds = Array.from(Object.keys(orders));

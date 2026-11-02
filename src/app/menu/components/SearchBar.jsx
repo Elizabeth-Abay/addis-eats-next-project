@@ -8,7 +8,6 @@ export default function SearchBar(){
     let [ searchWord , setSearchWord ] = useState('')
     
 
-
     let setSearchBarFilter = useMenuStore( state => state.setSearchBarFilter);
 
     

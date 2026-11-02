@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Footer from "./(components)/Footer";
 import Header from "./(components)/Header";
 
 export const metadata = {
@@ -33,14 +32,10 @@ export const metadata = {
 export default function RootLayout({children}){
     return(
         <html lang="en" >
-            <head>
-            </head>
-            
             <body>
-                <Header/>
-                <Suspense fallback={<div>Nav bar</div>}>
-                    <Footer/>
-                </Suspense>
+                <header>
+                        <Header/>
+                </header>
                 <main>{children}</main>
             </body>
         </html>

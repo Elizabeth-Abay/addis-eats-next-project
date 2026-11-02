@@ -1,143 +1,309 @@
-/* Container styling */
-.footer-nav {
-  height: 70px;
-  background: rgba(18, 18, 20, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0 8px;
-  z-index: 1000;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+/* ==========================================================================
+   Design Tokens & CSS Variables
+   ========================================================================== */
+:root {
+  /* Surface & Backgrounds */
+  --bg-navbar: rgba(24, 12, 7, 0.85);
+  --bg-dropdown: rgba(18, 9, 5, 0.95);
+  --bg-item-hover: rgba(255, 255, 255, 0.08);
+  --background--color: #0d0604;
+
+  /* Brand Accents */
+  --color-accent: #f59e0b;
+  --color-accent-dark: #d97706;
+  --color-accent-light: #fde047;
+  --color-accent-soft: rgba(245, 158, 11, 0.15);
+  --color-accent-glow: rgba(245, 158, 11, 0.35);
+
+  /* Text Hierarchy */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-dark: #180c07;
+
+  /* Borders & Shadows */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(245, 158, 11, 0.35);
+  --shadow-dropdown: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Individual navigation item button/wrapper */
-.nav-item {
-  background: transparent;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  flex: 1;
-  height: 100%;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-}
-
-/* Icon style */
-.nav-icon {
-  font-size: 22px;
-  margin-bottom: 3px;
-  transition: transform 0.2s ease;
-}
-
-/* Label text style */
-.nav-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-}
-
-/* Hover effects */
-.nav-item:hover {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.nav-item:hover .nav-icon {
-  transform: translateY(-2px);
-}
-
-/* Active state styling */
-.nav-item.active {
-  color: #ff5722; /* Use your primary brand color (e.g., vibrant orange) */
-}
-
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 24px;
-  height: 3px;
-  background-color: #ff5722;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.6);
-}
-
-/* Logout button spacing container */
-.nav-logout-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0.8;
-}
-
-
-/* Header container styling */
-.header-container {
+/* ==========================================================================
+   Header Navbar Layout
+   ========================================================================== */
+.navbar-container {
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 65px;
-  background: rgba(18, 18, 20, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 0.75rem 2rem;
+  background-color: var(--bg-navbar);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-/* Restaurant name styling */
-.header-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  margin: 0;
-  /* Optional: adds a subtle gradient to the brand name text */
-  background: linear-gradient(135deg, #ffffff 60%, rgba(255, 255, 255, 0.6));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Right-side elements grouping (Cart + Profile/NameCircle) */
-.header-actions {
+/* Left Section: Brand Title */
+.navbar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-shrink: 0;
 }
 
+.navbar-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--color-accent);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
 
-.btn-logout-warning {
-  display: inline-flex;
+.navbar-title:hover {
+  opacity: 0.9;
+}
+
+/* Center Section: Navigation Links Spread Out */
+.navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  max-width: 850px;
+  margin: 0 2.5rem;
+}
+
+.nav-item {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  font-size: 14px;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #dc2626; /* Deep Red */
-  background-color: #fee2e2; /* Light Red */
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
 }
 
-.btn-logout-warning:hover {
-  background-color: #fca5a5;
-  color: #991b1b;
+.nav-item:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-item-hover);
 }
 
-.btn-logout-warning:active {
-  transform: scale(0.98);
+.nav-item.active {
+  color: var(--color-accent-light);
+  background-color: var(--color-accent-soft);
+  border-color: var(--border-accent);
+}
+
+.nav-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  white-space: nowrap;
+}
+
+/* Right Section: User Profile Trigger */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* User Profile & Dropdown Container */
+.user-profile-wrapper {
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.profile-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.user-profile-wrapper:hover .profile-trigger {
+  transform: scale(1.05);
+}
+
+/* Dropdown Menu Overlay */
+.user-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 200px;
+  background-color: var(--bg-dropdown);
+  border: 1px solid var(--border-light);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: var(--shadow-dropdown);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Hover Display Logic */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+/* Reveal Dropdown on Hover */
+.user-profile-wrapper:hover .user-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--bg-item-hover);
+  color: var(--text-primary);
+}
+
+.dropdown-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-accent);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 0.375rem 0;
+}
+
+.logout-wrapper {
+  width: 100%;
+}
+
+.logout-wrapper button {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   Navbar Skeleton Loader Styles
+   ========================================================================== */
+
+/* Shimmer Pulse Animation */
+@keyframes skeleton-pulse {
+  0% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.skeleton-box {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+
+/* Brand Skeleton */
+.skeleton-brand {
+  width: 130px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+/* Nav Item Pill Skeletons */
+.skeleton-nav-item {
+  width: 90px;
+  height: 36px;
+  border-radius: 0.75rem;
+}
+
+/* Profile Avatar Skeleton */
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Skeleton Layout Adjustments */
+.navbar-skeleton {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Responsive Hide Rules Matching Main Navbar */
+@media screen and (max-width: 768px) {
+  .skeleton-nav-item {
+    width: 36px;
+  }
+
+  .skeleton-brand {
+    width: 100px;
+  }
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+  .navbar-center {
+    margin: 0 1rem;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 0.5rem;
+  }
+
+  .navbar-title {
+    font-size: 1.1rem;
+  }
 }

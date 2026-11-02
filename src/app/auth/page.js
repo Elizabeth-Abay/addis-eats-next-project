@@ -1,12 +1,10 @@
 import AuthForm from "./components/authForm";
-import LogInForm from "./components/logInForm";
-import SignUpForm from "./components/signUpForm";
 import WelcomePart from "./components/WelcomePart";
 import './style/style.css'
 
 export default function Page(){
     return (
-        <div>
+        <div className="auth-page-wrapper">
             <WelcomePart/>
 
             <AuthForm/>
