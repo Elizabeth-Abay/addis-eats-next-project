@@ -18,7 +18,10 @@ let checkUserExists = async (given) => {
         .select('*')
         .ilike('identifier', given); // Case-insensitive check
 
-    if (error || !users || users.length === 0) {
+    console.log("users from check user exists")
+    console.log(users)
+
+    if (error || !users || users?.length === 0) {
         return { success: true, found: false };
     }
 
