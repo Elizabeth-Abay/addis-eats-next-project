@@ -1,0 +1,5 @@
+{
+    "chat.notifyWindowOnConfirmation": "off",
+    "chat.notifyWindowOnResponseReceived": "off",
+    "terminal.integrated.gpuAcceleration": "off"
+}

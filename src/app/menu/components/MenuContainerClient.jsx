@@ -7,6 +7,8 @@ import useSWR from "swr"
 import MenuBox from "./MenuBox"
 
 export default function MenuContainerClient(){
+    // the fetch will revalidate itself with the interval
+    // so users can use the stored version
     let { data , isLoading , error } = useSWR('https://addis-eats-backend.onrender.com/menu/' , fetcher , 
         {
             refreshInterval: 900000, // Disable automatic polling (default is 0)

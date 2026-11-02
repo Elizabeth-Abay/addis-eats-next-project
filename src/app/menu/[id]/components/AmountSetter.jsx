@@ -1,40 +1,38 @@
-export default function AmountSetter({amount , setAmount}){
-    
-    const increment = () => { setAmount( prev => prev + 1)}
-    const decrement = () => { setAmount( prev => prev - 1)}
+"use client";
 
-    let min = 1;
-        
+export default function AmountSetter({ amount, setAmount }) {
+    const increment = () => setAmount((prev) => prev + 1);
+    const decrement = () => setAmount((prev) => prev - 1);
+    const min = 1;
 
     return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', border: '1px solid #ccc', borderRadius: '6px', overflow: 'hidden' }}>
-            <button 
-                type="button"
-                onClick={decrement}
-                disabled={amount <= min}
-                style={{ width: '36px', height: '36px', border: 'none', background: '#f3f4f6', cursor: 'pointer', fontSize: '18px' }}
-            >
-                −
-            </button>
+        <div className="amount-setter-container">
+        <button
+            type="button"
+            onClick={decrement}
+            disabled={amount <= min}
+            className="amount-btn decrement-btn"
+            aria-label="Decrease amount"
+        >
+            −
+        </button>
 
-            <input
-                type="number"
-                value={amount}
-                // if i set a value then there should be onChange to allow the user to change the value
-                readOnly
-                // but I want the buttons to be the one changing the value
-                min={min}
-                style={{ width: '48px', height: '36px', textAlign: 'center', border: 'none', outline: 'none' }}
-            />
+        <input
+            type="number"
+            value={amount}
+            readOnly
+            min={min}
+            className="amount-input"
+        />
 
-            <button 
-                type="button"
-                onClick={increment}
-                style={{ width: '36px', height: '36px', border: 'none', background: '#f3f4f6', cursor: 'pointer', fontSize: '18px' }}
-            >
-                +
-            </button>
+        <button
+            type="button"
+            onClick={increment}
+            className="amount-btn increment-btn"
+            aria-label="Increase amount"
+        >
+            +
+        </button>
         </div>
-
-    )
+    );
 }

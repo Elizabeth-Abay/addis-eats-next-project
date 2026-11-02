@@ -1,95 +1,87 @@
-// make it stateful and also add the add to basket button here
-// props drilling is ok here
-"use client"
-import useCartStore from "@/app/(stores)/CartStore";
+// components/CustomizeOrder.jsx
+"use client";
+
 import { useState } from "react";
-import AddToCart from "./AddToCart";
-import AmountSetter from "./AmountSetter";
+import useCartStore from "@/app/(stores)/CartStore";
+import TitleContainer from "./TitleContainer";
+import SpiceLevelSelector from "./SpiceLevelSelector";
 import InjeraBaseSelector from "./InjeraSelector";
 import SideAccentsSelector from "./SideAccentSelector";
-import SpiceLevelSelector from "./SpiceLevelSelector";
-// we use the chosen side Accents in the receipt
-// but we need to include that in the sideAccents
-// in the order - it is used to include the order
-// but total price will also be updated
+import AmountSetter from "./AmountSetter";
+import AddToCart from "./AddToCart";
 
+export default function CustomizeOrder({ item }) {
+    let { id, name, price } = item;
+    let addItem = useCartStore((state) => state.addItem);
 
-export default function CustomizeOrder({item }){
-    // // // // console.log("price sent is here")
-    let {id , name ,  price} = item;
-    // // // // console.log(price)
-    let addItem = useCartStore(state => state.addItem)
-
-    // use addItem for saying add to cart and updating the cart items
-     // what do i want 
-    // to store the custom order in some object and then when that changes
-    // to update the price , the tick parts they will be handled by the elt itself
-    let  [customOrder , setCustomOrder ] = useState({
-        spiceLevel : 'tradtitional', // mid, traditional , fiery awaze
-        injera : 'standard' ,// standard , brown-teff - will also add price to the cart
-        sideAccents : [], // will contain the additional items
-        // so input will have a name
-        // when it gets clicked then it will add its price to the total
+    let [customOrder, setCustomOrder] = useState({
+        spiceLevel: "traditional",
+        injera: "standard",
+        sideAccents: [],
     });
 
-    let [ totalPrice , setTotalPrice ] = useState(Number(price))
+    let [totalPrice, setTotalPrice] = useState(Number(price));
+    let [amount, setAmount] = useState(1);
 
-    let [ amount , setAmount ] = useState(1);
+    const onSpiceChange = (chosenLevel) => {
+        setCustomOrder((prev) => ({ ...prev, spiceLevel: chosenLevel }));
+    };
 
-    let onSpiceChange = (chosenLevel)=> {
-        setCustomOrder(
-            prev => {
-                return { ...prev , spiceLevel : chosenLevel}
-            }
-        ) 
+    const onInjeraChange = (chosenType) => {
+        setCustomOrder((prev) => ({ ...prev, injera: chosenType }));
+    };
 
-        
-    }
-
-    let onInjeraChange = (chosenType) => {
-        setCustomOrder(
-            prev => {
-                return { ...prev , injera : chosenType }
-            }
-        ) 
-    }
-    
-
-
-    // but the total price in the cart will need to change as well
-    let updateTotalPrice = ({ amount , type})=>{
-        let newTotal = (type === 'plus') ? totalPrice + amount : totalPrice - amount
-
-        setTotalPrice(newTotal)
-    }
+    const updateTotalPrice = ({ amount, type }) => {
+        let newTotal = type === "plus" ? totalPrice + amount : totalPrice - amount;
+        setTotalPrice(newTotal);
+    };
 
     const updateSideAccents = ({ type, added }) => {
         setCustomOrder((prev) => {
-            const currentAccents = prev.sideAccents || [];
-            const updatedAccents = added
+        const currentAccents = prev.sideAccents || [];
+        const updatedAccents = added
             ? [...currentAccents, type]
             : currentAccents.filter((id) => id !== type);
 
-            return { ...prev, sideAccents: updatedAccents };
+        return { ...prev, sideAccents: updatedAccents };
         });
     };
 
-
     const onAddToCart = () => {
-        addItem({ id , name , amount  , price : totalPrice , customOrder})
-
-
-    }
+        addItem({ id, name, amount, price: totalPrice, customOrder });
+    };
 
     return (
-        <div className="customize-order">
-            <SpiceLevelSelector onSpiceChange={onSpiceChange} /> 
-            <InjeraBaseSelector onInjeraChange={onInjeraChange} updateTotal={updateTotalPrice}/>
-            <SideAccentsSelector updateSideAccents={updateSideAccents} updateTotal={updateTotalPrice}  sideAccents={customOrder.sideAccents} />
-            <AmountSetter amount={amount} setAmount={setAmount}/>
-            <AddToCart onClick={onAddToCart} total={totalPrice}/>
-            
-        </div>
-    )
-}
+        <div className="order-layout-grid">
+        {/* LEFT COLUMN: Title & Dynamic Base/Updated Price */}
+        <aside className="layout-column column-left">
+            <TitleContainer item={{ ...item }} />
+        </aside>
 
+        {/* MIDDLE COLUMN: Customization Selectors */}
+        <section className="layout-column column-middle">
+            <SpiceLevelSelector onSpiceChange={onSpiceChange} />
+            <InjeraBaseSelector
+            onInjeraChange={onInjeraChange}
+            updateTotal={updateTotalPrice}
+            />
+            <SideAccentsSelector
+            updateSideAccents={updateSideAccents}
+            updateTotal={updateTotalPrice}
+            sideAccents={customOrder.sideAccents}
+            />
+        </section>
+
+        {/* RIGHT COLUMN: Quantity Setter & Add to Basket Button */}
+        <aside className="layout-column column-right">
+            <div className="cart-action-card">
+            <div className="cart-card-header">
+                <span className="cart-card-subtitle">QUANTITY</span>
+                <AmountSetter amount={amount} setAmount={setAmount} />
+            </div>
+            <AddToCart onClick={onAddToCart} total={totalPrice * amount} />
+            </div>
+        </aside>
+        </div>
+    );
+}
