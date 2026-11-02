@@ -14,33 +14,18 @@ import SuspenseFooter from "../(components)/SuspenseFooter";
 // Paging - to break large dataset into smaller chunks
 
 export default async function Page({ searchParams }){
-    // to filter the orders based on price
-    // above some price point
+    
     let parameters = await searchParams;
 
     let userCookie = await cookies();
     let actualCookieValue = JSON.parse(userCookie.get('sessionInfo').value);
     let userId = actualCookieValue.userId;
 
-    // console.log("Received the search Params");
-    // console.log(parameters)
-
-
-    // the pages will be given in the search parameters
-    // and the user will be able to see the number of orders based on the size
-
+    
     let page = Number( parameters?.page ?? 1);
-    // console.log(`page ${page}`)
 
     let ordersPerPage = 5
 
-    // users shld see some of their orders
-    // let ordersPage = page * ordersPerPage;
-
-    // then get the orders array
-    // this page displays the order for the user
-        
-    // 2. Fetch orders from Supabase using the validated userId from middleware
     let userOrder = [];
     if (userId) {
         try {
@@ -51,7 +36,6 @@ export default async function Page({ searchParams }){
 
             if (error) throw error;
 
-            // Map Supabase columns back to the structure your app expects
             userOrder = (data || []).map(order => ({
                 cart: order.cart,
                 payment: {
@@ -66,7 +50,6 @@ export default async function Page({ searchParams }){
         }
     }
 
-    // console.log("userOrder from database:", userOrder);
 
     let startIndex = (page - 1) * ordersPerPage;
     let endIndex = startIndex + ordersPerPage;
@@ -74,7 +57,6 @@ export default async function Page({ searchParams }){
     let totalOrdersCount = userOrder.length;
     endIndex = endIndex >= totalOrdersCount ? totalOrdersCount : endIndex;
 
-    // Get the slice of orders for the current page
     let seenOrders = userOrder.slice(startIndex, endIndex);
 
     let ids = startIndex + 1; 
@@ -85,7 +67,6 @@ export default async function Page({ searchParams }){
         };
     });
     
-    // console.log("importantInfo:", importantInfo);
 
     return (
         <div>

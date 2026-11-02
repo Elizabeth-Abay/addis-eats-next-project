@@ -5,7 +5,7 @@ import './style/style.css'
 
 export default function Page(){
     return (
-        <div>   
+        <div className="cart-full-page">   
             <StepOne/>
         </div>
     )

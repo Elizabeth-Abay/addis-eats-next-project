@@ -11,11 +11,6 @@ export default function OrderBox({item}){
             <div className="cart-card-body">
             {/* Left: Image with Spicy Badge */}
                 <div className="cart-img-wrapper">
-                    <img
-                    src={image || "https://via.placeholder.com/100"}
-                    alt={name}
-                    className="cart-img"
-                    />
                     {spiceLevel && <span className="cart-badge">spiceLevel {spiceLevel}</span>}
                 </div>
 

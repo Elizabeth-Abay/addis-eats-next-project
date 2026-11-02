@@ -1,474 +1,389 @@
-/* =================================================================xture & Variables */
+/* ==========================================================================
+   Design Tokens & CSS Variables
+   ========================================================================== */
 :root {
-    --bg-main: #faf7f2;
-    --card-bg: #ffffff;
-    --card-hover: #fdfbf7;
-    --border-color: #e6dec9;
-    --border-focus: #b45309;
-    
-    --coffee-dark: #2c221e;
-    --coffee-medium: #4a3525;
-    --amber-primary: #8c5a3c;
-    --amber-hover: #78350f;
-    --amber-light: #f5ebd9;
-    
-    --text-main: #29211c;
-    --text-muted: #6b5c53;
-    --text-light: #9c8b80;
-    
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    
-    --shadow-sm: 0 2px 4px rgba(44, 34, 30, 0.03);
-    --shadow-md: 0 4px 12px rgba(44, 34, 30, 0.06);
-    --shadow-lg: 0 8px 24px rgba(44, 34, 30, 0.1);
+  /* Surface & Backgrounds */
+  --bg-container: rgba(2, 1, 0, 0.6);
+  --bg-card: rgba(15, 8, 4, 0.5);
+  --bg-card-dark: rgba(15, 8, 4, 0.65);
+  --bg-input: rgba(15, 8, 4, 0.7);
+  --bg-track: rgba(80, 68, 68, 0.04);
+  --background--color: #000000;
+
+  /* Brand Accents */
+  --color-accent: #f59e0b;
+  --color-accent-dark: #d97706;
+  --color-accent-light: #fde047;
+  --color-accent-soft: rgba(245, 158, 11, 0.15);
+  --color-accent-soft-hover: rgba(245, 158, 11, 0.3);
+  --color-accent-glow: rgba(245, 158, 11, 0.35);
+
+  /* Status & Auxiliary */
+  --color-success: #34d399;
+  --color-success-soft: rgba(16, 185, 129, 0.15);
+
+  /* Text Hierarchy */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-subtle: rgba(255, 255, 255, 0.45);
+  --text-dark: #180c07;
+
+  /* Borders */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(245, 158, 11, 0.35);
+  --border-accent-focus: rgba(245, 158, 11, 0.7);
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-btn: 0 8px 24px var(--color-accent-glow);
+  --shadow-btn-hover: 0 12px 28px rgba(245, 158, 11, 0.45);
 }
 
-/* Base Body & Reset */
-body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Layout container for FullPage */
+/* ==========================================================================
+   Checkout Page Layout
+   ========================================================================== */
 .checkout-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  color: var(--text-primary);
+  background-color: var(--background--color);
+  min-height: 100vh;
 }
 
-/* ================================================================= Recipients & Delivery Cards */
-.recipient-card, 
-.delivery-card, 
-.payment-box, 
-.order-items-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
+/* Base Card Styling */
+.recipient-card,
+.delivery-card {
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--bg-container);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease;
 }
 
-.recipient-card:hover, 
+.recipient-card:hover,
 .delivery-card:hover {
-    box-shadow: var(--shadow-md);
+  border-color: var(--border-medium);
 }
 
-/* Header section inside cards */
-.recipient-header, 
+/* ==========================================================================
+   Card Headers
+   ========================================================================== */
+.recipient-header,
 .delivery-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.header-icon-badge, 
+.header-icon-badge,
 .header-pin-badge {
-    background-color: var(--amber-light);
-    color: var(--amber-primary);
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.header-icon-badge svg, 
-.header-pin-badge svg {
-    width: 22px;
-    height: 22px;
+.user-icon,
+.pin-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
 }
 
-.header-text h2, 
+.header-text h2,
 .header-title-group h2 {
-    margin: 0 0 4px 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--coffee-dark);
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--text-primary);
 }
 
-.header-text p, 
+.header-text p,
 .header-title-group p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+  margin: 3px 0 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
-/* ================================================================= Form Fields & Inputs */
-.form-fields, 
+/* ==========================================================================
+   Form Controls & Inputs
+   ========================================================================== */
+.form-fields,
 .delivery-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
 }
 
 .input-group label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--coffee-medium);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.2px;
 }
 
-.input-wrapper, 
-.select-wrapper, 
-.input-with-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
+.input-wrapper,
+.input-with-icon-wrapper,
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.input-wrapper input, 
-.text-input, 
-.custom-select, 
-.payment-input {
-    width: 100%;
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    font-size: 0.95rem;
-    color: var(--text-main);
-    outline: none;
-    transition: all 0.2s;
-    box-sizing: border-box;
-}
-
+.input-wrapper input,
+.text-input,
 .custom-select {
-    appearance: none;
-    cursor: pointer;
-    padding-right: 40px;
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
 }
 
-.input-wrapper input:focus, 
-.text-input:focus, 
-.custom-select:focus, 
-.payment-input:focus {
-    border-color: var(--border-focus);
-    background-color: var(--card-bg);
-    box-shadow: 0 0 0 3px rgba(140, 90, 60, 0.15);
+.input-wrapper input:focus,
+.text-input:focus,
+.custom-select:focus {
+  border-color: var(--border-accent-focus);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+  background-color: rgba(15, 8, 4, 0.85);
 }
 
-/* Field Icons & Prefix styling */
-.country-prefix {
-    background-color: var(--amber-light);
-    color: var(--amber-primary);
-    padding: 12px 14px;
-    border-top-left-radius: var(--radius-sm);
-    border-bottom-left-radius: var(--radius-sm);
-    border: 1px solid var(--border-color);
-    border-right: none;
-    font-size: 0.9rem;
-    font-weight: 600;
+.input-wrapper input::placeholder,
+.text-input::placeholder {
+  color: var(--text-subtle);
 }
 
-.country-prefix + input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.field-icon, 
-.select-arrow-icon, 
-.door-icon {
-    position: absolute;
-    right: 14px;
-    width: 18px;
-    height: 18px;
-    color: var(--text-light);
-    pointer-events: none;
+/* Field Icons */
+.field-icon,
+.door-icon,
+.select-arrow-icon {
+  position: absolute;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
 }
 
 .check-icon {
-    color: #15803d; /* subtle green when filled */
+  color: var(--color-success);
 }
 
-/* Done Buttons */
+/* Country Prefix Pill */
+.country-prefix {
+  position: absolute;
+  left: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-light);
+  border: 1px solid var(--border-accent);
+  pointer-events: none;
+}
+
+.input-wrapper input[type="tel"] {
+  padding-left: 52px;
+}
+
+/* Custom Select Dropdown */
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+.custom-select option {
+  background-color: #180c07;
+  color: var(--text-primary);
+}
+
+/* Standard Secondary Done Button */
 .done-btn {
-    background-color: var(--coffee-dark);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 12px 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 4px;
+  margin-top: 8px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: var(--bg-card-dark);
+  border: 1px solid var(--border-accent);
+  color: var(--color-accent-light);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .done-btn:hover {
-    background-color: var(--coffee-medium);
+  background-color: var(--color-accent);
+  color: var(--text-dark);
+  box-shadow: 0 0 12px var(--color-accent-glow);
 }
 
-/* ================================================================= Payment Method Boxes */
-.payment-box {
-    cursor: pointer;
-    margin-bottom: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 18px;
-    background-color: var(--card-bg);
-    transition: all 0.2s ease;
-}
-
-.payment-box:hover {
-    border-color: var(--amber-primary);
-    background-color: var(--card-hover);
-}
-
-.payment-box.selected {
-    border-color: var(--amber-primary);
-    background-color: var(--amber-light);
-    box-shadow: var(--shadow-sm);
-}
-
-.payment-box-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.payment-box-info {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.payment-logo-wrapper {
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.payment-logo {
-    max-width: 24px;
-    max-height: 24px;
-    object-fit: contain;
-}
-
-.payment-details h4 {
-    margin: 0 0 2px 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--coffee-dark);
-}
-
-.payment-details p {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-/* Radio button elements */
-.payment-radio-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.payment-radio {
-    opacity: 0;
-    position: absolute;
-    cursor: pointer;
-}
-
-.custom-radio {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: inline-block;
-    position: relative;
-    transition: all 0.2s;
-}
-
-.payment-box.selected .custom-radio {
-    border-color: var(--amber-primary);
-    background-color: var(--amber-primary);
-    box-shadow: inset 0 0 0 4px #ffffff;
-}
-
-/* Conditional payment input section */
-.payment-input-section {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--border-color);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.payment-label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.input-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--coffee-medium);
-}
-
-.input-badge {
-    background-color: #d1fae5;
-    color: #065f46;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-}
-
-.input-container {
-    display: flex;
-    align-items: center;
-}
-
-.input-prefix {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-right: none;
-    padding: 10px 12px;
-    border-top-left-radius: var(--radius-sm);
-    border-bottom-left-radius: var(--radius-sm);
-    font-size: 0.85rem;
-}
-
-.input-prefix + .payment-input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.payment-submit-btn {
-    background-color: var(--amber-primary);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    align-self: flex-start;
-}
-
-.payment-submit-btn:hover {
-    background-color: var(--amber-hover);
-}
-
-/* ================================================================= Order Items & Totals */
-.scroll-container {
-    max-height: 320px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 16px;
-    padding-right: 4px;
-}
-
-/* Scrollbar styling */
-.scroll-container::-webkit-scrollbar {
-    width: 6px;
-}
-.scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-.scroll-container::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
-}
-
+/* ==========================================================================
+   Order Items & Subtotal
+   ========================================================================== */
 .payment-holder {
-    background-color: var(--amber-light);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background-color: var(--bg-card-dark);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
 }
 
 .payment-holder h3 {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--coffee-medium);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .payment-holder h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--coffee-dark);
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
 }
 
-/* ================================================================= Main Confirm & Pay Button */
+/* ==========================================================================
+   Main Payment / Checkout Action Button
+   ========================================================================== */
 .payment-btn {
-    width: 100%;
-    background-color: var(--amber-hover);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    box-shadow: var(--shadow-md);
-    transition: background-color 0.2s, transform 0.1s;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  color: var(--text-dark);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
 }
 
-.payment-btn:hover {
-    background-color: var(--coffee-dark);
+.payment-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
 }
 
-.payment-btn:active {
-    transform: scale(0.99);
+.payment-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .payment-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
 }
 
-.payment-btn-left, 
+.payment-btn-left,
 .payment-btn-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
+.lock-icon,
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-dark);
+}
+
+.btn-label {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.btn-amount {
+  font-size: 15px;
+  font-weight: 800;
+  background-color: rgba(24, 12, 7, 0.18);
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-dark-overlay);
+  font-variant-numeric: tabular-nums;
+}
+
+.payment-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Laptop / Desktop Responsive Layout (1024px+)
+   ========================================================================== */
+@media screen and (min-width: 1024px) {
+  .checkout-container {
+    padding: 3rem 2rem;
+    align-items: center;
+  }
+
+  /* Centered, restrained width components */
+  .recipient-card,
+  .delivery-card,
+  .payment-holder {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Main Payment Action Button sizing & alignment */
+  .payment-btn {
+    width: 100%;
+    max-width: 800px;
+    margin: 10px auto 0 auto;
+  }
+
+  /* Internal Grid for 2-column input layouts on desktop */
+  .delivery-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+  }
+
+  /* Span full width for specific fields inside grid */
+  .delivery-form .input-group:first-child,
+  .delivery-form .done-btn {
+    grid-column: span 2;
+  }
 }

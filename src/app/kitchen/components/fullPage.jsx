@@ -7,37 +7,13 @@ import { headers } from "next/headers";
 
 
 export default async function FullPage() {
-    let headerrs = await headers();
-    let cookieString = headerrs.get('cookie')
-            
+    let userCookie = await cookies();
+    let actualCookieValue = JSON.parse(userCookie.get('sessionInfo').value);
+    let userId = actualCookieValue.userId;
+    let role = actualCookieValue.role || "user";
 
-    // page level security
-    
-    const cookies = cookieString.split(';').reduce((acc, cookie) => {
-    const [key, value] = cookie.trim().split('=');
-        acc[key] = value;
-        return acc;
-    }, {});
 
-    let userId = null;
-    let role = null
-
-    if (cookies.sessionInfo) {
-        // 2. Decode URL encoding (e.g., %7B -> {, %22 -> ", etc.)
-        const decodedSession = decodeURIComponent(cookies.sessionInfo);
-        
-        // 3. Parse the JSON string into an object
-        const sessionObj = JSON.parse(decodedSession);
-        
-        // 4. Grab the userId
-        userId = sessionObj.userId;
-        role = sessionObj.role;
-    }
-
-    
-    // page level security 
     if (!(role === 'kitchen' || role === 'admin')){
-        // // console.log("Returning the role")
         return (
             <div>
                 Sorry You Can't Access this page because of your role
@@ -46,7 +22,6 @@ export default async function FullPage() {
     }
 
 
-    // this is page level security
     return (
         <div>
             Welcome to the kitchen role

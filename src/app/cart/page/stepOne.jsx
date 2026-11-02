@@ -9,11 +9,10 @@ import PaymentInfo from "../components/PaymentInfo";
 export default function StepOne(){
     return (
         <div>
-            <GurshaPackage />
-            <DeliveryBanner />
+            {/* <DeliveryBanner /> */}
             <CartItemContainer />
             <CheckoutButton />
-            <DiningEtiquette />
+            {/* <DiningEtiquette /> */}
             <PaymentInfo/>
         </div>
     )

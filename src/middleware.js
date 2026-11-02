@@ -34,7 +34,8 @@ export function middleware(req) {
 
     
     
-    if (!sessionCookie) return NextResponse.redirect(new URL('/auth', req.url)); // the menu and specials pages are not protected
+    // ! make sure to check this out
+    // if (!sessionCookie) return NextResponse.redirect(new URL('/auth', req.url)); // the menu and specials pages are not protected
     
     let sessionObj = JSON.parse(sessionCookie['value']);
     // console.log("session obj")
