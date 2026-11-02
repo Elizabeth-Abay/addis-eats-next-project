@@ -6,6 +6,7 @@ import GurshaPackage from "../components/GurshaComponent";
 import PaymentInfo from "../components/PaymentInfo";
 
 
+// ! work on the display when the cart is empty
 export default function StepOne(){
     return (
         <div>

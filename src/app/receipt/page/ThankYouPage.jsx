@@ -3,7 +3,7 @@ import useOrderStore from "@/app/(stores)/OrderStore";
 import useCartStore from "@/app/(stores)/CartStore";
 import "../../cart/style/style.css";
 import { useRouter } from "next/navigation";
-// import { Suspense } from "react";
+import '../style/style.css'
 
 export default function ThankYouPage() {
     let router = useRouter()
@@ -23,22 +23,12 @@ export default function ThankYouPage() {
     let onBackToHome = () => {
         clearCart()
         router.replace('/')
-        // using windows.location.href will cause an issue 
-        // bc client comps are still prerendered in the server
-        // and there is no window in server components
         
-        
+    
     }
 
 
-    
 
-    // ! to be done
-    // once u have all the data then u can clear the cart
-    // dispatch({ type : 'clear-cart'});
-
-
-    // Helper to format custom order options into readable text
     const renderCustomOptions = (customOrder) => {
         if (!customOrder || typeof customOrder !== "object") return null;
         const entries = Object.entries(customOrder);
@@ -47,16 +37,7 @@ export default function ThankYouPage() {
         return entries.map(([key, val]) => `${key}: ${val}`).join(" • ");
     };
 
-    // Generate order metadata
-    // Math.random() - will make this page dynamic
-    // const orderNumber = ;
-    // const orderDate = new Date().toLocaleDateString("en-US", {
-    //     month: "short",
-    //     day: "numeric",
-    //     year: "numeric",
-    //     hour: "2-digit",
-    //     minute: "2-digit",
-    // });
+
 
     return (
         <div className="thank-you-page">

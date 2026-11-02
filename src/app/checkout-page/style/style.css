@@ -349,9 +349,7 @@
   transform: translateX(4px);
 }
 
-/* ==========================================================================
-   Laptop / Desktop Responsive Layout (1024px+)
-   ========================================================================== */
+
 @media screen and (min-width: 1024px) {
   .checkout-container {
     padding: 3rem 2rem;
