@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import useCartStore from "@/app/(stores)/CartStore";
-import { FaBagShopping, FaArrowRight } from "react-icons/fa6";
+import { FaBagShopping } from "react-icons/fa6";
 
 export default function SelectedItemsContainer() {
     const router = useRouter();
@@ -11,37 +11,31 @@ export default function SelectedItemsContainer() {
 
     const itemCount = cart?.length || 0;
 
-    // Optional: Hide container when cart is empty
-    if (itemCount === 0) return null;
+    // Optional: Hide floating cart when empty
+    // if (itemCount === 0) return null;
 
     return (
-        <div className="floatingBar">
-            <div className="basketContentLeft">
-                <div className="iconBadgeWrapper">
-                    <FaBagShopping size={20} />
-                    <span className="itemCount">{itemCount}</span>
+        <div className="floatingCartContainer">
+        {/* Price Tooltip (Pops up on hover) */}
+            <div className="cartTooltip">
+                <div className="priceDisplay">
+                    <span className="currency">ETB</span>
+                    <span className="amount">
+                    {(totalPrice || 0).toLocaleString()}
+                    </span>
                 </div>
-
-                <div className="basketInfo">
-                    <div className="priceDisplay">
-                        <span className="currency">ETB</span>
-                        <span className="amount">
-                            {(totalPrice || 0).toLocaleString()}
-                        </span>
-                    </div>
-
-                    <p className="basketSubtitle">Includes pure teff injera rolls</p>
-
-                </div>
+                <p className="basketSubtitle">Includes pure teff injera rolls</p>
             </div>
 
-            <button
-                className="viewBasketBtn"
-                onClick={() => router.push("/cart")}
-            >
-                <span>View Basket</span>
-                <FaArrowRight size={14} />
-            </button>
+        {/* Cart Trigger Button */}
+        <button
+            className="cartButton"
+            onClick={() => router.push("/cart")}
+            aria-label="View Cart"
+        >
+            <FaBagShopping size={22} />
+            <span className="itemCount">{itemCount}</span>
+        </button>
         </div>
-    )       
+    );
 }
