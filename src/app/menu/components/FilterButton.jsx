@@ -7,28 +7,13 @@ import { useState } from "react";
 
 export default function FilterButton({name , type , activeCategory , setActive}){
     
-
-
-
-    // the thing is onClick 
-    // I want to push the current category to the router to deal with it
-
-    // ! we may need to change the css here to accomodate for the change
-
-    
     let filterFunction = useMenuStore(state => state.setRenderedThings)
 
-    // const router = useRouter();
-    // const pathName = usePathname();
+
 
     const handleCategoryClick = () => {
         setActive(type);
-        // // console.log(type)
-        // this is the filter
-        filterFunction(type);
-
-        // router.push(`${pathName}?category=${type}`)
-    
+        filterFunction(type);    
     };
 
 
@@ -38,47 +23,10 @@ export default function FilterButton({name , type , activeCategory , setActive})
 
 
     return (
-        <button className="category-filter-btn active"
-        style={{
-                padding: "8px 18px",
-                margin : "5px" ,
-                borderRadius: "9999px",
-                fontSize: "13px",
-                fontWeight: isActive ? "700" : "500",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-                outline: "none",
-                // Active vs Inactive Styles
-                backgroundColor: isActive
-                    ? "rgba(29, 168, 41, 0.6)"
-                    : "#f59e0b",
-                color: isActive ? "#180c07" : "rgba(255, 255, 255, 0.8)",
-                border: isActive
-                    ? "1px solid #f59e0b"
-                    : "1px solid rgba(245, 158, 11, 0.2)",
-                boxShadow: isActive
-                    ? "0 4px 14px rgba(245, 158, 11, 0.35)"
-                    : "0 2px 8px rgba(0, 0, 0, 0.2)",
-                backdropFilter: "blur(8px)",
-            }}
-            onMouseEnter={(e) => {
-                if (!isActive) {
-                    e.currentTarget.style.backgroundColor = "rgba(245, 158, 11, 0.15)";
-                    e.currentTarget.style.borderColor = "rgba(245, 158, 11, 0.4)";
-                    e.currentTarget.style.color = "#ffffff";
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                }
-            }}
-            onMouseLeave={(e) => {
-                if (!isActive) {
-                    e.currentTarget.style.backgroundColor = "rgba(38, 20, 14, 0.6)";
-                    e.currentTarget.style.borderColor = "rgba(245, 158, 11, 0.2)";
-                    e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
-                    e.currentTarget.style.transform = "translateY(0)";
-                }
-            }}
-        onClick={handleCategoryClick}>
+        <button 
+            className="category-filter-btn"
+            onClick={handleCategoryClick}
+        >
             {name}
         </button>
     )

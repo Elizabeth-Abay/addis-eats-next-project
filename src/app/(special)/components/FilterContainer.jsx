@@ -1,17 +1,8 @@
 import CategoryFilter from "./FilterButton"
 
 export default function FilterContainer(){
-    // // // // console.log(`seach params from here ${searchParams}`)
     return (
-        <div className="selection-buttons" style={{
-            display: "flex",
-            width :"300px",
-            flexDirection : "column",
-            gap: "10px",
-            overflowX: "auto",
-            padding: "16px 0 8px 0",
-            scrollbarWidth: "none", /* Firefox hide scrollbar */
-        }}>
+        <div className="category-selection-buttons-container">
             <CategoryFilter key ='All' type='All'  filterName='All' ></CategoryFilter>
             <CategoryFilter key ='Wat' type='Traditional Stews & Wat'  filterName='Wat' ></CategoryFilter>
             <CategoryFilter key ='Tibs' type='Tibs & Grills'  filterName='Tibs'  ></CategoryFilter>

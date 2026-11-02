@@ -15,12 +15,9 @@ export default function CategoryFilterContainer(){
         { name: 'Beverages & Tej', action: 'Beverages & Tej' , type :'beverages' },
     ];
     
-
-    // // // // console.log('returning category filters')
     
     return (
         <div className="category-filter-container">
-            {/* on click add active classtype to them  */}
             {
                 categories.map(
                     cat => (

@@ -1,16 +1,21 @@
 "use client"
 import { FaPlus } from "react-icons/fa6";
 import useCartStore from "../../(stores)/CartStore";
+import { useState } from "react";
 
 
 export default function AddBtn({props }){
     let {id , nameEn ,priceETB} = props;
+    let [ buttonName , setButtonName ] = useState('Quick Add');
+    let [ isClicked , setIsClicked ] = useState(false)
 
     const addItem = useCartStore((state) => state.addItem);
 
 
     const handleQuickAdd = (e) => {
         // CRITICAL: Prevent navigating to detail page when clicking Quick Add
+        setButtonName('Adding to cart')
+        setIsClicked(true)
         e.stopPropagation();
         addItem({
         id,
@@ -19,30 +24,23 @@ export default function AddBtn({props }){
         price: priceETB,
         customOrder: {},
         });
+
+        setTimeout(
+            () => {
+                setButtonName('Quick Add')
+                setIsClicked(false)
+            },
+            2000
+        )
     };
 
     return (
         
         <button
-            className="quick-add-btn"
+            className={`quick-add-btn ${isClicked ? 'clicked' : ''}`}
             onClick={handleQuickAdd}
-            style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                backgroundColor: "#f59e0b",
-                color: "#180c07",
-                border: "none",
-                borderRadius: "12px",
-                padding: "8px 14px",
-                fontSize: "12px",
-                fontWeight: "700",
-                cursor: "pointer",
-                boxShadow: "0 4px 12px rgba(245, 158, 11, 0.3)",
-                transition: "transform 0.15s ease",
-            }}
         >
-            <FaPlus size={12} /> Quick Add
+            <FaPlus size={12} />{buttonName}
         </button>
     );
 

@@ -9,8 +9,7 @@ import MenuBox from "./MenuBox"
 export default function MenuContainerClient(){
     let { data , isLoading , error } = useSWR('https://addis-eats-backend.onrender.com/menu/' , fetcher , 
         {
-            // refresh on every 15 minutes
-            refreshInterval: 900000,      // Disable automatic polling (default is 0)
+            refreshInterval: 900000, // Disable automatic polling (default is 0)
             revalidateOnFocus: true, // Revalidate when window gets focused (default: true)
             revalidateOnReconnect: true, // Revalidate when browser regains network (default: true)
             dedupingInterval: 2000,  // Request deduplication time window in ms (default: 2000)
@@ -19,7 +18,6 @@ export default function MenuContainerClient(){
 
     let setTotalMenuItems = useMenuStore(state => state.setTotalMenuItems);
 
-    // to prevent infinite rerendering useEffect
 
     useEffect(
         () => {
