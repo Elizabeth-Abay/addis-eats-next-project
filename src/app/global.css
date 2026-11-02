@@ -1,8 +1,0 @@
-:export{
-    --background--color : black;
-    --normal-font-color : white;
-    --emphasize-font-color : #ee660c;
-    --button-colors : #f88a0c;
-    --button-clicked : rgb(7, 92, 7);
-    --card-box-color : rgba(75, 73, 73, 0.925);
-}

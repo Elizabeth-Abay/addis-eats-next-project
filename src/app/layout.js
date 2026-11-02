@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Header from "./(components)/Header";
+import HeaderSkeleton from "./(components)/HeaderSkeleton";
 
 export const metadata = {
     title: 'Addis Eats - Delicious Local Food',
@@ -33,9 +34,9 @@ export default function RootLayout({children}){
     return(
         <html lang="en" >
             <body>
-                <header>
+                <Suspense fallback={<HeaderSkeleton/>}>
                         <Header/>
-                </header>
+                </Suspense>
                 <main>{children}</main>
             </body>
         </html>

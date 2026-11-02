@@ -1,7 +1,7 @@
 // this is the server component 
 // it aggregates and passes summaries
 
-import { headers } from "next/headers"
+import { cookies } from "next/headers"
 import { SUB_CITIES } from "../../(constants)/variable"
 import RevenueChart from "./RevenueChart"
 import orders from "../../data/orderHistory"
